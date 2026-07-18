@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>115暑期密集課 · 課程總覽-SUSAN</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --surface-elevated: #ffffff;
+    --border: #e8e5dd;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --text-faint: #a3a39d;
+    --accent: #1f3a5f;
+    --accent-light: #e8eff8;
+    --accent-hover: #16294a;
+    --emerald: #059669;
+    --emerald-bg: #d1fae5;
+    --amber: #d97706;
+    --amber-bg: #fef3c7;
+    --shadow: 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f;
+      --surface: #1e1e18;
+      --surface-elevated: #262620;
+      --border: #363630;
+      --text: #f5f5f0;
+      --text-muted: #a3a39d;
+      --text-faint: #6b6b6b;
+      --accent: #7ba7de;
+      --accent-light: #1f2a3a;
+      --accent-hover: #92b8e3;
+      --emerald: #6ee7b7;
+      --emerald-bg: #064e3b;
+      --amber: #fbbf24;
+      --amber-bg: #3a2e0f;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f3; --surface: #ffffff; --surface-elevated: #ffffff; --border: #e8e5dd;
+    --text: #1a1a1a; --text-muted: #6b6b6b; --text-faint: #a3a39d;
+    --accent: #1f3a5f; --accent-light: #e8eff8; --accent-hover: #16294a;
+    --emerald: #059669; --emerald-bg: #d1fae5;
+    --amber: #d97706; --amber-bg: #fef3c7;
+    --shadow: 0 2px 12px rgba(0,0,0,0.04);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f; --surface: #1e1e18; --surface-elevated: #262620; --border: #363630;
+    --text: #f5f5f0; --text-muted: #a3a39d; --text-faint: #6b6b6b;
+    --accent: #7ba7de; --accent-light: #1f2a3a; --accent-hover: #92b8e3;
+    --emerald: #6ee7b7; --emerald-bg: #064e3b;
+    --amber: #fbbf24; --amber-bg: #3a2e0f;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    padding: 32px 24px 60px;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  header.hero {
+    padding: 32px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+    margin-bottom: 16px;
+  }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 640px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-meta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-faint);
+    font-weight: 600;
+  }
+  .meta-value {
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Progress bar */
+  .progress-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .progress-panel .progress-info {
+    flex-shrink: 0;
+  }
+  .progress-count {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .progress-of {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--emerald));
+    border-radius: 4px;
+    transition: width 0.6s ease-out;
+  }
+
+  /* Section title */
+  h2.section-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  /* Class grid */
+  .class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .class-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 22px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .class-card.done {
+    border-color: var(--border);
+  }
+  .class-card.done:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent);
+  }
+  .class-card.pending {
+    background: transparent;
+    border-style: dashed;
+    opacity: 0.72;
+  }
+  .class-card.pending:hover { opacity: 1; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .card-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .status-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .status-done {
+    background: var(--emerald-bg);
+    color: var(--emerald);
+  }
+  .status-pending {
+    background: var(--bg);
+    color: var(--text-faint);
+    border: 1px solid var(--border);
+  }
+  .status-current {
+    background: var(--amber-bg);
+    color: var(--amber);
+  }
+  .status-badge.status-done::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--emerald);
+    border-radius: 50%;
+  }
+  .status-badge.status-current::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    animation: pulse 1.5s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+  }
+  .card-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .card-date {
+    font-variant-numeric: tabular-nums;
+  }
+  .card-cta {
+    color: var(--accent);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .class-card.pending .card-cta { display: none; }
+
+  /* Info section */
+  .info-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .info-panel h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .info-panel p, .info-panel li {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .info-panel ul { margin-left: 18px; margin-top: 6px; }
+  .info-panel a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .info-panel a:hover { text-decoration: underline; }
+
+  /* Footer */
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .theme-toggle:hover { background: var(--surface); }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    body { padding: 20px 16px 60px; }
+    h1 { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .progress-panel { flex-direction: column; align-items: stretch; gap: 12px; }
+    .class-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="hero">
+    <div class="eyebrow">📚 DBA · 博士班一年級</div>
+    <h1>115暑期密集課 · 課程總覽-SUSAN</h1>
+    <p class="hero-sub">
+      整個暑假 13 堂課的完整地圖。每上完一堂,筆記會出現在對應的卡片裡,點進去就是完整整理版。<br>
+      <strong style="color: var(--amber);">⚠️ AI 錄音整理,內容可能會有錯,請自行判斷。</strong>
+    </p>
+    <div class="hero-meta">
+      <div>
+        <span class="meta-label">學制</span>
+        <span class="meta-value">DBA 博士班</span>
+      </div>
+      <div>
+        <span class="meta-label">學期</span>
+        <span class="meta-value">2026 暑期</span>
+      </div>
+      <div>
+        <span class="meta-label">總堂數</span>
+        <span class="meta-value">13 堂</span>
+      </div>
+      <div>
+        <span class="meta-label">最後更新</span>
+        <span class="meta-value" id="lastUpdated">2026-07-18</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress-panel">
+    <div class="progress-info">
+      <div>
+        <span class="progress-count" id="doneCount">1</span>
+        <span class="progress-of"> / 13 堂</span>
+      </div>
+      <div class="progress-label">已完成筆記</div>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar" style="width: 7.7%;"></div>
+    </div>
+  </div>
+
+  <!-- Class list -->
+  <h2 class="section-title">📖 課程列表</h2>
+  <div class="class-grid" id="classGrid">
+    <!-- Class 1 -->
+    <a href="./class01.html" class="class-card done">
+      <div class="card-header">
+        <span class="card-num">第 1 堂</span>
+        <span class="status-badge status-done">已完成</span>
+      </div>
+      <div class="card-title">策略管理理論地圖</div>
+      <div class="card-subtitle">CSR/ESG · Porter 五力+鑽石 · VRIO/RBV · 破壞式創新 · 交易成本理論</div>
+      <div class="card-meta">
+        <span class="card-date">2026-07-18 · 6h20m</span>
+        <span class="card-cta">查看筆記 →</span>
+      </div>
+    </a>
+
+    <!-- Class 2 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 2 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 3 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 3 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 4 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 4 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 5 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 5 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 6 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 6 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 7 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 7 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 8 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 8 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 9 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 9 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 10 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 10 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 11 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 11 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 12 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 12 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+
+    <!-- Class 13 -->
+    <div class="class-card pending">
+      <div class="card-header">
+        <span class="card-num">第 13 堂</span>
+        <span class="status-badge status-pending">尚未安排</span>
+      </div>
+      <div class="card-title">課程內容待定</div>
+      <div class="card-subtitle">上完課後這裡會出現筆記</div>
+      <div class="card-meta">
+        <span class="card-date">日期待定</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info -->
+  <div class="info-panel">
+    <h3>💡 使用說明</h3>
+    <ul>
+      <li>綠色標示 <strong>已完成</strong> 的堂次可以直接點卡片查看整理過的筆記</li>
+      <li>灰色 <strong>尚未安排</strong> 的堂次是還沒上的課,老師上完後會補上筆記連結</li>
+      <li>可以把這頁**加到手機主畫面**當書籤(Safari:分享 → 加到主畫面)</li>
+      <li>每堂筆記都可以**列印或存 PDF**(打開任一堂,左下角有印表機圖示)</li>
+    </ul>
+  </div>
+
+  <div class="info-panel">
+    <h3>📱 手機讀法建議</h3>
+    <p>每一堂筆記的內頁有<strong>左側目錄可以快速跳章</strong>、<strong>閱讀進度條</strong>、<strong>深淺色切換</strong>。手機瀏覽時右上角 ☰ 按鈕會叫出目錄,不用滑到頭。</p>
+  </div>
+
+  <footer>
+    <div>© 2026 · DBA 博一暑期密集課筆記彙整</div>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 切換深淺</button>
+  </footer>
+</div>
+
+<script>
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    let next;
+    if (!current) next = 'dark';
+    else if (current === 'dark') next = 'light';
+    else next = null;
+    if (next) document.documentElement.setAttribute('data-theme', next);
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('hub_theme', next || 'auto');
+  }
+  const savedTheme = localStorage.getItem('hub_theme');
+  if (savedTheme && savedTheme !== 'auto') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+
+  // Update progress counter dynamically based on 'done' cards
+  const doneCards = document.querySelectorAll('.class-card.done').length;
+  const totalCards = document.querySelectorAll('.class-card').length;
+  document.getElementById('doneCount').textContent = doneCards;
+  document.getElementById('progressBar').style.width = (doneCards / totalCards * 100).toFixed(1) + '%';
+</script>
+</body>
+</html>
