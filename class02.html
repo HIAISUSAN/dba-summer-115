@@ -234,6 +234,38 @@
 </head>
 <body>
 
+<div id="gate" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit;">
+  <div style="max-width:380px;width:100%;text-align:center;">
+    <div style="font-size:56px;margin-bottom:20px;">🔒</div>
+    <h1 style="font-size:22px;margin-bottom:6px;color:var(--text);">115暑期密集課</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px;font-size:14px;">課程筆記 · 需要密碼進入</p>
+    <form id="gateForm">
+      <input type="password" id="gatePwd" autofocus placeholder="請輸入密碼" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;font-size:16px;background:var(--surface);color:var(--text);font-family:inherit;margin-bottom:12px;outline:none;box-sizing:border-box;">
+      <button type="submit" style="width:100%;padding:13px 16px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">進入</button>
+      <p id="gateErr" style="color:#dc2626;font-size:13px;margin-top:12px;display:none;">密碼錯誤,請再試一次</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dba115_unlocked';
+  var gate=document.getElementById('gate');
+  if(localStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  document.body.style.overflow='hidden';
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('gatePwd').value==='DBA'){
+      localStorage.setItem(KEY,'1');
+      gate.style.display='none';
+      document.body.style.overflow='';
+    }else{
+      document.getElementById('gateErr').style.display='block';
+      var p=document.getElementById('gatePwd');p.value='';p.focus();
+    }
+  });
+})();
+</script>
+
 <div class="reading-progress" id="progress"></div>
 <button class="toggle-toc" id="tocToggle">☰ 目錄</button>
 
@@ -1116,10 +1148,6 @@ Step 3: 延伸兩個方向:
       <h2><span class="section-num">15</span>場外插曲</h2>
       <ul>
         <li>學員閒聊:「這課超密集,六六日連續好幾週」— 對比在職生上班+上課的辛苦</li>
-        <li>提到入學競爭:「以前不知道 EMBA / DBA 這麼激烈,以為考很好結果一堆人扛完就睡」</li>
-        <li>隆志學長沒來今天(昨天講很多案例的那位)</li>
-        <li>老師開玩笑:「原本以為我可以講到 4 點,你們沒讓我休息,是我的錯」</li>
-        <li>中午吃飯話題:「趕快聯絡我那個備一的朋友,可能還進得來(補位)」</li>
       </ul>
     </section>
 
