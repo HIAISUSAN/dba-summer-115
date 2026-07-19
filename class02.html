@@ -285,6 +285,7 @@
       <li><a href="#s8"><span class="toc-num">8</span>稅務研究 ★★★</a></li>
       <li><a href="#s9"><span class="toc-num">9</span>財務研究概論</a></li>
       <li><a href="#sVI" style="color: var(--accent); font-weight: 700;"><span class="toc-num">★</span>價值投資法實作 ★★★</a></li>
+      <li><a href="#sPapers" style="color: var(--purple); font-weight: 700;"><span class="toc-num">🎪</span>老師講的有趣論文</a></li>
       <li><a href="#s10"><span class="toc-num">10</span>中英術語對照</a></li>
       <li><a href="#s11"><span class="toc-num">11</span>找論文題目心法</a></li>
       <li><a href="#s12"><span class="toc-num">12</span>重點提醒</a></li>
@@ -1021,6 +1022,160 @@ HHI = 0.8² + 0.1² + 0.1² = 0.66 (高)</pre>
       <div class="callout callout-quote">
         <span class="callout-label">整個 VI 章節的一句話總結</span>
         「公司價值 = <strong>現在帳面金額</strong> + <strong>未來超額利潤的折現值</strong>。用迴歸模型拆未來 ROE,搭配 EQ 過濾財報乾淨的公司,每年 6/30 選出前 20% 買進,持有 3 年。<strong>這就是老師 20 年都在用、經過大量本驗證的價值投資法。</strong>」
+      </div>
+    </section>
+
+    <section id="sPapers">
+      <h2 style="color: var(--purple);"><span class="section-num" style="color: var(--purple);">🎪</span>老師講的有趣跨領域論文清單</h2>
+
+      <div class="callout callout-highlight">
+        <span class="callout-label">整堂課最好笑也最啟發的部分</span>
+        老師從 <strong>256 分鐘</strong>開始連環拋出「你不會相信有人真的做這個」的研究,每一個都是「這就是我來念 DBA 的原因!」的驚嘆時刻。這些是老師逐一提到的論文,<strong>他直接說「有哪個有興趣我發 PDF 給你們」</strong>。
+      </div>
+
+      <h3>P.1 The Power of Voice — 用 CEO 聲音音調預測長期報酬</h3>
+      <ul>
+        <li><strong>做什麼:</strong>分析 CEO 在<strong>法說會 (Earnings Call)</strong> 的聲音音調(信心 vs 顫抖)</li>
+        <li><strong>方法:</strong>機器學習判斷「信心指數」</li>
+        <li><strong>發現:</strong>信心指數越高 → 長期超額報酬越高</li>
+        <li><strong>老師的血淚:</strong>「我本來想做<strong>肢體語言</strong>版本(臉部表情 + 手勢)想跟資工系合作,結果沒多久其他文章就出來了,我才剛開始討論就沒了。」</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">學生驚嘆</span>
+        「老師這是研究結果的嗎?可以拿這份 paper 嗎?這都是我拿來說服董事會最好的武器!」
+      </div>
+
+      <h3>P.2 貸款申請文字語調 & 條件</h3>
+      <ul>
+        <li><strong>做什麼:</strong>分析貸款申請文件的<strong>文字語調</strong></li>
+        <li><strong>發現:</strong>
+          <ul>
+            <li>越<strong>樂觀</strong>措辭 → 貸款條件越好</li>
+            <li>越<strong>模糊</strong>措辭 → 風險感知大增 → 條件變差</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3>P.3 天氣 & 銀行貸款決策 ⭐⭐⭐(老師講到手舞足蹈)</h3>
+      <ul>
+        <li><strong>做什麼:</strong>下雨天 vs 晴天,銀行核貸率有沒有差?</li>
+        <li><strong>理論基礎:</strong>醫學/神經科學 — <strong>陽光驅動血清素 → 樂觀情緒</strong>(治療憂鬱症會用人工太陽燈)</li>
+        <li><strong>資料收集(超辛苦):</strong>
+          <ul>
+            <li>全美銀行貸款簽約日期 + 公司總部所在地</li>
+            <li>總部方圓 30–50 miles 內的<strong>氣象站</strong>資料</li>
+            <li>每個氣象站<strong>每 3 小時</strong>的雲量資料 (單位 <code>oktas</code>,0=晴 到 8=陰)</li>
+            <li>資料量:<strong>破億筆</strong></li>
+          </ul>
+        </li>
+        <li><strong>發現:</strong>雲量越少(晴天) → 銀行核貸機率越高</li>
+        <li><strong>結論(重要!):</strong>結論不是「雲影響決策」,而是「<strong>天氣驅動的情緒</strong>影響了決策」</li>
+      </ul>
+
+      <h3>P.4 天氣 & 志願性盈餘預測</h3>
+      <ul>
+        <li><strong>做什麼:</strong>公司發<strong>志願性盈餘預測</strong>那天的天氣</li>
+        <li><strong>發現:</strong>當天天氣越好 → <strong>盈餘預測數字越樂觀</strong>(其他條件不變)</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師強調</span>
+        「你不會認為關係是倒著來的 — 不太可能是預測越好就選晴天發。<strong>真的是天氣影響情緒了。</strong>」
+      </div>
+
+      <h3>P.5 注意力分散 & 資訊反映能力</h3>
+      <ul>
+        <li><strong>做什麼:</strong>在<strong>世界盃、恐怖攻擊、疫情高峰</strong>等日子,股價對資訊的反映能力如何?</li>
+        <li><strong>發現:</strong>注意力被大事分散時 → 股價反映資訊的能力<strong>下降</strong></li>
+        <li><strong>實務教訓:</strong><strong>公司壞消息會挑「有其他大事的時候」發</strong> — 這是資本市場策略</li>
+        <li><strong>台灣也有證據:</strong>大熱透還在的時候、疫情高確診日,股價都反映較弱</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">學生大喊</span>
+        「老師 Paper!謝謝!這就是我來念 DBA 的原因!」
+      </div>
+
+      <h3>P.6 CEO 過度自信量化 — 用認股權來抓</h3>
+      <ul>
+        <li><strong>代理變數:</strong>「該履約沒履約的認股權比例」</li>
+        <li><strong>邏輯:</strong>
+          <ul>
+            <li>假設認股權履約價 25 元,現價 75 元(<strong>in-the-money</strong>)</li>
+            <li>正常人身家已飛天,理性就該立刻履約套現</li>
+            <li><strong>繼續持有不履約 = 覺得「上頭還有更大的收益」= 過度自信</strong></li>
+          </ul>
+        </li>
+        <li><strong>資料來源:</strong>美國強制揭露 CEO 認股權明細(履約價、行使期限)</li>
+      </ul>
+
+      <h3>P.7 CFO 臉部寬長比 (fWHR) & 盈餘操縱 ★★★</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">老師講最爽的一個例子</span>
+        「這太有趣了 — 這就是我們就跟他一開始都講一個領域做球了其實大家都在裡面。」
+      </div>
+      <ul>
+        <li><strong>fWHR</strong> = Facial Width-to-Height Ratio = <strong>兩顴骨最寬處 / (眉心到人中的長度)</strong></li>
+        <li><strong>生物理論:</strong>
+          <ul>
+            <li>胎兒期<strong>睪固酮</strong>濃度決定臉部骨骼寬敞</li>
+            <li>睪固酮越多 → 越敢冒險</li>
+          </ul>
+        </li>
+        <li><strong>實測發現:</strong>CFO 的 fWHR 越大 → <strong>越敢做盈餘操縱</strong>(通常向上超重)</li>
+        <li><strong>為什麼「操縱後容易出事」:</strong>向上操縱 → 股價衝高 → 追漲 → 最後回歸 → 出事</li>
+        <li><strong>資料來源:</strong>LinkedIn 上 CFO 的正面照片(比例,不用管單位)</li>
+      </ul>
+
+      <h4>老師的爆笑延伸想法(必看)</h4>
+      <div class="callout callout-teacher">
+        <p>「會計師 LinkedIn 沒放照片,我沒法量他們的 fWHR。所以我想到 —— <strong>去量會計師大便的睪固酮濃度</strong>。」</p>
+        <p>「我可以請我投的公司的會計師都來驗大便,我不用錢。他們自己不會做,但我可以幫他們分心的結果都給他們。」</p>
+        <p>「這篇如果做出來,絕對可以上前十期刊。<strong>DBA 學生上 A+ 那絕對是傳說</strong>。」</p>
+        <p>「<strong>但這個我不做,我還想要有朋友。你們有興趣自己來。</strong>」</p>
+      </div>
+      <p><strong>老師的相關延伸研究(這個他有做):</strong>會計師風險傾向 → 對財務危機公司的 <strong>Going Concern Opinion</strong> 發不發 → 因為出這個意見會得罪客戶,是「會計師敢不敢拚人生」的乾淨代理變數</p>
+
+      <h3>P.8 客戶滿意度 & 借款成本(跨領域經典)</h3>
+      <ul>
+        <li><strong>資料源:</strong><strong>美國 ACSI</strong> (American Customer Satisfaction Index),密西根大學商學院固定調查</li>
+        <li><strong>做什麼:</strong>銀行核貸利率是否會參考<strong>非財務性</strong>指標?</li>
+        <li><strong>發現:</strong>控制財務指標後,<strong>ACSI 越高 → 銀行給的借款成本越低</strong></li>
+        <li><strong>意義:</strong>行銷 × 財務跨領域經典 — 銀行不只看報表</li>
+      </ul>
+
+      <h3>P.9 老師的三個大原則(找有趣題目的心法)</h3>
+
+      <h4>① 跨領域是關鍵</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>跨到哪</th><th>例子</th></tr></thead>
+        <tbody>
+          <tr><td><strong>心理學</strong></td><td>語調分析、樂觀措辭</td></tr>
+          <tr><td><strong>醫學 / 神經科學</strong></td><td>天氣→血清素、睪固酮→冒險</td></tr>
+          <tr><td><strong>電腦視覺</strong></td><td>肢體/表情分析、fWHR 量測</td></tr>
+          <tr><td><strong>行銷</strong></td><td>客戶滿意度</td></tr>
+          <tr><td><strong>生物學</strong></td><td>大便睪固酮(未有人做)</td></tr>
+          <tr><td><strong>公共政策</strong></td><td>疫情、恐攻對資本市場影響</td></tr>
+        </tbody>
+      </table></div>
+
+      <h4>② 資本市場研究的資料優勢</h4>
+      <ul>
+        <li>不用問卷、不用招募受試者(不用求人吃飯)</li>
+        <li>一做就是<strong>所有上市公司 20+ 年</strong>的資料</li>
+        <li>資料來自資料庫(有時要自己爬蟲整理,像天氣要抓氣象站)</li>
+        <li><strong>樣本量準則:</strong>9 個變數 → 至少 90 個觀察值(10 倍原則)</li>
+      </ul>
+
+      <h4>③ 頂級會計期刊 (A+ Top 3)</h4>
+      <div class="callout callout-key">
+        <span class="callout-label">傳說級</span>
+        <p>國科會排的會計類最頂三本:<strong>The Accounting Review (TAR)、Journal of Accounting Research (JAR)、Journal of Accounting and Economics (JAE)</strong>。</p>
+        <p>A+ 一共 6 本,前 3 本再加星號 = 頂中之頂。</p>
+        <p><strong>DBA 學生發 1 篇 A+ → 中字輩(中興、中山、中央、中正)以上學校教職唾手可得。</strong>但這是<strong>傳說級</strong>難度。</p>
+        <p>DBA 實際目標 = <strong>A+ 到 T1(前 10 期刊)</strong>。</p>
+      </div>
+
+      <div class="callout callout-quote">
+        <p>老師結論:「<strong>這就是為什麼跨領域這麼好玩。</strong>這一堂課如果讓你們對財會研究有一點點興趣就成功了。你們如果對哪個 paper 有興趣,跟我說,<strong>我可以長期發 PDF 給你</strong>。」</p>
       </div>
     </section>
 
