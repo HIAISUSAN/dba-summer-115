@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 2 堂 · 財務會計研究方法概論 · 115暑期密集課-SUSAN</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --border: #e8e5dd;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #1f3a5f;
+    --accent-light: #e8eff8;
+    --highlight: #fff3cd;
+    --highlight-border: #ffc107;
+    --emerald: #10b981;
+    --emerald-bg: #ecfdf5;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --purple: #7c3aed;
+    --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+    --radius: 12px;
+    --sidebar-width: 260px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f; --surface: #1e1e18; --border: #363630;
+      --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+      --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+      --emerald: #6ee7b7; --emerald-bg: #064e3b;
+      --red: #fca5a5; --red-bg: #4c0f0f;
+      --purple: #c4b5fd; --purple-bg: #3b2557;
+      --amber: #fbbf24;
+      --code-bg: #252520;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f3; --surface: #ffffff; --border: #e8e5dd;
+    --text: #1a1a1a; --text-muted: #6b6b6b; --accent: #1f3a5f;
+    --accent-light: #e8eff8; --highlight: #fff3cd; --highlight-border: #ffc107;
+    --emerald: #10b981; --emerald-bg: #ecfdf5;
+    --red: #dc2626; --red-bg: #fef2f2;
+    --purple: #7c3aed; --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f; --surface: #1e1e18; --border: #363630;
+    --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+    --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+    --emerald: #6ee7b7; --emerald-bg: #064e3b;
+    --red: #fca5a5; --red-bg: #4c0f0f;
+    --purple: #c4b5fd; --purple-bg: #3b2557;
+    --amber: #fbbf24;
+    --code-bg: #252520;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { display: grid; grid-template-columns: var(--sidebar-width) 1fr; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+
+  aside {
+    position: sticky; top: 0; height: 100vh; padding: 24px 20px;
+    border-right: 1px solid var(--border); overflow-y: auto; background: var(--surface);
+  }
+  .side-title {
+    font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .toc { list-style: none; }
+  .toc li { margin-bottom: 3px; }
+  .toc a {
+    display: block; padding: 7px 12px; color: var(--text-muted); text-decoration: none;
+    font-size: 14px; border-radius: 6px; transition: all 0.15s; line-height: 1.5;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { background: var(--bg); color: var(--text); border-left-color: var(--accent); }
+  .toc a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+  .toc-num { display: inline-block; width: 20px; color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+  .sidebar-actions {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sidebar-actions button {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
+    text-align: left; font-family: inherit; transition: background 0.15s;
+  }
+  .sidebar-actions button:hover { background: var(--bg); }
+
+  main { padding: 40px 60px 80px; max-width: 920px; }
+  .back-link {
+    display: inline-block; color: var(--text-muted); text-decoration: none;
+    font-size: 13px; margin-bottom: 8px; padding: 4px 0;
+  }
+  .back-link:hover { color: var(--accent); }
+  header.doc-header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 24px; }
+  .doc-eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+  }
+  h1 { font-size: 32px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .doc-meta { color: var(--text-muted); font-size: 14px; line-height: 1.9; }
+  .doc-meta strong { color: var(--text); font-weight: 600; }
+  .ai-disclaimer {
+    background: var(--highlight); border-left: 4px solid var(--highlight-border);
+    padding: 10px 16px; margin-bottom: 32px; border-radius: 6px; font-size: 13px; line-height: 1.6;
+  }
+
+  section { margin-bottom: 48px; scroll-margin-top: 20px; }
+  h2 {
+    font-size: 24px; font-weight: 700; margin-top: 0; margin-bottom: 20px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+    letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .section-num {
+    color: var(--accent); font-size: 18px; font-weight: 600;
+    font-variant-numeric: tabular-nums; min-width: 32px;
+  }
+  h3 { font-size: 18px; font-weight: 700; margin-top: 28px; margin-bottom: 12px; color: var(--accent); }
+  h4 {
+    font-size: 15px; font-weight: 700; margin-top: 20px; margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+  }
+  p { margin-bottom: 12px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; }
+  ul ul, ol ol { margin-top: 6px; margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  em { font-style: normal; color: var(--text-muted); font-size: 0.95em; }
+  code {
+    background: var(--code-bg); padding: 2px 7px; border-radius: 4px;
+    font-family: "SF Mono", Consolas, monospace; font-size: 0.9em; color: var(--accent);
+  }
+  pre {
+    background: var(--code-bg); padding: 16px 20px; border-radius: 8px;
+    overflow-x: auto; margin: 16px 0;
+    font-family: "SF Mono", Consolas, monospace; font-size: 13px; line-height: 1.7;
+    border: 1px solid var(--border);
+  }
+  pre code { background: transparent; padding: 0; color: var(--text); font-size: inherit; }
+
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid; }
+  .callout-key { background: var(--emerald-bg); border-left-color: var(--emerald); }
+  .callout-warn { background: var(--red-bg); border-left-color: var(--red); }
+  .callout-highlight { background: var(--highlight); border-left-color: var(--highlight-border); }
+  .callout-quote { background: var(--accent-light); border-left-color: var(--accent); font-style: italic; font-size: 17px; line-height: 1.7; }
+  .callout-teacher { background: var(--purple-bg); border-left-color: var(--purple); }
+  .callout-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 6px; display: block; opacity: 0.9;
+  }
+
+  .table-wrap { overflow-x: auto; margin: 20px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td {
+    padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border);
+    line-height: 1.6; vertical-align: top;
+  }
+  th {
+    background: var(--bg); font-weight: 600; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li {
+    padding: 8px 0 8px 32px; position: relative; border-bottom: 1px dashed var(--border);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "☐"; position: absolute; left: 4px; top: 8px; color: var(--text-muted); font-size: 18px;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--accent); padding: 12px 18px; margin: 16px 0;
+    background: var(--accent-light); border-radius: 4px; font-style: italic; color: var(--text);
+  }
+  blockquote strong { font-style: normal; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  .toggle-toc {
+    display: none; position: fixed; top: 12px; right: 12px; z-index: 100;
+    background: var(--surface); border: 1px solid var(--border); padding: 8px 14px;
+    border-radius: 8px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow);
+    font-family: inherit; color: var(--text);
+  }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside {
+      position: fixed; top: 0; left: 0; width: 280px; z-index: 90;
+      transform: translateX(-100%); transition: transform 0.25s;
+      box-shadow: 0 0 40px rgba(0,0,0,0.25);
+    }
+    aside.open { transform: translateX(0); }
+    main { padding: 60px 20px 60px; }
+    h1 { font-size: 26px; }
+    h2 { font-size: 20px; }
+    .toggle-toc { display: block; }
+  }
+  @media print {
+    aside, .toggle-toc, .sidebar-actions { display: none !important; }
+    .app { display: block; }
+    main { max-width: none; padding: 0; }
+    body { font-size: 12pt; line-height: 1.5; }
+    h1 { font-size: 22pt; }
+    h2 { font-size: 16pt; break-after: avoid; }
+    h3 { font-size: 13pt; break-after: avoid; }
+    section { break-inside: avoid-page; }
+    .callout, table, pre { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .reading-progress {
+    position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+    z-index: 100; width: 0%; transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div class="reading-progress" id="progress"></div>
+<button class="toggle-toc" id="tocToggle">☰ 目錄</button>
+
+<div class="app">
+  <aside id="sidebar">
+    <div class="side-title">章節目錄</div>
+    <ul class="toc">
+      <li><a href="./index.html" style="border-left-color: var(--accent);">← 回課程總覽</a></li>
+      <li><a href="#s0">回到頁首</a></li>
+      <li><a href="#s1"><span class="toc-num">1</span>一頁速覽</a></li>
+      <li><a href="#s2"><span class="toc-num">2</span>量化抽象概念</a></li>
+      <li><a href="#s3"><span class="toc-num">3</span>資本市場反應 ★</a></li>
+      <li><a href="#s4"><span class="toc-num">4</span>審計研究 ★★</a></li>
+      <li><a href="#s5"><span class="toc-num">5</span>盈餘管理</a></li>
+      <li><a href="#s6"><span class="toc-num">6</span>管理會計</a></li>
+      <li><a href="#s7"><span class="toc-num">7</span>會計資訊系統</a></li>
+      <li><a href="#s8"><span class="toc-num">8</span>稅務研究 ★★★</a></li>
+      <li><a href="#s9"><span class="toc-num">9</span>財務研究概論</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span>中英術語對照</a></li>
+      <li><a href="#s11"><span class="toc-num">11</span>找論文題目心法</a></li>
+      <li><a href="#s12"><span class="toc-num">12</span>重點提醒</a></li>
+      <li><a href="#s13"><span class="toc-num">13</span>待確認清單</a></li>
+      <li><a href="#s14"><span class="toc-num">14</span>30 秒口頭複習</a></li>
+      <li><a href="#s15"><span class="toc-num">15</span>場外插曲</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <button onclick="window.print()">🖨️ 列印 / PDF</button>
+      <button onclick="toggleTheme()">🌓 切換主題</button>
+      <button onclick="copyURL()">🔗 複製網址</button>
+    </div>
+  </aside>
+
+  <main>
+    <a href="./index.html" class="back-link">← 回課程總覽</a>
+    <header class="doc-header" id="s0">
+      <div class="doc-eyebrow">DBA · 115 暑期密集課 · 第 2 堂</div>
+      <h1>財務會計研究方法概論</h1>
+      <div class="doc-meta">
+        <strong>日期:</strong> 2026-07-19(週日)· 09:39 – 16:13(約 6 小時 34 分)<br>
+        <strong>主題:</strong> 財會研究 6 大子領域 + 財務研究 2 大子領域 · 從量化角度找論文題目<br>
+        <strong>老師風格:</strong> 連環問學生「你覺得會怎樣?」→ 讓學生猜 → 再說研究結果,訓練研究直覺
+      </div>
+    </header>
+
+    <div class="ai-disclaimer">
+      ⚠️ <strong>本筆記由 AI 錄音辨識後自動整理</strong>,內容可能有錯字、聽錯、或漏掉細節。<strong>請以老師實際講授為準</strong>,自行判斷取用。
+    </div>
+
+    <section id="s1">
+      <h2><span class="section-num">1</span>一頁速覽</h2>
+      <p>今天老師把<strong>財務會計研究</strong>跟<strong>財務研究</strong>兩大領域,從量化研究的視角完整掃過一遍:</p>
+      <pre>
+財會研究的核心動作 = 把「抽象概念」量化出來
+                     ↓
+┌─────────────────────────────────────────┐
+│ 財會研究(6 大子領域)                    │
+│ 1. 資本市場反應(盈餘驚奇 / 持續性)      │
+│ 2. 審計(會計師事務所 / 獨立性 / 任期)   │
+│ 3. 盈餘管理(數字操縱)                  │
+│ 4. 管理會計(成本僵固 / 冒險決策)        │
+│ 5. 會計資訊系統(ERP / 資安 / 多角化)    │
+│ 6. 稅務(避稅 / 傳染 / 治理調節)         │
+└─────────────────────────────────────────┘
+                     ↓
+┌─────────────────────────────────────────┐
+│ 財務研究(2 大子領域)                    │
+│ 1. 公司財務:併購 / 股利 / 資本結構       │
+│ 2. 投資學:超額報酬 / 評價模型 / 交易策略 │
+└─────────────────────────────────────────┘</pre>
+      <div class="callout callout-quote">
+        <span class="callout-label">老師想灌輸的一句話</span>
+        「<strong>只要抽象的概念也能被衡量,其實又可以延伸出一脈的文獻。</strong>」
+      </div>
+    </section>
+
+    <section id="s2">
+      <h2><span class="section-num">2</span>核心方法論:把抽象概念量化</h2>
+      <p><strong>量化研究的門檻:</strong></p>
+      <ul>
+        <li>一定用<strong>大量數據</strong>(不是個案)</li>
+        <li>抽象概念要<strong>用具體數字衡量</strong>(這是最難的一步)</li>
+        <li>如果沒辦法量化 → 這題目做不了</li>
+      </ul>
+      <h3>常見的量化案例</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>抽象概念</th><th>怎麼量化?</th></tr></thead>
+        <tbody>
+          <tr><td><strong>CEO 自戀</strong></td><td>董事會照片 CEO 頭像大小、簽名大小</td></tr>
+          <tr><td><strong>CEO 過度自信</strong></td><td>期權未行使時間、CAPEX 相對同業</td></tr>
+          <tr><td><strong>CEO 是否有 Big 5 特質</strong></td><td>五大人格特質量表</td></tr>
+          <tr><td><strong>產業競爭程度</strong></td><td>赫芬達指數 (HHI)</td></tr>
+          <tr><td><strong>會計師事務所品質</strong></td><td>Big 4 vs Non-Big 4</td></tr>
+          <tr><td><strong>公司治理好壞</strong></td><td>董事會結構、獨立董事比例、多元性</td></tr>
+          <tr><td><strong>資訊透明度</strong></td><td>揭露分數</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">3</span>資本市場反應研究 <span style="color: var(--highlight-border); font-size: 0.85em;">★</span></h2>
+
+      <h3>3.1 盈餘驚奇 &amp; 盈餘持續性</h3>
+      <p><strong>基本情境:</strong> 公司報 EPS 1 元(超市場預期),股價怎麼反應?</p>
+      <p><strong>答案:視「這個獲利有沒有持續性」而定:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>過去 EPS 軌跡</th><th>這次爆出 1 元 → 股價反應</th></tr></thead>
+        <tbody>
+          <tr><td>過去很穩定(2.5、2.5、2.6、2.7、2.8),現在也是</td><td>反應<strong>小</strong>(市場覺得穩定)</td></tr>
+          <tr><td>過去很波動,這次爆到 1 元</td><td>反應<strong>大</strong>(市場覺得「換檔了」)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>3.2 產業競爭程度量化 — 赫芬達指數 (HHI)</h3>
+      <p><strong>Herfindahl-Hirschman Index</strong> = 產業內各家公司<strong>市佔率的平方加總</strong></p>
+      <pre>
+產業 A:A1、A2、A3 各市佔 33% (競爭)
+HHI = 0.33² + 0.33² + 0.33² ≈ 0.33 (低)
+
+產業 B:B1 市佔 80%、B2、B3 各 10% (壟斷)
+HHI = 0.8² + 0.1² + 0.1² = 0.66 (高)</pre>
+      <div class="callout callout-key">
+        <strong>HHI 越高 → 越壟斷。HHI 越低 → 越競爭。</strong>
+      </div>
+
+      <h3>3.3 競爭程度如何影響股價反應</h3>
+      <ul>
+        <li><strong>競爭激烈的公司</strong>爆出好業績 → 反應<strong>大</strong>(市場覺得對手很快追上,這是短暫的獨走)</li>
+        <li><strong>壟斷穩定的公司</strong>爆出好業績 → 反應<strong>小</strong>(本來就穩,不驚奇)</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師強調</span>
+        「你會發現,原來投資者評估的<strong>不只是數字本身,還有數字持不持得住</strong>。」
+      </div>
+
+      <h3>3.4 有沒有「減薪(Pay Cut)」的公司</h3>
+      <p><strong>背景:</strong> 美國近年趨勢是<strong>大幅減薪</strong>代替直接開除 CEO(留校察看),因為好經理人難找。</p>
+      <p><strong>兩家公司都爆出 EPS 1 元:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>情境</th><th>市場反應</th></tr></thead>
+        <tbody>
+          <tr><td>沒減薪的公司(管理者過去沒搞錯)</td><td>反應<strong>強</strong>(是體質變化)</td></tr>
+          <tr><td>減薪的公司(被留校察看)</td><td>反應<strong>弱</strong>(可能是急著操縱財報美化)</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>核心邏輯:</strong> 市場對財報數字的信任度,取決於「這家公司<strong>有沒有操縱財報的動機和能力</strong>」。</p>
+
+      <h3>3.5 財報重編(Restatement)</h3>
+      <p><strong>問題:</strong> 公司過去財報改過(表示以前造假或漏報)→ 之後再報好業績,市場多久才恢復信心?</p>
+      <div class="callout callout-key">
+        <span class="callout-label">過去研究發現</span>
+        <ul>
+          <li>沒任何動作 → <strong>8 年才回到本來的信心水準</strong></li>
+          <li><strong>換財務長</strong> → 2 年恢復</li>
+          <li><strong>換審計委員會成員</strong> → 更快</li>
+          <li>這些「動作」告訴市場「我有心修補」</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">4</span>審計研究 <span style="color: var(--highlight-border); font-size: 0.85em;">★★</span></h2>
+
+      <h3>4.1 Big 4 vs 非四大</h3>
+      <ul>
+        <li><strong>四大</strong>(Deloitte、PwC、EY、KPMG):資源多、人多、專業度高</li>
+        <li><strong>非四大</strong>:相對「軟」</li>
+      </ul>
+      <p><strong>兩家公司同樣報 EPS 1 元:</strong></p>
+      <ul>
+        <li>四大簽的 → 市場反應<strong>大</strong>(數字可信)</li>
+        <li>非四大簽的 → 市場反應<strong>小</strong>(數字有疑慮)</li>
+      </ul>
+      <p><strong>同樣,四大約束客戶做盈餘管理的能力也更強</strong> → 平均來看四大客戶的盈餘操縱幅度較小。</p>
+
+      <h3>4.2 會計師獨立性 &amp; Enron 案例</h3>
+      <div class="callout callout-warn">
+        <span class="callout-label">Enron 案</span>
+        <ul>
+          <li>簽證會計師事務所是 <strong>Arthur Andersen</strong>(當時的四大之一)</li>
+          <li>簽證會計師是<strong>明星級</strong>(查大型客戶多、光環大)</li>
+          <li>但 Andersen 除了審計公費外,還<strong>大量提供 Enron 非審計服務</strong>(資訊系統導入、稅務諮詢、購併對象仲介…)</li>
+          <li><strong>非審計公費 &gt;&gt; 審計公費</strong>(Andersen 變成 Enron 的「商業百貨公司」)</li>
+        </ul>
+        <p><strong>結果:</strong> Andersen 為了不失去這些非審計收入 → 對 Enron 財報造假睜一隻眼 → Andersen 倒閉、四大變四大。</p>
+      </div>
+      <p><strong>研究結果:</strong> 客戶付越多非審計服務公費給會計師 → <strong>會計師約束盈餘管理的能力越弱</strong> → 促成後續法規約束會計師不能收太多非審計費。</p>
+
+      <h3>4.3 會計師任期(Tenure)</h3>
+      <p><strong>兩派論點:</strong></p>
+      <ul>
+        <li><strong>任期長好</strong>:對客戶了解深 → 查得細</li>
+        <li><strong>任期短好</strong>:保持獨立性 → 不會情感綁架</li>
+      </ul>
+      <p><strong>過去研究發現:任期太長會喪失獨立性</strong> → 政策改為<strong>強制輪調</strong>。</p>
+
+      <h3>4.4 會計師性別</h3>
+      <p><strong>平均來說,女性會計師審計品質較高。</strong> 為什麼?</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>因素</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>細心</strong></td><td>傳統認知,但研究確認</td></tr>
+          <tr><td><strong>風險趨避</strong></td><td>女性平均較不喜歡冒險 → 不容易妥協</td></tr>
+          <tr><td><strong>職場玻璃天花板</strong></td><td>女性要爬上合夥人要表現更好 → 更嚴謹</td></tr>
+          <tr><td><strong>要求更多證據</strong></td><td>對客戶說法會多要 justification</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>4.5 會計師的外部效果</h3>
+      <p>會計師不只影響公司本身,還影響:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>外部使用者</th><th>怎麼受影響</th></tr></thead>
+        <tbody>
+          <tr><td><strong>銀行</strong></td><td>四大簽的公司 → 貸款條件較好</td></tr>
+          <tr><td><strong>分析師</strong></td><td>四大簽的公司 → <strong>分析師預測分歧程度較低</strong>(因為資訊風險低)</td></tr>
+          <tr><td><strong>投資者</strong></td><td>直接影響股價反應</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>4.6 會計師自律 → 他律(PCAOB 由來)</h3>
+      <p><strong>美國原本是自律</strong>(會計師事務所同業互評)→ 後來改成<strong>他律(PCAOB, Public Company Accounting Oversight Board)</strong></p>
+      <div class="callout callout-key">
+        <span class="callout-label">關鍵研究</span>
+        <strong>Pinkman &amp; Layna S. Hamn</strong> 發現:同業評鑑有嚴重的「<strong>互推互吹</strong>」問題 —
+        <ul>
+          <li>事務所 A 去評 B 時給高分 → B 之後評 A 也給高分</li>
+          <li>主管機關看到後就決定:「不管你們自己玩,我來查」→ PCAOB 成立</li>
+        </ul>
+      </div>
+      <p><strong>台灣:</strong> 目前還是<strong>自律</strong>,但主管機關會抽查,發現同業評鑑打假球會收回。</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">5</span>盈餘管理 (Earnings Management)</h2>
+      <p><strong>定義:</strong> 管理者想辦法讓財報數字往上或往下移(合法範圍內)</p>
+      <p><strong>先天動機:</strong> 財報是「管理者的成績單」→ 每家公司多少都有操縱的動機。</p>
+
+      <h3>5.1 影響盈餘管理程度的機制</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>增加操縱能力/動機</th><th>約束操縱</th></tr></thead>
+        <tbody>
+          <tr><td>非四大會計師</td><td>四大會計師</td></tr>
+          <tr><td>董事會結構不佳</td><td>獨立董事、專業審計委員會</td></tr>
+          <tr><td>會計師收非審計服務公費多</td><td>強制輪調、他律機構</td></tr>
+          <tr><td>CEO 過度自信</td><td>監督機制多(分析師、法人)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>5.2 盈餘管理量化 → 又可延伸多篇文獻</h3>
+      <p><strong>只要能把「盈餘管理程度」量化出來(通常用裁決性應計數 Discretionary Accruals),就可以延伸:</strong></p>
+      <ul>
+        <li>誰的盈餘管理更嚴重?(女性 CEO 是否較低?)</li>
+        <li>哪些機制能約束?</li>
+        <li>盈餘管理對股價有何影響?</li>
+        <li>盈餘管理跟公司治理的關聯?</li>
+      </ul>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">6</span>管理會計研究</h2>
+      <p><strong>定義:</strong> 用會計資訊做<strong>內部決策</strong>(不同於前面的<strong>外部</strong>投資決策)</p>
+
+      <h3>6.1 管理者風險傾向 &amp; 薪酬結構</h3>
+      <p><strong>現金 vs 股票薪酬比例大幅影響冒險傾向:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>薪酬結構</th><th>冒險傾向</th></tr></thead>
+        <tbody>
+          <tr><td><strong>80% 股票 + 20% 現金</strong></td><td><strong>冒險</strong>(股票下有底,上無限)</td></tr>
+          <tr><td><strong>80% 現金 + 20% 股票</strong></td><td><strong>保守</strong>(有既得利益要保)</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>為什麼股票高比例會鼓勵冒險?</strong></p>
+      <ul>
+        <li>股票下跌<strong>最多虧 100%</strong>(從 100 到 0)</li>
+        <li>股票上漲<strong>無限</strong>(2 倍、3 倍、10 倍)</li>
+        <li>這是不對稱誘因 → <strong>賭一把是理性的</strong></li>
+      </ul>
+
+      <h3>6.2 成本僵固性(Sticky Cost)</h3>
+      <p><strong>現象:</strong> 營收下跌 10% 時,成本<strong>不會對稱下降</strong> 10%(可能只下降 3%)</p>
+      <p><strong>兩個原因:</strong></p>
+      <ol>
+        <li><strong>調整成本(Adjustment Cost)</strong>
+          <ul>
+            <li>砍人 → 之後找回來要重新訓練</li>
+            <li>短期看成本降,長期看成本更高</li>
+            <li>老師:「這個黎明終究會過去 → 不如撐著」</li>
+          </ul>
+        </li>
+        <li><strong>建立帝國心態(Empire Building)</strong>
+          <ul>
+            <li>管理者想管<strong>大公司</strong>,不想管小公司</li>
+            <li>就算業務衰退也不想砍規模</li>
+          </ul>
+        </li>
+      </ol>
+      <div class="callout callout-highlight">
+        這個現象叫 <strong>Sticky Cost</strong> 或成本僵固性,是管理會計重要研究議題。
+      </div>
+
+      <h3>6.3 管理會計研究範疇</h3>
+      <p>老師隨手列的議題:</p>
+      <ul>
+        <li>冒險傾向(R&amp;D 投資)</li>
+        <li>擴張決策(要不要拿地設廠)</li>
+        <li>廣告投入</li>
+        <li>庫存策略(要不要壓庫存)</li>
+        <li>定價決策(<strong>但通常做不了量化,因為公司不揭露成本</strong>)</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">7</span>會計資訊系統(AIS)研究</h2>
+
+      <h3>7.1 ERP 導入效果</h3>
+      <p><strong>主要議題:</strong></p>
+      <ul>
+        <li>什麼公司會導 ERP?</li>
+        <li>導 ERP 之後有什麼好處?</li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">經典結果:ERP + 多角化公司</span>
+        <ul>
+          <li><strong>多角化折價 (Diversification Discount)</strong> = 多角化公司價值 &lt; 各事業部分開估價的加總</li>
+          <li>為什麼?<strong>交叉補貼:</strong> 賺錢部門的現金流拿去養不賺錢部門 → <strong>無效率投資</strong></li>
+          <li><strong>ERP 導入後</strong>:內部資訊透明 → 管理層能識別哪個事業部真的賺錢 → <strong>交叉補貼減少</strong></li>
+          <li>研究證實:<strong>ERP 導入後,多角化折價會縮小</strong></li>
+        </ul>
+      </div>
+
+      <h3>7.2 多角化折價案例</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>公司類型</th><th>本益比</th></tr></thead>
+        <tbody>
+          <tr><td>單一公司:專做筆電</td><td>20x</td></tr>
+          <tr><td>單一公司:專做鞋子</td><td>18x</td></tr>
+          <tr><td>單一公司:專做餐飲</td><td>25x</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>多角化公司同時做筆電 + 鞋子 + 餐飲:</strong></p>
+      <ul>
+        <li>照理應該:各部門獲利 × 各自本益比 = 加總價值</li>
+        <li>實際上:<strong>市場給的估值 &lt; 加總</strong>(這就是折價)</li>
+      </ul>
+
+      <h3>7.3 資安 &amp; 董事會多元性</h3>
+      <p><strong>議題:</strong> 什麼公司會重視資安?</p>
+      <p><strong>董事會多元性</strong>是關鍵:</p>
+      <ul>
+        <li><strong>性別多元</strong>(不能都男)</li>
+        <li><strong>年齡多元</strong>(不能都老,年輕人懂新技術)</li>
+        <li><strong>背景多元</strong>(不能都財務背景,要有技術/行銷/法律等)</li>
+        <li><strong>種族多元</strong>(美國研究重點)</li>
+      </ul>
+      <p><strong>發現:</strong> 董事會越多元 → 對資安等新興議題的重視越高。</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">8</span>稅務規劃 / 避稅研究 <span style="color: var(--highlight-border); font-size: 0.85em;">★★★</span></h2>
+
+      <h3>8.1 什麼公司會積極避稅?</h3>
+      <p><strong>基本邏輯:</strong> 稅率 20% 但實際只交 13% → 有做<strong>規劃</strong>(合法避稅,不是逃稅)</p>
+
+      <h3>8.2 CEO 特質影響避稅程度</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>CEO 特質</th><th>避稅程度</th></tr></thead>
+        <tbody>
+          <tr><td><strong>財務背景</strong></td><td><strong>高</strong>(知道怎麼省錢)</td></tr>
+          <tr><td><strong>軍事背景(西點軍校)</strong></td><td><strong>低</strong>(受軍事訓練:遵守規則、避免風險)</td></tr>
+          <tr><td><strong>已婚</strong></td><td><strong>低</strong>(有家庭要顧,風險趨避)</td></tr>
+          <tr><td><strong>未婚</strong></td><td><strong>高</strong>(壓力小、可以冒險)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>8.3 避稅的同業傳染效果 (Contagion)</h3>
+      <p><strong>現象:</strong> 同業避稅 → 就會擴散到其他人「別人在避我也避」</p>
+      <p><strong>擴散的通路(Contagion Channels):</strong></p>
+      <ul>
+        <li><strong>共同會計師</strong>(同事務所或同會計師)</li>
+        <li><strong>共同分析師</strong>(分析師會私下拜訪公司,傳資訊)</li>
+        <li><strong>共同法人投資者</strong>(如 Vanguard、BlackRock 同時投多家)</li>
+      </ul>
+
+      <h3>8.4 避稅是好是壞?市場評價方向</h3>
+      <div class="callout callout-warn">
+        <span class="callout-label">反直覺的研究結果</span>
+        <strong>問學生:</strong> 避稅程度高的公司,市場給的評價是高還是低?<br>
+        <strong>多數學生猜:</strong> 低(因為有風險)<br>
+        <strong>研究結果:</strong> <strong>高!</strong>(避稅程度越高 → 市場價值越高)
+      </div>
+      <p><strong>為什麼?</strong></p>
+      <ul>
+        <li>避稅 = <strong>省下現金留在公司</strong> → 對股東好</li>
+        <li>只要<strong>治理夠好</strong>(不會被管理者濫用),市場歡迎避稅</li>
+      </ul>
+
+      <h3>8.5 治理如何調節避稅評價</h3>
+      <p><strong>同樣避稅 7%,不同治理的公司評價不同:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>治理</th><th>市場評價</th></tr></thead>
+        <tbody>
+          <tr><td><strong>好治理</strong>(獨董多、資訊透明、董事會多元)</td><td>對避稅正面評價<strong>大</strong></td></tr>
+          <tr><td><strong>差治理</strong></td><td>對避稅正面評價<strong>小</strong>(怕錢被濫用)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">核心觀點</span>
+        治理是「跨構面」概念,單一構面(如獨董比例)不夠,要多構面加總。
+      </div>
+
+      <h3>8.6 分析師的資訊 vs 監督角色</h3>
+      <p><strong>分析師不只是資訊中介,還是監督者:</strong></p>
+      <ul>
+        <li>分析師會質疑管理層的決策</li>
+        <li>管理層無法自圓其說 → 影響股價</li>
+        <li>分析師覆蓋越多 → 管理層越有壓力用錢對地方</li>
+        <li><strong>有分析師的公司,避稅的正面評價越高</strong>(因為監督機制到位)</li>
+      </ul>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">9</span>財務研究概論(下午開始)</h2>
+
+      <h3>9.1 財務兩大子領域</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>子領域</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>公司財務(Corporate Finance)</strong></td><td>圍繞財務長 CFO 的決策:錢怎麼來、怎麼去</td></tr>
+          <tr><td><strong>投資學(Investment)</strong></td><td>圍繞投資者:怎麼賺超額報酬(Abnormal Returns)</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>其他子領域(老師沒展開):</strong> 財務工程、保險、金融計算(需要重數學,不是每個學校都做)</p>
+
+      <h3>9.2 公司財務研究:併購 (M&amp;A)</h3>
+      <p><strong>併購研究議題:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>議題</th><th>說明</th></tr></thead>
+        <tbody>
+          <tr><td><strong>短期市場反應</strong></td><td>併購宣告時股價怎麼反應?正/負面?</td></tr>
+          <tr><td><strong>短期反應的決定因素</strong></td><td>是否同業、是否跨國、支付方式(現金/股票)</td></tr>
+          <tr><td><strong>長期併購績效</strong></td><td>併購後 3-5 年業績怎樣?</td></tr>
+          <tr><td><strong>長期績效的決定因素</strong></td><td>什麼公司併購後績效好?</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>跨國併購的特殊議題:</strong> 董事會有沒有「熟悉那個國家文化的人」→ 熟悉的正面評價高。</p>
+
+      <h3>9.3 併購 + 財會的跨領域研究</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">財報可比性 (Financial Statement Comparability)</span>
+        <ul>
+          <li>兩家公司財報用同套規則但有裁量空間(如折舊年限 7 年 vs 10 年)</li>
+          <li>用得跟同業相同 → 可比性高</li>
+          <li>用得跟同業不同 → 可比性低</li>
+        </ul>
+        <p><strong>發現:</strong> <strong>被收購公司財報可比性越差 → 併購後長期績效越差</strong>(因為選錯對象)</p>
+      </div>
+
+      <h3>9.4 公司財務研究:股利政策</h3>
+      <p><strong>議題:</strong> 公司要發多少股利?</p>
+      <p><strong>兩稅合一體制</strong>(公司交的稅可以抵股東個人所得稅):</p>
+      <ul>
+        <li>股東希望<strong>多發股利</strong>(可傳遞抵稅權利)</li>
+        <li><strong>股東壓力</strong>是決定股利多少的關鍵因素(除了公司自身特性外)</li>
+      </ul>
+
+      <h3>9.5 投資學研究:超額報酬 (Abnormal Returns)</h3>
+      <p><strong>核心問題:</strong> 怎麼取得超額報酬(打敗市場)?</p>
+      <p><strong>兩派做法:</strong></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>派別</th><th>方法</th></tr></thead>
+        <tbody>
+          <tr><td><strong>資訊解讀派</strong>(會計背景)</td><td>從公開資訊萃取別人不知道的意涵</td></tr>
+          <tr><td><strong>技術指標派</strong></td><td>看指標決定進出(操作派)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-teacher">
+        老師實話:「<strong>只要在資本市場能賺錢,就是好方法。</strong>」沒有哪派唯一。
+      </div>
+
+      <h3>9.6 投資學核心工具:剩餘利益評價模型 (Residual Income Model)</h3>
+      <p><strong>經典文章:</strong> <em>Franco &amp; Li (1998)</em></p>
+      <p><strong>核心概念:</strong></p>
+      <ul>
+        <li>用<strong>多個財務指標</strong>推估未來獲利(比單一本益比更全面)</li>
+        <li>有多個評價方法:
+          <ul>
+            <li>本益比(單一指標)</li>
+            <li>剩餘利益模型(多變量)</li>
+            <li>現金流量折現 DCF</li>
+          </ul>
+        </li>
+      </ul>
+      <p><strong>預測未來獲利的因素:</strong></p>
+      <ul>
+        <li>現在的獲利(持續性)</li>
+        <li>資本支出(投資帶來未來獲利)</li>
+        <li><strong>合約負債(Contract Liability)</strong></li>
+        <li>股利變化</li>
+        <li>公司規模</li>
+      </ul>
+
+      <h3>9.7 合約負債的重要性(超級具體工具)</h3>
+      <p><strong>定義:</strong> 客戶預付但公司還沒交貨的錢(記在負債欄)</p>
+      <pre>
+一般收款:交貨後收錢 → 收入 (Revenue)
+合約負債:先收錢後交貨 → 負債 (Contract Liability)</pre>
+      <div class="callout callout-key">
+        <span class="callout-label">關鍵</span>
+        合約負債 → 未來會轉成收入
+      </div>
+      <p><strong>應用:</strong></p>
+      <ul>
+        <li>財報上<strong>合約負債</strong>越大 → 未來營收成長潛力越大</li>
+        <li>用 <code>合約負債 / 總資產</code> 比例 → 預測公司未來獲利</li>
+      </ul>
+    </section>
+
+    <section id="s10">
+      <h2><span class="section-num">10</span>中英術語對照</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>中文</th><th>英文</th></tr></thead>
+        <tbody>
+          <tr><td>盈餘 / 盈餘持續性 / 盈餘驚奇 / 盈餘管理</td><td>Earnings / Persistence / Surprise / Management</td></tr>
+          <tr><td>赫芬達指數</td><td>Herfindahl-Hirschman Index (HHI)</td></tr>
+          <tr><td>財報重編</td><td>Restatement</td></tr>
+          <tr><td>減薪</td><td>Pay Cut / Salary Reduction</td></tr>
+          <tr><td>四大會計師事務所</td><td>Big 4</td></tr>
+          <tr><td>非審計服務公費</td><td>Non-audit Fees</td></tr>
+          <tr><td>會計師任期</td><td>Auditor Tenure</td></tr>
+          <tr><td>強制輪調</td><td>Mandatory Rotation</td></tr>
+          <tr><td>自律 → 他律</td><td>Self-regulation → External regulation</td></tr>
+          <tr><td>上市公司會計監督委員會</td><td>PCAOB</td></tr>
+          <tr><td>成本僵固性</td><td>Sticky Cost</td></tr>
+          <tr><td>調整成本 / 建立帝國心態</td><td>Adjustment Cost / Empire Building</td></tr>
+          <tr><td>企業資源規劃</td><td>ERP</td></tr>
+          <tr><td>多角化折價 / 交叉補貼</td><td>Diversification Discount / Cross Subsidization</td></tr>
+          <tr><td>避稅</td><td>Tax Avoidance</td></tr>
+          <tr><td>傳染效應</td><td>Contagion Effect</td></tr>
+          <tr><td>董事會多元性</td><td>Board Diversity</td></tr>
+          <tr><td>治理 / 資訊透明度</td><td>Corporate Governance / Info Transparency</td></tr>
+          <tr><td>併購</td><td>M&amp;A / Merger &amp; Acquisition</td></tr>
+          <tr><td>財報可比性</td><td>Financial Statement Comparability</td></tr>
+          <tr><td>股利政策</td><td>Dividend Policy</td></tr>
+          <tr><td>兩稅合一</td><td>Integrated Tax System</td></tr>
+          <tr><td>超額報酬</td><td>Abnormal Returns</td></tr>
+          <tr><td>剩餘利益評價模型</td><td>Residual Income Model</td></tr>
+          <tr><td>合約負債</td><td>Contract Liability</td></tr>
+          <tr><td>裁決性應計數</td><td>Discretionary Accruals</td></tr>
+          <tr><td>CEO 過度自信 / 自戀</td><td>CEO Overconfidence / Narcissism</td></tr>
+          <tr><td>五大人格特質</td><td>Big Five Personality Traits</td></tr>
+          <tr><td>分析師覆蓋 / 分析師預測分歧</td><td>Analyst Coverage / Forecast Dispersion</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="section-num">11</span>找論文題目的心法(老師整場穿插的方法論)</h2>
+
+      <h3>11.1 財會研究的「三部曲」</h3>
+      <pre>
+Step 1: 找一個抽象的商業現象或概念
+   例:CEO 自戀、盈餘管理、避稅程度、成本僵固性
+
+Step 2: 找到量化的方法
+   例:用董事會照片頭像大小衡量自戀
+
+Step 3: 延伸兩個方向:
+   → 決定因素:什麼會影響這個概念?
+   → 經濟後果:這個概念如何影響公司/市場?</pre>
+
+      <h3>11.2 老師的三個「找題目」訊號</h3>
+      <ol>
+        <li><strong>抽象概念被量化了就有得做</strong>(如盈餘管理、治理分數)</li>
+        <li><strong>政策變動一定有研究支持</strong>(如美國從自律改他律、強制輪調)</li>
+        <li><strong>經典個案的延伸研究</strong>(如 Enron 後的非審計費研究)</li>
+      </ol>
+
+      <h3>11.3 冷門領域的兩難</h3>
+      <ul>
+        <li><strong>政府/非營利會計</strong> 研究少</li>
+        <li><strong>好處:</strong> 沒人做,容易發表(投稿更容易接受?)</li>
+        <li><strong>壞處:</strong> 相關文獻少,論述難建構</li>
+        <li>老師建議:<strong>跨領域</strong>(如「政府 + 審計」)可能有機會</li>
+      </ul>
+
+      <h3>11.4 領域選擇建議</h3>
+      <pre>
+資本市場影響大 + 資料公開 + 自由度高
+                    ↓
+      文獻多 → 議題延伸多 → 好發表</pre>
+      <p>政府會計相反:政策綁住手腳 + 自由度低 + 資料少 → 難做。</p>
+    </section>
+
+    <section id="s12">
+      <h2><span class="section-num">12</span>重點提醒(易踩雷)</h2>
+      <ol>
+        <li><strong>同樣的盈餘數字,不同公司的市場反應差很多</strong> — 關鍵在<strong>持續性 + 競爭度 + 治理</strong></li>
+        <li><strong>會計師事務所選 Big 4 vs 非 Big 4 差別巨大</strong> — Big 4 = 品質背書</li>
+        <li><strong>拿越多非審計費 → 會計師獨立性越差</strong> — Enron 的教訓</li>
+        <li><strong>輪調制度是研究推動政策的例子</strong> — 老師強調做研究可以影響政策</li>
+        <li><strong>成本不對稱 = Sticky Cost</strong> — 營收升時成本升 10%,營收降時成本可能只降 3%</li>
+        <li><strong>多角化折價的根源是交叉補貼</strong> — ERP 能減少這個問題</li>
+        <li><strong>避稅是股東歡迎的(治理好的話)</strong> — 反直覺,但研究證實</li>
+        <li><strong>避稅有傳染效應</strong> — 共同會計師、分析師、法人投資者是通路</li>
+        <li><strong>合約負債是預測未來營收的關鍵</strong> — 財報上不起眼但超有用</li>
+        <li><strong>管理學/財會沒有標準答案,論述說服力 + 資料驗證 = 研究</strong></li>
+      </ol>
+    </section>
+
+    <section id="s13">
+      <h2><span class="section-num">13</span>待確認 / 課後回頭做</h2>
+      <ul class="checklist">
+        <li>Google <em>Franco &amp; Li (1998)</em> — 剩餘利益評價模型的經典</li>
+        <li>Google <em>Pinkman &amp; Layna S. Hamn</em> — 為什麼美國改他律的關鍵研究</li>
+        <li>Google <em>PCAOB</em> 的官網,看它怎麼監督會計師</li>
+        <li>Google <em>HHI (Herfindahl-Hirschman Index)</em> 在你自家產業的實際數值</li>
+        <li>查自家公司報表的「<strong>合約負債</strong>」項目 — 看趨勢</li>
+        <li>Franco &amp; Li 用的變數清單(老師提到給的講義)</li>
+        <li>你自家產業的公司近年有沒有 <strong>restatement</strong> 記錄?</li>
+        <li>你自家公司的 CEO 特質可以怎麼歸類?(是否影響避稅?)</li>
+        <li>老師課堂上多次提「AIMR 分析師排名」— 值得查</li>
+      </ul>
+    </section>
+
+    <section id="s14">
+      <h2><span class="section-num">14</span>30 秒口頭複習</h2>
+      <div class="callout callout-quote">
+        <p>財會研究的<strong>核心動作</strong>是:把抽象概念量化,再看它的<strong>決定因素</strong>跟<strong>經濟後果</strong>。</p>
+        <p><strong>資本市場層面</strong> — 同樣 EPS 不同反應,取決於持續性、產業競爭度、財報可信度(誰簽的、有沒有重編、非審計費);<br>
+        <strong>會計師層面</strong> — Big 4 更嚴、女性更嚴、任期太長會失去獨立性,美國從自律改他律是研究推動的政策;<br>
+        <strong>管理會計</strong> — 成本僵固(不對稱),帝國心態是主因;<br>
+        <strong>稅務</strong> — 避稅市場反而歡迎,但要治理好才行;有傳染效應;<br>
+        <strong>財務</strong> — 併購後長期績效看財報可比性;股利是股東壓力;超額報酬用剩餘利益模型 + 合約負債推。</p>
+        <p><strong>管理研究是社會科學,論述說服力才是關鍵。找題目就從「這個抽象概念能不能量化」開始想。</strong></p>
+      </div>
+    </section>
+
+    <section id="s15">
+      <h2><span class="section-num">15</span>場外插曲</h2>
+      <ul>
+        <li>學員閒聊:「這課超密集,六六日連續好幾週」— 對比在職生上班+上課的辛苦</li>
+        <li>提到入學競爭:「以前不知道 EMBA / DBA 這麼激烈,以為考很好結果一堆人扛完就睡」</li>
+        <li>隆志學長沒來今天(昨天講很多案例的那位)</li>
+        <li>老師開玩笑:「原本以為我可以講到 4 點,你們沒讓我休息,是我的錯」</li>
+        <li>中午吃飯話題:「趕快聯絡我那個備一的朋友,可能還進得來(補位)」</li>
+      </ul>
+    </section>
+
+    <hr>
+    <div style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
+      <p><strong>本次課程資料</strong></p>
+      <p>錄音檔: 757 MB · 逐字稿: 約 2000 行(200 KB) · 授課時長: 6 小時 34 分</p>
+      <p>整理: 2026-07-19 · 授權: 個人學習用途</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('tocToggle');
+  const progress = document.getElementById('progress');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('.toc a').forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+  const sections = Array.from(document.querySelectorAll('section'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const sectionMap = {};
+  sections.forEach(s => { sectionMap[s.id] = tocLinks.find(l => l.getAttribute('href') === '#' + s.id); });
+  const updateActive = () => {
+    const scrollTop = window.scrollY + 100;
+    let current = sections[0];
+    for (const s of sections) { if (s.offsetTop <= scrollTop) current = s; }
+    tocLinks.forEach(l => l.classList.remove('active'));
+    if (sectionMap[current.id]) sectionMap[current.id].classList.add('active');
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / docHeight) * 100;
+    progress.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    let next;
+    if (!current) next = 'dark';
+    else if (current === 'dark') next = 'light';
+    else next = null;
+    if (next) document.documentElement.setAttribute('data-theme', next);
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('notes_theme', next || 'auto');
+  }
+  const savedTheme = localStorage.getItem('notes_theme');
+  if (savedTheme && savedTheme !== 'auto') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+  function copyURL() {
+    navigator.clipboard.writeText(window.location.href).then(
+      () => alert('網址已複製'),
+      () => prompt('請手動複製網址:', window.location.href)
+    );
+  }
+</script>
+</body>
+</html>
