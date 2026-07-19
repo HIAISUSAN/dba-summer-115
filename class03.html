@@ -815,7 +815,8 @@ HHI = 0.8² + 0.1² + 0.1² = 0.66 (高)</pre>
 
       <div class="callout callout-highlight">
         <span class="callout-label">整堂課的最高潮</span>
-        老師從 <strong>337 分鐘</strong>一路講到 <strong>394 分鐘</strong>(整整 1 小時),把 <strong>Franco &amp; Li (1998)</strong> 的實作全部拆給我們看,含公式推導、迴歸模型、實測數字。這是<strong>他自己每年都在用的投資方法</strong>。務必配合原始附件(頂端上課簡報 + 3 段錄影)一起研讀。
+        老師從 <strong>337 分鐘</strong>一路講到 <strong>394 分鐘</strong>(整整 1 小時),把 <strong>Franco &amp; Li (1998)</strong> 的實作全部拆給我們看,含公式推導、迴歸模型、實測數字。這是<strong>他自己每年都在用的投資方法</strong>。<br><br>
+        <strong>老師現場示範的推演:</strong>假設站在 <strong>2026 年 6/30</strong>,只用 <strong>2025 年</strong>的已知資料當所有 X 變數 → 一路推 ROE<sub>2026</sub>、ROE<sub>2027</sub>、<strong>ROE<sub>2028</sub></strong>(三期預測)→ 算 V。務必配合原始附件(頂端上課簡報 + 3 段錄影)一起研讀。
       </div>
 
       <h3>VI.1 核心邏輯:V/P 越高 = 越低估</h3>
@@ -922,19 +923,25 @@ HHI = 0.8² + 0.1² + 0.1² = 0.66 (高)</pre>
 
       <h3>VI.7 完整操作流程(7 個步驟)</h3>
       <div class="callout callout-key">
-        <span class="callout-label">站在 t 時點(例:2026 年 6/30)</span>
+        <span class="callout-label">老師現場示範:站在 2026 年 6/30(t = 2026)</span>
+        <p style="margin-bottom: 12px;"><strong>核心限制:此時 2026 年還沒走完,只能用 2025 年財報當所有 X 變數的來源。</strong></p>
         <ol>
-          <li><strong>拆 ROE<sub>t</sub></strong>(當年):用迴歸模型 · 代入 t-1 (2025) 的 X 變數</li>
-          <li><strong>算 B<sub>t</sub></strong>(今年年底帳面):B<sub>t-1</sub> × [1 + (1−k) × ROE<sub>t</sub>]</li>
-          <li><strong>拆 ROE<sub>t+1</sub></strong>(明年):迴歸代入 2025 X</li>
-          <li><strong>算 B<sub>t+1</sub></strong>:B<sub>t</sub> × [1 + (1−k) × ROE<sub>t+1</sub>]</li>
-          <li><strong>拆 ROE<sub>t+2</sub></strong>(後年):迴歸代入 2025 X</li>
-          <li><strong>算 B<sub>t+2</sub></strong>:B<sub>t+1</sub> × [1 + (1−k) × ROE<sub>t+2</sub>]</li>
-          <li><strong>套 V 公式</strong>:V<sub>t</sub> = B<sub>t</sub> + 未來 3 期超額利潤折現值加總</li>
+          <li><strong>拆 ROE<sub>2026</sub></strong>(今年):迴歸模型代入 <strong>2025 年</strong>的 X 變數</li>
+          <li><strong>算 B<sub>2026</sub></strong>(2026 年底帳面):B<sub>2025</sub> × [1 + (1−k) × ROE<sub>2026</sub>]</li>
+          <li><strong>拆 ROE<sub>2027</sub></strong>(明年):同樣的迴歸還是代入 <strong>2025 年</strong>的 X(因為未來 X 也是未知)</li>
+          <li><strong>算 B<sub>2027</sub></strong>(2027 年底帳面):B<sub>2026</sub> × [1 + (1−k) × ROE<sub>2027</sub>]</li>
+          <li><strong>拆 ROE<sub>2028</sub></strong>(後年):迴歸再代入 <strong>2025 年</strong>的 X</li>
+          <li><strong>算 B<sub>2028</sub></strong>(2028 年底帳面):B<sub>2027</sub> × [1 + (1−k) × ROE<sub>2028</sub>]</li>
+          <li><strong>套 V 公式</strong>:V<sub>2026</sub> = B<sub>2026</sub> + Σ<sub>n=1..3</sub> [(ROE<sub>2026+n</sub> − r) × B<sub>2026+n-1</sub> / (1+r)<sup>n</sup>]</li>
         </ol>
       </div>
 
-      <p><strong>算出 V<sub>t</sub> 後 → 除以當日股價 P<sub>t</sub> → 得到 V/P → 由高到低排序 → 買前 20%</strong></p>
+      <div class="callout callout-highlight">
+        <span class="callout-label">為什麼 3 期預測全部只用 2025 年 X?</span>
+        因為<strong>只有 2025 年的財報現在是已知的</strong>。未來(2026、2027)的 X 也是要預測的東西,不能拿來當「輸入」。這樣一鏈接下來,越後面的年份預測誤差會累積 → 也是為什麼老師說「估 3 期已經很緊繃,估 5 期以上不準確度掉太多」。
+      </div>
+
+      <p><strong>算出 V<sub>2026</sub> 後 → 除以 2026/6/30 當日股價 P<sub>2026</sub> → 得到 V/P → 全市場排序 → 買前 20% → 持有 3 年到 2029/6/30</strong></p>
 
       <h3>VI.8 股利支付率 k 怎麼定?</h3>
       <p><strong>老師的做法:用過去 3 年的加權平均(比較穩定):</strong></p>
