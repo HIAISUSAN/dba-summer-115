@@ -415,7 +415,7 @@
     <div class="eyebrow">📚 DBA · 博士班一年級</div>
     <h1>115暑期密集課 · 課程總覽-SUSAN</h1>
     <p class="hero-sub">
-      整個暑假 8 堂課(第 2–9 堂)的完整地圖。每上完一堂,筆記會出現在對應的卡片裡,點進去就是完整整理版。<br>
+      整個暑假 9 堂課的完整地圖(第 1 堂無錄音,只追蹤第 2–9 堂)。每上完一堂,筆記會出現在對應的卡片裡,點進去就是完整整理版。<br>
       <strong style="color: var(--amber);">⚠️ AI 錄音整理,內容可能會有錯,請自行判斷。</strong>
     </p>
     <div class="hero-meta">
@@ -429,7 +429,7 @@
       </div>
       <div>
         <span class="meta-label">總堂數</span>
-        <span class="meta-value">8 堂(第 2–9 堂)</span>
+        <span class="meta-value">9 堂(第 1 堂無錄音)</span>
       </div>
       <div>
         <span class="meta-label">最後更新</span>
@@ -443,7 +443,7 @@
     <div class="progress-info">
       <div>
         <span class="progress-count" id="doneCount">1</span>
-        <span class="progress-of"> / 13 堂</span>
+        <span class="progress-of"> / 9 堂</span>
       </div>
       <div class="progress-label">已完成筆記</div>
     </div>
@@ -602,10 +602,11 @@
   }
 
   // Update progress counter dynamically based on 'done' cards
+  // 分母固定為 9(整個學期 9 堂,第 1 堂無錄音不計入卡片但仍算在總堂數內)
+  const TOTAL_COURSE = 9;
   const doneCards = document.querySelectorAll('.class-card.done').length;
-  const totalCards = document.querySelectorAll('.class-card').length;
   document.getElementById('doneCount').textContent = doneCards;
-  document.getElementById('progressBar').style.width = (doneCards / totalCards * 100).toFixed(1) + '%';
+  document.getElementById('progressBar').style.width = (doneCards / TOTAL_COURSE * 100).toFixed(1) + '%';
 </script>
 </body>
 </html>
