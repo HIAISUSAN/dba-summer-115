@@ -1,0 +1,1321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 4 堂 · 績效評估(DEA)× 財務管理實務 · 115暑期密集課-SUSAN</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --border: #e8e5dd;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #1f3a5f;
+    --accent-light: #e8eff8;
+    --highlight: #fff3cd;
+    --highlight-border: #ffc107;
+    --emerald: #10b981;
+    --emerald-bg: #ecfdf5;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --purple: #7c3aed;
+    --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+    --radius: 12px;
+    --sidebar-width: 270px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f; --surface: #1e1e18; --border: #363630;
+      --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+      --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+      --emerald: #6ee7b7; --emerald-bg: #064e3b;
+      --red: #fca5a5; --red-bg: #4c0f0f;
+      --purple: #c4b5fd; --purple-bg: #3b2557;
+      --amber: #fbbf24;
+      --code-bg: #252520;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f3; --surface: #ffffff; --border: #e8e5dd;
+    --text: #1a1a1a; --text-muted: #6b6b6b; --accent: #1f3a5f;
+    --accent-light: #e8eff8; --highlight: #fff3cd; --highlight-border: #ffc107;
+    --emerald: #10b981; --emerald-bg: #ecfdf5;
+    --red: #dc2626; --red-bg: #fef2f2;
+    --purple: #7c3aed; --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f; --surface: #1e1e18; --border: #363630;
+    --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+    --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+    --emerald: #6ee7b7; --emerald-bg: #064e3b;
+    --red: #fca5a5; --red-bg: #4c0f0f;
+    --purple: #c4b5fd; --purple-bg: #3b2557;
+    --amber: #fbbf24;
+    --code-bg: #252520;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { display: grid; grid-template-columns: var(--sidebar-width) 1fr; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+
+  aside {
+    position: sticky; top: 0; height: 100vh; padding: 24px 18px;
+    border-right: 1px solid var(--border); overflow-y: auto; background: var(--surface);
+  }
+  .side-title {
+    font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .toc { list-style: none; }
+  .toc li { margin-bottom: 2px; }
+  .toc a {
+    display: block; padding: 6px 10px; color: var(--text-muted); text-decoration: none;
+    font-size: 13.5px; border-radius: 6px; transition: all 0.15s; line-height: 1.45;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { background: var(--bg); color: var(--text); border-left-color: var(--accent); }
+  .toc a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+  .toc-num { display: inline-block; width: 26px; color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: 11.5px; }
+  .toc-part {
+    font-size: 12px; font-weight: 700; color: var(--accent); margin: 12px 0 4px;
+    text-transform: uppercase; letter-spacing: 1px; padding-left: 10px;
+  }
+  .sidebar-actions {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sidebar-actions button {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
+    text-align: left; font-family: inherit; transition: background 0.15s;
+  }
+  .sidebar-actions button:hover { background: var(--bg); }
+
+  main { padding: 40px 60px 80px; max-width: 940px; }
+  .back-link {
+    display: inline-block; color: var(--text-muted); text-decoration: none;
+    font-size: 13px; margin-bottom: 8px; padding: 4px 0;
+  }
+  .back-link:hover { color: var(--accent); }
+  header.doc-header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 24px; }
+  .doc-eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+  }
+  h1 { font-size: 30px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .doc-meta { color: var(--text-muted); font-size: 14px; line-height: 1.9; }
+  .doc-meta strong { color: var(--text); font-weight: 600; }
+  .ai-disclaimer {
+    background: var(--highlight); border-left: 4px solid var(--highlight-border);
+    padding: 10px 16px; margin-bottom: 24px; border-radius: 6px; font-size: 13px; line-height: 1.6;
+  }
+
+  section { margin-bottom: 46px; scroll-margin-top: 20px; }
+  .part-banner {
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    color: #fff; border-radius: var(--radius); padding: 26px 30px; margin: 40px 0 30px;
+    scroll-margin-top: 20px;
+  }
+  .part-banner .pb-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px; }
+  .part-banner h2 { border: none; margin: 0; padding: 0; font-size: 26px; color: #fff; }
+  .part-banner .pb-sub { font-size: 14px; opacity: 0.9; margin-top: 8px; line-height: 1.7; }
+
+  h2 {
+    font-size: 23px; font-weight: 700; margin-top: 0; margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+    letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .section-num {
+    color: var(--accent); font-size: 17px; font-weight: 600;
+    font-variant-numeric: tabular-nums; min-width: 40px;
+  }
+  h3 { font-size: 17.5px; font-weight: 700; margin-top: 26px; margin-bottom: 12px; color: var(--accent); }
+  h4 {
+    font-size: 15px; font-weight: 700; margin-top: 18px; margin-bottom: 10px;
+    letter-spacing: 0.4px; color: var(--text-muted);
+  }
+  p { margin-bottom: 12px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; }
+  ul ul, ol ol { margin-top: 6px; margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  em { font-style: normal; color: var(--text-muted); font-size: 0.95em; }
+  code {
+    background: var(--code-bg); padding: 2px 7px; border-radius: 4px;
+    font-family: "SF Mono", Consolas, monospace; font-size: 0.9em; color: var(--accent);
+  }
+  pre {
+    background: var(--code-bg); padding: 16px 20px; border-radius: 8px;
+    overflow-x: auto; margin: 16px 0;
+    font-family: "SF Mono", Consolas, monospace; font-size: 13px; line-height: 1.7;
+    border: 1px solid var(--border);
+  }
+  pre code { background: transparent; padding: 0; color: var(--text); font-size: inherit; }
+
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid; }
+  .callout-key { background: var(--emerald-bg); border-left-color: var(--emerald); }
+  .callout-warn { background: var(--red-bg); border-left-color: var(--red); }
+  .callout-highlight { background: var(--highlight); border-left-color: var(--highlight-border); }
+  .callout-quote { background: var(--accent-light); border-left-color: var(--accent); font-style: italic; font-size: 16.5px; line-height: 1.7; }
+  .callout-teacher { background: var(--purple-bg); border-left-color: var(--purple); }
+  .callout-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 6px; display: block; opacity: 0.9; font-style: normal;
+  }
+
+  .attach-box { background: var(--emerald-bg); border: 1px solid var(--emerald); border-radius: var(--radius); padding: 18px 22px; margin: 18px 0 26px; }
+  .attach-box .callout-label { color: var(--emerald); }
+  .attach-box ul { list-style: none; margin: 8px 0 0 0; padding: 0; }
+  .attach-box li { margin-bottom: 8px; }
+  .attach-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .attach-box a:hover { text-decoration: underline; }
+  .attach-note { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; }
+
+  .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td {
+    padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border);
+    line-height: 1.6; vertical-align: top;
+  }
+  th {
+    background: var(--bg); font-weight: 600; font-size: 13px;
+    letter-spacing: 0.4px; color: var(--text-muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .figure {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; margin: 20px 0; text-align: center; overflow-x: auto;
+  }
+  .figure svg { max-width: 100%; height: auto; }
+  .fig-caption { font-size: 13px; color: var(--text-muted); margin-top: 10px; text-align: center; }
+
+  /* CSR pyramid */
+  .pyramid { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 16px 0; }
+  .pyr-level { color: #fff; text-align: center; padding: 10px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; line-height: 1.5; }
+
+  /* timeline */
+  .timeline { display: flex; flex-direction: column; gap: 0; margin: 16px 0; }
+  .tl-item { display: flex; gap: 16px; }
+  .tl-year { flex: 0 0 74px; text-align: right; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .tl-body { flex: 1; border-left: 3px solid var(--accent); padding: 0 0 22px 18px; position: relative; }
+  .tl-body::before { content: ""; position: absolute; left: -7.5px; top: 6px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+  .tl-title { font-weight: 700; margin-bottom: 3px; }
+  .tl-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* compare cards */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .cmp-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; background: var(--surface); }
+  .cmp-card h4 { margin-top: 0; font-size: 15.5px; color: var(--text); }
+  .cmp-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 10px; border-radius: 20px; margin-bottom: 8px; }
+
+  .stack-bar { display: flex; flex-direction: column; gap: 3px; margin: 14px 0; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .sb-seg { color: #fff; padding: 9px 14px; border-radius: 6px; font-size: 13.5px; font-weight: 600; display: flex; justify-content: space-between; }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li { padding: 8px 0 8px 32px; position: relative; border-bottom: 1px dashed var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "☐"; position: absolute; left: 4px; top: 8px; color: var(--text-muted); font-size: 18px; }
+
+  blockquote {
+    border-left: 4px solid var(--accent); padding: 12px 18px; margin: 16px 0;
+    background: var(--accent-light); border-radius: 4px; font-style: italic; color: var(--text);
+  }
+  blockquote strong { font-style: normal; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  .toggle-toc {
+    display: none; position: fixed; top: 12px; right: 12px; z-index: 100;
+    background: var(--surface); border: 1px solid var(--border); padding: 8px 14px;
+    border-radius: 8px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow);
+    font-family: inherit; color: var(--text);
+  }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside {
+      position: fixed; top: 0; left: 0; width: 290px; z-index: 90;
+      transform: translateX(-100%); transition: transform 0.25s;
+      box-shadow: 0 0 40px rgba(0,0,0,0.25); height: 100vh;
+    }
+    aside.open { transform: translateX(0); }
+    main { padding: 60px 18px 60px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    .toggle-toc { display: block; }
+    .compare { grid-template-columns: 1fr; }
+  }
+  @media print {
+    aside, .toggle-toc, .sidebar-actions { display: none !important; }
+    .app { display: block; }
+    main { max-width: none; padding: 0; }
+    body { font-size: 11.5pt; line-height: 1.5; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 15pt; break-after: avoid; }
+    h3 { font-size: 12.5pt; break-after: avoid; }
+    section { break-inside: avoid-page; }
+    .callout, table, pre, .figure { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .reading-progress {
+    position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+    z-index: 100; width: 0%; transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div id="gate" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit;">
+  <div style="max-width:380px;width:100%;text-align:center;">
+    <div style="font-size:56px;margin-bottom:20px;">🔒</div>
+    <h1 style="font-size:22px;margin-bottom:6px;color:var(--text);">115暑期密集課</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px;font-size:14px;">課程筆記 · 需要密碼進入</p>
+    <form id="gateForm">
+      <input type="password" id="gatePwd" autofocus placeholder="請輸入密碼" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;font-size:16px;background:var(--surface);color:var(--text);font-family:inherit;margin-bottom:12px;outline:none;box-sizing:border-box;">
+      <button type="submit" style="width:100%;padding:13px 16px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">進入</button>
+      <p id="gateErr" style="color:#dc2626;font-size:13px;margin-top:12px;display:none;">密碼錯誤,請再試一次</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dba115_unlocked';
+  var gate=document.getElementById('gate');
+  if(localStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  document.body.style.overflow='hidden';
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('gatePwd').value==='DBA'){
+      localStorage.setItem(KEY,'1');
+      gate.style.display='none';
+      document.body.style.overflow='';
+    }else{
+      document.getElementById('gateErr').style.display='block';
+      var p=document.getElementById('gatePwd');p.value='';p.focus();
+    }
+  });
+})();
+</script>
+
+<div class="reading-progress" id="progress"></div>
+<button class="toggle-toc" id="tocToggle">☰ 目錄</button>
+
+<div class="app">
+  <aside id="sidebar">
+    <div class="side-title">章節目錄</div>
+    <ul class="toc">
+      <li><a href="./index.html" style="border-left-color: var(--accent);">← 回課程總覽</a></li>
+      <li><a href="#s0">回到頁首</a></li>
+      <li class="toc-part">上午 · 績效評估 DEA</li>
+      <li><a href="#pA"><span class="toc-num">A</span>上午場總覽 + 附件</a></li>
+      <li><a href="#sA1"><span class="toc-num">A1</span>講師:林泰宇</a></li>
+      <li><a href="#sA2"><span class="toc-num">A2</span>SDG 起源與脈絡</a></li>
+      <li><a href="#sA3"><span class="toc-num">A3</span>績效評估基礎 · DMU</a></li>
+      <li><a href="#sA4"><span class="toc-num">A4</span>四種衡量方法</a></li>
+      <li><a href="#sA5"><span class="toc-num">A5</span>效率 vs 效能</a></li>
+      <li><a href="#sA6"><span class="toc-num">A6</span>生產力 & 資料型態</a></li>
+      <li><a href="#sA7"><span class="toc-num">A7</span>DEA 核心 ★★★</a></li>
+      <li><a href="#sA8"><span class="toc-num">A8</span>DEAP 軟體實作 ★</a></li>
+      <li><a href="#sA9"><span class="toc-num">A9</span>ESG / CSR 理論</a></li>
+      <li><a href="#sA10"><span class="toc-num">A10</span>再生能源功與過</a></li>
+      <li><a href="#sA11"><span class="toc-num">A11</span>老師的研究應用</a></li>
+      <li class="toc-part">下午 · 財務管理實務</li>
+      <li><a href="#pB"><span class="toc-num">B</span>下午場總覽 + 附件</a></li>
+      <li><a href="#sB1"><span class="toc-num">B1</span>講師:王淑玲</a></li>
+      <li><a href="#sB2"><span class="toc-num">B2</span>稱職的掌舵者</a></li>
+      <li><a href="#sB3"><span class="toc-num">B3</span>公司定位 ★★</a></li>
+      <li><a href="#sB4"><span class="toc-num">B4</span>企業價值 EV</a></li>
+      <li><a href="#sB5"><span class="toc-num">B5</span>財務模型六大面向</a></li>
+      <li><a href="#sB6"><span class="toc-num">B6</span>六大支柱總覽 ★★★</a></li>
+      <li><a href="#sB7"><span class="toc-num">B7</span>①透明即時財報</a></li>
+      <li><a href="#sB8"><span class="toc-num">B8</span>②多維管理報表</a></li>
+      <li><a href="#sB9"><span class="toc-num">B9</span>③最適稅負規劃</a></li>
+      <li><a href="#sB10"><span class="toc-num">B10</span>④資金及資本市場</a></li>
+      <li><a href="#sB11"><span class="toc-num">B11</span>⑤M&A 規劃 ★★</a></li>
+      <li><a href="#sB12"><span class="toc-num">B12</span>⑥矩陣式組織</a></li>
+      <li><a href="#sB13"><span class="toc-num">B13</span>課堂實戰語錄</a></li>
+      <li class="toc-part">總結</li>
+      <li><a href="#sC1"><span class="toc-num">C1</span>中英術語對照</a></li>
+      <li><a href="#sC2"><span class="toc-num">C2</span>重點提醒</a></li>
+      <li><a href="#sC3"><span class="toc-num">C3</span>30 秒口頭複習</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <button onclick="window.print()">🖨️ 列印 / PDF</button>
+      <button onclick="toggleTheme()">🌓 切換主題</button>
+      <button onclick="copyURL()">🔗 複製網址</button>
+    </div>
+  </aside>
+
+  <main>
+    <a href="./index.html" class="back-link">← 回課程總覽</a>
+    <header class="doc-header" id="s0">
+      <div class="doc-eyebrow">DBA · 115 暑期密集課 · 第 4 堂(雙講師日)</div>
+      <h1>績效評估(DEA)× 財務管理實務</h1>
+      <div class="doc-meta">
+        <strong>日期:</strong> 2026-07-25(週六)· 全日約 7 小時<br>
+        <strong>上午 09:17–13:27:</strong> 績效評估於學術研究的應用 · <strong>林泰宇 老師</strong>(約 4h10m)<br>
+        <strong>下午 13:28–16:15:</strong> 財務管理實務 · <strong>王淑玲(Judy Wang)老師</strong>(約 2h47m)<br>
+        <strong>本頁依據:</strong> 課堂錄音逐字稿 + 兩份原始簡報(績效評估 91 頁 / 財務管理 69 頁)交叉整理
+      </div>
+    </header>
+
+    <div class="ai-disclaimer">
+      ⚠️ <strong>本筆記由 AI 聲音辨識後自動整理</strong>,內容可能有錯字、聽錯、或漏掉細節。<strong>請以老師實際講授為準</strong>,自行判斷取用。
+    </div>
+
+    <!-- ====================== PART A ====================== -->
+    <div class="part-banner" id="pA">
+      <div class="pb-eyebrow">Part A · 上午場</div>
+      <h2>績效評估於學術研究的應用</h2>
+      <div class="pb-sub">林泰宇 老師 · 效率量化 → 四種衡量方法 → DEA(CCR/BCC)→ DEAP 軟體實作 → ESG 應用</div>
+    </div>
+
+    <div class="attach-box">
+      <span class="callout-label">📎 上午場附件(複習用)</span>
+      <ul>
+        <li>📊 <a href="https://docs.google.com/presentation/d/1OEjvzAjbBGd8jGOKhX1RY-1GBftKmTDI/edit?usp=drive_link&ouid=104345013760678260777&rtpof=true&sd=true" target="_blank" rel="noopener">上課簡報:績效評估.pptx(Google 簡報)</a></li>
+        <li>💾 <a href="https://drive.google.com/drive/folders/1FViiVMDD_o8DSY6Vg2Wu_0wzZEod1avB?usp=drive_link" target="_blank" rel="noopener">上課教的程式:DEAP-xp1(Google Drive 資料夾)</a></li>
+      </ul>
+      <div class="attach-note">附件存放於 Google Drive,開啟時可能需要登入 Google 帳號。</div>
+    </div>
+
+    <section id="sA1">
+      <h2><span class="section-num">A1</span>講師:林泰宇(Tai-Yu Lin)</h2>
+      <ul>
+        <li><strong>學歷:</strong>英國約克大學(University of York)經濟系博士 · 英國伯明翰大學(University of Birmingham)經濟系碩士</li>
+        <li><strong>研究領域:</strong>ESG、永續發展 SDG、溫室氣體排放效率、能源使用效率、績效管理、<strong>資料包絡分析法(DEA)</strong>、企業社會責任、企業韌性、財務效率、貨幣金融</li>
+      </ul>
+    </section>
+
+    <section id="sA2">
+      <h2><span class="section-num">A2</span>SDG 的起源與發展脈絡</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">1992</div><div class="tl-body"><div class="tl-title">里約地球高峰會</div><div class="tl-desc">通過《21世紀議程》,首次討論全球氣候暖化問題,制定永續發展藍圖。呼籲力度弱,新興國家多半不理會。</div></div></div>
+        <div class="tl-item"><div class="tl-year">2000</div><div class="tl-body"><div class="tl-title">千禧高峰會 → MDGs(8 項)</div><div class="tl-desc">制定千禧年發展目標,訂 2015 年達成:①消滅極端貧窮和飢餓 ②普及小學教育 ③性別平等賦權婦女 ④降低兒童死亡率 ⑤改善產婦保健 ⑥對抗愛滋/瘧疾等疾病 ⑦環境永續 ⑧全球合作。<strong>偏重健康與教育,環境力度還不大。</strong></div></div></div>
+        <div class="tl-item"><div class="tl-year">2012-13</div><div class="tl-body"><div class="tl-title">永續發展大會</div><div class="tl-desc">溫室氣體問題越來越嚴重,聯合國成立工作小組著手研擬 SDG 方案。</div></div></div>
+        <div class="tl-item"><div class="tl-year">2015</div><div class="tl-body"><div class="tl-title">永續發展高峰會 → SDGs(17 項)</div><div class="tl-desc">頒布《2030 永續發展議程》17 項目標:涵蓋貧窮、健康、教育、性別、<strong>#7 可負擔的潔淨能源、#13 氣候行動、#14 水下生命、#15 陸域生命</strong>等 — 環境力度大幅提升。老師推估 2030 前後將訂下一版(目標年約 2050)。</div></div></div>
+      </div>
+    </section>
+
+    <section id="sA3">
+      <h2><span class="section-num">A3</span>績效評估基礎:效率量化 & DMU</h2>
+      <div class="callout callout-key">
+        <span class="callout-label">核心觀念</span>
+        <strong>績效評估 = 將效率量化。</strong>就像溫度在溫度計發明前只有「熱/冷」的感覺,有了溫度計才能說 35 度比 32 度熱。效率若不量化,就無法比較。
+      </div>
+      <ul>
+        <li><strong>評估對象 = DMU(Decision Making Unit,決策單位)</strong>:小到個人、廠商,大到政府、國家</li>
+        <li><strong>為什麼叫「決策」單位?</strong>要先做了決策(如決定今天工作)才有得評估 — 完全不動就無法評</li>
+      </ul>
+      <h3>入門例:學生準備時間與考試成績</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>學生</th><th class="num">考試成績</th><th class="num">準備時間</th><th>結論</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td class="num">100</td><td class="num">1 小時</td><td><strong>效率高</strong>(同產出、投入少)</td></tr>
+          <tr><td>B</td><td class="num">100</td><td class="num">24 小時</td><td>效率低</td></tr>
+        </tbody>
+      </table></div>
+      <h3>最常應用的兩個管理學科</h3>
+      <ul>
+        <li><strong>人力資源管理:</strong>KPI 的設計、KPI 的衡量方法(招募甄選、訓練發展、員工關係、績效評估、薪酬福利)</li>
+        <li><strong>作業管理:</strong>生產力、生產效率(營運策略、商品服務設計、供應鏈與庫存、佈局、品質管理、專案管理)</li>
+      </ul>
+    </section>
+
+    <section id="sA4">
+      <h2><span class="section-num">A4</span>四種績效衡量方法</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>方法</th><th>做法</th><th>缺點</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. 財務比率法</strong></td><td>同一時期報表兩項目相除(比率分析)</td><td><strong>靜態分析</strong> — 今年項目除以去年項目沒有意義</td></tr>
+          <tr><td><strong>2. 平衡計分卡</strong></td><td>財務/顧客/內部流程/學習成長 四構面 + KPI</td><td>非財務指標體系難建立;大公司問卷耗時、主觀性強</td></tr>
+          <tr><td><strong>3. 參數規劃法</strong></td><td>事先設定函數型態,估計生產/成本函數(經濟學取向)</td><td>沒有完美函數可刻畫生產過程;邊際報酬遞減</td></tr>
+          <tr><td><strong>4. 非參數法 = DEA</strong></td><td>數學線性規劃產生最適權數,結合多投入多產出成綜合指標</td><td>需要多個個體進行比較(單一 DMU 無法評)</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>財務比率法的四類指標(簡報詳列)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>類別</th><th>指標</th></tr></thead>
+        <tbody>
+          <tr><td><strong>財務結構</strong></td><td>流動比率=流動資產/流動負債 · 速動比率=(流動資產−存貨−預付費用)/流動負債 · 固定比率=固定資產/股東權益 · 自有資產比率=股東權益/資產總額 · 平均借款利率=利息費用/借款總額</td></tr>
+          <tr><td><strong>獲利能力</strong></td><td>營業毛利率 · 營業利潤率 · 稅前利潤率 · 總資產報酬率=(稅後營業淨利+利息費用)/平均資產淨額 · 營業費用率</td></tr>
+          <tr><td><strong>資產運用</strong></td><td>總資產週轉率 · 固定資產增加率 · 固定資產週轉率 · 應收帳款週轉率 · 存貨週轉率=銷貨成本/存貨總額</td></tr>
+          <tr><td><strong>員工效率</strong></td><td>每員工生產毛額/淨額 · 每員工營業利益 · 每員工稅前利益 · 每一員工配備率=固定資產總額/員工人數</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout callout-highlight">
+        <span class="callout-label">課堂補充:靜態 vs 動態(學術定義)</span>
+        <strong>靜態</strong>=各年獨立比較;<strong>動態</strong>=前一年狀況會影響後一年(有時間鏈結)。跨兩年不一定是動態,可能只是 window(視窗)分析。
+      </div>
+    </section>
+
+    <section id="sA5">
+      <h2><span class="section-num">A5</span>效率 vs 效能(Efficiency vs Effectiveness)</h2>
+      <div class="callout callout-quote">
+        <span class="callout-label">Peter F. Drucker(現代管理學之父,1909–2005)</span>
+        Efficiency is "<strong>do the thing right</strong>"(把事做對);Effectiveness is "<strong>do the right thing</strong>"(做對的事)。
+      </div>
+      <ul>
+        <li><strong>順序:先有效能(定對目標),再談效率(方法)。</strong>目標定錯,越有效率越糟糕。</li>
+        <li>Drucker 貢獻:目標管理(MBO)、知識工作者(knowledge worker)概念</li>
+      </ul>
+      <h3>四家學術定義(簡報整理)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>學者</th><th>效能</th><th>效率</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Barnard (1938)</strong></td><td>組織目標的實現</td><td>組織成員需求的滿足</td></tr>
+          <tr><td><strong>Hit, Middlemist & Mathis (1986)</strong></td><td>一定時期內有效實現目標</td><td>短期內有效利用資源</td></tr>
+          <tr><td><strong>Mondy 等 (1986)</strong></td><td>過程產生預期結果的程度</td><td><strong>投入的質量數量與產出的質量數量之比例關係</strong>(← DEA 的核心)</td></tr>
+          <tr><td><strong>張潤書 (1990)</strong></td><td>達成目標的程度</td><td>人力物力財力時間做最妥善分配</td></tr>
+        </tbody>
+      </table></div>
+      <h3>為什麼生活充滿比較?</h3>
+      <ul>
+        <li><strong>競爭</strong>(資源有限)</li>
+        <li><strong>心態:Keeping up with the Joneses</strong>(趕上瓊斯家)— 美國俚語,人一旦有點錢就想跟鄰居比:比鑽石、比香奈兒、比老公、比房子,像繞圈賽跑永遠沒有盡頭</li>
+      </ul>
+    </section>
+
+    <section id="sA6">
+      <h2><span class="section-num">A6</span>生產力(Productivity)& 三種資料型態</h2>
+      <ul>
+        <li><strong>生產(Production)</strong>= 創造、製造或改進商品服務的過程 ≠ <strong>生產力(Productivity)= Output / Input</strong></li>
+      </ul>
+      <h3>全要素 vs 偏要素生產力</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>定義</th><th>算例(簡報)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>全要素生產力 TFP</strong></td><td>總產出 / 總投入(全部要素加總)</td><td>單價 1 元產品 7,000 件 ÷(勞動 1,000+材料 500+管理 1,000)= <strong>2.8</strong>。因投入單位不同(人/件/元),需全部換成<strong>產值</strong>才能相加</td></tr>
+          <tr><td><strong>偏要素生產力</strong></td><td>產出 / 單一投入</td><td>勞動生產力 = 800 單位/天 ÷(20 人 × 8 小時/天)。優點:計算簡單、易發現待改進領域、易設定基準跨公司比較</td></tr>
+        </tbody>
+      </table></div>
+      <p><em>偏生產力種類:勞動生產力(每勞動小時產出)、機器生產力(每機器小時產出)、資金生產力(每元投入產出)、能源生產力(每 kWh 產出)。</em></p>
+      <h3>三種資料型態</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>型態</th><th>定義</th><th>例子</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Time Series 時間序列</strong></td><td>同一個體、同一變數、按時間觀察</td><td>台灣每月失業率、公司每季營收。注意自我相關與非平穩性</td></tr>
+          <tr><td><strong>Cross-Section 橫斷面</strong></td><td>同一時間點、多個個體</td><td>同一年各縣市收入、同年度各公司 ROA</td></tr>
+          <tr><td><strong>Panel Data 縱橫資料</strong></td><td>時間 × 個體 雙維度</td><td>100 家公司連續 10 年財務資料。可控制不可觀察的固定個體特性(公司文化、地區制度)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sA7">
+      <h2><span class="section-num">A7</span>DEA 資料包絡分析法 <span style="color: var(--highlight-border); font-size: 0.85em;">★★★</span></h2>
+      <h3>發展史</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>年份</th><th>學者</th><th>貢獻</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1957</strong></td><td>Farrell</td><td>建立單一虛擬產出/單一虛擬投入衡量技術效率的概念</td></tr>
+          <tr><td><strong>1978</strong></td><td>Charnes, Cooper & Rhodes</td><td><strong>CCR 模式</strong>:擴展成多投入多產出(固定規模報酬 CRS)</td></tr>
+          <tr><td><strong>1984</strong></td><td>Banker, Charnes & Cooper</td><td><strong>BCC 模式</strong>:變動規模報酬 VRS</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>生產邊界(簡報 圖1.4 重繪)</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">定義</span>
+        <strong>邊界產出 Y* = max{Y | X 能生產 Y}</strong>:特定技術下,某定量投入能獲得之最大產出。<br>
+        <strong>邊界投入 X* = min{X | X 能生產 Y}</strong>:特定技術下,生產某定量產出所需之最小投入。
+      </div>
+      <div class="figure">
+        <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg" style="width: 460px;">
+          <line x1="50" y1="260" x2="430" y2="260" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="50" y1="260" x2="50" y2="20" stroke="currentColor" stroke-width="1.5"/>
+          <text x="425" y="280" font-size="13" fill="currentColor">投入 X</text>
+          <text x="18" y="30" font-size="13" fill="currentColor">產出 Y</text>
+          <path d="M 50 260 C 120 200, 180 90, 400 55" stroke="#2e7dd1" stroke-width="2.5" fill="none"/>
+          <text x="392" y="42" font-size="13" fill="#2e7dd1" font-weight="bold">F 生產邊界</text>
+          <circle cx="230" cy="185" r="5" fill="#dc2626"/>
+          <text x="238" y="192" font-size="13" fill="#dc2626" font-weight="bold">A(實際點)</text>
+          <circle cx="230" cy="80" r="5" fill="#10b981"/>
+          <text x="238" y="76" font-size="13" fill="#10b981" font-weight="bold">B(Y*)</text>
+          <circle cx="122" cy="185" r="5" fill="#10b981"/>
+          <text x="80" y="176" font-size="13" fill="#10b981" font-weight="bold">C(X*)</text>
+          <line x1="230" y1="180" x2="230" y2="90" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+          <line x1="222" y1="185" x2="132" y2="185" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+          <defs><marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker></defs>
+          <text x="245" y="140" font-size="12" fill="currentColor">增產出(產出導向)</text>
+          <text x="105" y="210" font-size="12" fill="currentColor">省投入(投入導向)</text>
+        </svg>
+        <div class="fig-caption">圖 1.4 邊界產出與投入(依原簡報重繪):A 在邊界內 = 無效率。往 B 走 = 同投入極大化產出;往 C 走 = 同產出極小化投入。</div>
+      </div>
+
+      <h3>CCR 模式(簡報公式 4.3)</h3>
+      <pre>Max  TE(i) = (u₁y₁ᵢ + u₂y₂ᵢ + … + u_M y_Mᵢ) / (v₁x₁ᵢ + v₂x₂ᵢ + … + v_K x_Kᵢ)
+
+s.t. 每個 DMU 的「虛擬產出/虛擬投入」比 ≤ 1   (n = 1, 2, …, N)</pre>
+      <p>u = 產出權數、v = 投入權數,由線性規劃自動求出「對受評 DMU 最有利」的權重(即分析各投入產出項的重要性)。</p>
+
+      <h3>投入導向例(簡報 表4.4 + 圖4.9 重繪)— 就是課堂 DEAP 演練用的資料!</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>DMU</th><th class="num">A</th><th class="num">B</th><th class="num">C</th><th class="num">D</th><th class="num">E</th><th class="num">F</th></tr></thead>
+        <tbody>
+          <tr><td>產出 y</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td></tr>
+          <tr><td>投入 x₁</td><td class="num">5</td><td class="num">2</td><td class="num">3</td><td class="num">4</td><td class="num">4</td><td class="num">5</td></tr>
+          <tr><td>投入 x₂</td><td class="num">3</td><td class="num">3</td><td class="num">6</td><td class="num">6</td><td class="num">1</td><td class="num">1</td></tr>
+        </tbody>
+      </table></div>
+      <div class="figure">
+        <svg viewBox="0 0 460 320" xmlns="http://www.w3.org/2000/svg" style="width: 460px;">
+          <line x1="55" y1="280" x2="430" y2="280" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="55" y1="280" x2="55" y2="20" stroke="currentColor" stroke-width="1.5"/>
+          <text x="420" y="300" font-size="13" fill="currentColor">x₁</text>
+          <text x="28" y="30" font-size="13" fill="currentColor">x₂</text>
+          <!-- scale: x1: 55 + v*60 ; x2: 280 - v*38 -->
+          <!-- frontier B(2,3)->E(4,1) + extensions -->
+          <polyline points="175,166 295,242" stroke="#2e7dd1" stroke-width="2.5" fill="none"/>
+          <polyline points="175,166 175,52" stroke="#2e7dd1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+          <polyline points="295,242 430,242" stroke="#2e7dd1" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+          <text x="185" y="205" font-size="13" fill="#2e7dd1" font-weight="bold">投入邊界</text>
+          <circle cx="355" cy="166" r="5" fill="#dc2626"/><text x="363" y="162" font-size="14" fill="#dc2626" font-weight="bold">A(5,3)</text>
+          <circle cx="175" cy="166" r="6" fill="#10b981"/><text x="150" y="150" font-size="14" fill="#10b981" font-weight="bold">B(2,3)</text>
+          <circle cx="235" cy="52" r="5" fill="#dc2626"/><text x="243" y="48" font-size="14" fill="#dc2626" font-weight="bold">C(3,6)</text>
+          <circle cx="295" cy="52" r="5" fill="#dc2626"/><text x="303" y="48" font-size="14" fill="#dc2626" font-weight="bold">D(4,6)</text>
+          <circle cx="295" cy="242" r="6" fill="#10b981"/><text x="288" y="268" font-size="14" fill="#10b981" font-weight="bold">E(4,1)</text>
+          <circle cx="355" cy="242" r="5" fill="#f59e0b"/><text x="363" y="238" font-size="14" fill="#f59e0b" font-weight="bold">F(5,1)</text>
+          <line x1="349" y1="163" x2="230" y2="120" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4 4"/>
+          <line x1="231" y1="57" x2="186" y2="150" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4 4"/>
+        </svg>
+        <div class="fig-caption">圖 4.9 投入導向 DEA(依原簡報重繪):固定產出 y=1,投入越少越好(越靠左下)。<strong>B、E 構成效率邊界</strong>;A/C/D 沿原點射線向邊界縮減;<strong>F 徑向效率 = 1 但有差額 slack</strong>(x₁ 比 E 多用 1 單位)→ 課堂上「考 99 分 vs 100 分」的比喻,F 的學習對象是 E。</div>
+      </div>
+
+      <h3>產出導向例(簡報 表4.6 + 圖4.10 重繪)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>DMU</th><th class="num">A</th><th class="num">B</th><th class="num">C</th><th class="num">D</th><th class="num">E</th><th class="num">F</th></tr></thead>
+        <tbody>
+          <tr><td>產出 y₁</td><td class="num">2</td><td class="num">3</td><td class="num">1</td><td class="num">2</td><td class="num">5</td><td class="num">5</td></tr>
+          <tr><td>產出 y₂</td><td class="num">2</td><td class="num">6</td><td class="num">5</td><td class="num">4</td><td class="num">3</td><td class="num">2</td></tr>
+          <tr><td>投入 x</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">1</td></tr>
+        </tbody>
+      </table></div>
+      <p>固定投入 x=1,<strong>產出越多越好</strong>(越靠右上)。B(3,6) 與 E(5,3) 構成產出效率邊界,無效率點沿原點射線<strong>向外擴增</strong>(C→B、F→E),同樣有徑向擴增與差額之分。</p>
+
+      <div class="callout callout-warn">
+        <span class="callout-label">課堂補充(逐字稿)</span>
+        <ul>
+          <li><strong>效率值 0~1,越靠近 1 越有效率</strong>;邊界上 = 1(最佳)</li>
+          <li><strong>DMU 越多,邊界描述越準</strong>(線是無限的點構成)</li>
+          <li><strong>量體差太多學習權重會爆</strong>:「想改善打籃球效率,比較對象卻是 NBA — 權重會大於 1,根本不同世界」</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="sA8">
+      <h2><span class="section-num">A8</span>DEAP 軟體實作 <span style="color: var(--highlight-border); font-size: 0.85em;">★</span></h2>
+      <p><strong>軟體來源:</strong>Google 搜尋「DEAP」(澳洲昆士蘭大學,免費)→ 也可直接用上方附件的 <strong>DEAP-xp1</strong> 資料夾。</p>
+      <h3>操作流程(課堂實錄)</h3>
+      <ol>
+        <li><strong>解壓縮到同一個資料夾</strong>(所有檔案不要散)</li>
+        <li><strong>建資料檔</strong>(Notepad 或改預設 .dta):第一直排 = 產出項、第二直排 = 投入 1、第三直排 = 投入 2……數字間用空格</li>
+        <li><strong>檔名要簡單英文</strong>(別用有意義的長字,系統讀不出;大小寫要一致 — 課堂多位同學卡在這!)</li>
+        <li><strong>編輯 -ins 指令檔:</strong>上兩行改成你的檔名;Number of firms = DMU 數(例 6);Output orientation:0 = 投入導向 / 1 = 產出導向;<strong>CRS = CCR 模型、VRS = BCC 模型</strong>;模型選 0 = DEA multi-stage</li>
+        <li><strong>執行 DEAP.exe → 輸入指令檔名 → Enter</strong>(視窗跳掉是正常,結果在 -out 檔)</li>
+      </ol>
+      <h3>報表解讀</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>報表區塊</th><th>意義</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Efficiency Summary</strong></td><td>各 DMU 效率值(0~1);課堂例:廠商 1 = 0.625,廠商 2/5/6 = 1(最有效率)</td></tr>
+          <tr><td><strong>Summary of Peers</strong></td><td>學習對象:廠商 1 → 向廠商 5(權重 0.562)與廠商 2(0.438)學習</td></tr>
+          <tr><td><strong>Peer Count</strong></td><td>被多少人當學習對象 — 越多 = 「好中的最好、王中之王」(課堂例:廠商 2 有 3 個學徒)</td></tr>
+          <tr><td><strong>Input/Output Targets(Projected Value)</strong></td><td>最適投入產出量。例:廠商 1 實際投入 x₁=5,最適 3.125 → 多用了 1.875 = 浪費(「機器買了沒用就是沒效率」)</td></tr>
+          <tr><td><strong>Radial Movement / Slack Movement</strong></td><td>Radial = 跳到邊界上;Slack = 沿邊界移動找學習對象。效率 = 1 者兩者皆 0(不用動)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sA9">
+      <h2><span class="section-num">A9</span>ESG / CSR 理論脈絡(簡報第 70–78 頁)</h2>
+      <h3>什麼是 ESG?</h3>
+      <ul>
+        <li><strong>E — Environment 環境保護:</strong>氣候變遷、資源使用、污染防治</li>
+        <li><strong>S — Social 社會責任:</strong>員工權益、消費者保護、社區發展</li>
+        <li><strong>G — Governance 公司治理:</strong>董事會結構、資訊揭露、內控問責</li>
+      </ul>
+      <h3>CSR 概念的百年演進</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">1924</div><div class="tl-body"><div class="tl-title">Oliver Sheldon《管理哲學》</div><div class="tl-desc">將道德因素帶入經營管理,主張企業責任須滿足產業內外關係人利益 — 顛覆「企業責任就是為股東賺錢」。</div></div></div>
+        <div class="tl-item"><div class="tl-year">1953</div><div class="tl-body"><div class="tl-title">Howard Bowen《企業的社會責任》</div><div class="tl-desc">企業有義務滿足社會目標與價值 — 開啟 CSR 概念思辨。</div></div></div>
+        <div class="tl-item"><div class="tl-year">1984</div><div class="tl-body"><div class="tl-title">Freeman 利害關係人理論</div><div class="tl-desc">《Strategic Management: A Stakeholder Approach》— 經營績效不能僅以股東價值極大化判斷,應滿足顧客、員工、供應商、社區、政府等利害關係人價值。內部:董事會/員工/工會;外部:顧客/供應商/股東/債權人/政府/社會大眾。</div></div></div>
+        <div class="tl-item"><div class="tl-year">1991</div><div class="tl-body"><div class="tl-title">Carroll CSR 金字塔</div><div class="tl-desc">四層責任(見下圖)。</div></div></div>
+        <div class="tl-item"><div class="tl-year">1997</div><div class="tl-body"><div class="tl-title">John Elkington 三重底線(Triple Bottom Line)</div><div class="tl-desc">企業永續 = 盈利 + 環境保護 + 社會責任(三重盈餘)同時兼顧。</div></div></div>
+      </div>
+      <h3>Carroll(1991)CSR 金字塔(重繪)</h3>
+      <div class="pyramid">
+        <div class="pyr-level" style="background: #7c3aed; width: 30%;">慈善責任<br><span style="font-weight:400;font-size:12px;">自願回饋社會:捐贈、公益</span></div>
+        <div class="pyr-level" style="background: #2563eb; width: 50%;">倫理責任<br><span style="font-weight:400;font-size:12px;">符合利害關係人期望、善盡社會公民責任</span></div>
+        <div class="pyr-level" style="background: #059669; width: 70%;">法律責任<br><span style="font-weight:400;font-size:12px;">遵守法律底線,如依法納稅</span></div>
+        <div class="pyr-level" style="background: #d97706; width: 90%;">經濟責任(基礎)<br><span style="font-weight:400;font-size:12px;">提供社會需要的商品服務、合理獲利回饋投資人</span></div>
+      </div>
+      <h3>E / S / G 各自的關注面向</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>面向</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>E 五大面向</strong></td><td>環境保護(污染控制/能源效率/廢物管理)、氣候變化(碳盤查/溫室氣體/再生能源)、水資源、污染控制(清潔生產)、生物多樣性(永續供應鏈)</td></tr>
+          <tr><td><strong>S 三大面向</strong></td><td>員工權益保障(公平薪資/安全環境/健康福利)、消費者權益保護、社區發展(教育/醫療/文化)</td></tr>
+          <tr><td><strong>G 四大機制</strong></td><td>董事會治理(ESG 入議程與考核)、管理層治理(ESG 管理體系)、內控與稽核、資訊揭露</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sA10">
+      <h2><span class="section-num">A10</span>再生能源的環境功與過(簡報第 79–88 頁)</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>能源</th><th>✅ 貢獻</th><th>⚠️ 破壞與挑戰</th></tr></thead>
+        <tbody>
+          <tr><td><strong>太陽能</strong></td><td>運行零碳排;屋頂分散式發電減輸電損耗;運轉不耗水</td><td>面板壽命 20–30 年,重金屬(鉛、鎘)若未回收恐污染土壤地下水;地面型需砍伐森林、熱島效應</td></tr>
+          <tr><td><strong>水力</strong></td><td>基載電力+儲能、調度彈性佳、壽命長;兼顧防洪灌溉航運</td><td>水壩截斷河流、阻魚類洄游;水庫淹沒植被分解釋放大量甲烷</td></tr>
+          <tr><td><strong>風力</strong></td><td>單位碳足跡極低;陸域基地小可續農牧;離岸避開土地競爭</td><td>葉片是鳥類蝙蝠的隱形殺手;低頻噪音干擾居民與野生動物</td></tr>
+          <tr><td><strong>地熱</strong></td><td>24/7 全天候基載;佔地小;副產熱能可供暖、溫室</td><td>蒸氣帶硫化氫、砷、汞;回注不當污染地下水、地層下陷、微地震</td></tr>
+          <tr><td><strong>核能</strong>(低碳選項)</td><td>能量密度極高、零溫室氣體、土地需求遠小於風光</td><td>高放射性廢料半衰期數萬年、最終處置困難;溫排水海洋熱污染</td></tr>
+          <tr><td><strong>生質能</strong></td><td>碳中和潛力(生長吸碳);廢棄物再利用推動循環經濟</td><td>開墾雨林農地、排擠糧食生產推升價格;燃燒過濾不全釋放 PM2.5</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-quote">
+        推動再生能源是應對氣候變遷的必經之路,但絕非「零環境成本」。唯有在「能源轉型」與「生態保育」之間取得平衡,落實回收機制與生態補償,才能實現真正永續的綠色未來。
+      </div>
+      <p><strong>環境績效重要指標:</strong>排放強度(每單位產值/產品排放量)、減量進度(相對基準年降幅)、能源強度、再生能源占比、碳排放效率。</p>
+    </section>
+
+    <section id="sA11">
+      <h2><span class="section-num">A11</span>老師的研究應用(課堂分享的已發表論文)</h2>
+      <h3>論文一:大陸 30 省 CO₂ + 空氣品質(AQI)環境效率</h3>
+      <ul>
+        <li><strong>投入:</strong>各省勞動力、能源消耗、固定資本(當 carryover 跨期變數 — 固定資產存續期長,像教室學生一直換但教室還在)</li>
+        <li><strong>產出(好):</strong>各省 GDP;<strong>產出(壞):</strong>CO₂(溫室氣體)、AQI(空污指數)</li>
+        <li>資料:2014–2016 官方統計;效率 = 1 代表「最少投入、最大經濟收益、最少污染」全都顧到</li>
+        <li>效率低的省份可再細分:是經濟不行?還是 AQI(有毒氣)還是 CO₂(溫室氣)拖累?→ 對症下藥</li>
+      </ul>
+      <h3>論文二:多階段(Multi-stage)DEA — 經濟 × 健康</h3>
+      <pre>第一階段(經濟):勞動/資本/能源 → GDP + [AQI、CO₂]
+                                        │ 連結項(link)
+第二階段(健康):[AQI、CO₂] + 醫療衛生支出 → 出生率(好)
+                                          呼吸道疾病、死亡率(壞)</pre>
+      <ul>
+        <li><strong>連結項(link)= 上一階段的產出、下一階段的投入</strong>(像麵包:種麥→麵粉廠→烘焙,麥子與麵粉就是連結項)</li>
+        <li><strong>壞產出處理:</strong>取倒數或平移,否則電腦誤判「越多越好」</li>
+        <li><strong>連結項要有確定的因果</strong>(污染→不健康是公認,不用驗證;睡眠→成績這種不確定的要先跑統計驗證)</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">量化研究鐵則</span>
+        資料一定用<strong>官方/權威來源</strong>(政府出版品、資料庫)。「你如果資料來源被 question,就很麻煩」— 自蒐資料要先證明有效性。
+      </div>
+    </section>
+
+    <!-- ====================== PART B ====================== -->
+    <div class="part-banner" id="pB" style="background: linear-gradient(135deg, #7c3aed, #b45309);">
+      <div class="pb-eyebrow">Part B · 下午場</div>
+      <h2>財務管理實務</h2>
+      <div class="pb-sub">王淑玲(Judy Wang)老師 · 前台達集團總財務長 · 掌舵者 → 公司定位 → 企業價值 → 財務管理六大支柱</div>
+    </div>
+
+    <div class="attach-box">
+      <span class="callout-label">📎 下午場附件(複習用)</span>
+      <ul>
+        <li>📕 <a href="https://drive.google.com/file/d/1K34YXPyTKWHWT84cXADfU_96THjjXuu1/view?usp=drive_link" target="_blank" rel="noopener">上課簡報:DBA 07252026 王淑玲.pdf(Google Drive,69 頁)</a></li>
+      </ul>
+      <div class="attach-note">附件存放於 Google Drive,開啟時可能需要登入 Google 帳號。聯絡信箱(簡報 Q&A 頁):Judy.Wang201411@gmail.com</div>
+    </div>
+
+    <section id="sB1">
+      <h2><span class="section-num">B1</span>講師:王淑玲(Judy Wang)— 前台達集團總財務長</h2>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">1986</div><div class="tl-body"><div class="tl-title">加入台達電子</div><div class="tl-desc">歷任財務經理/處長。</div></div></div>
+        <div class="tl-item"><div class="tl-year">2000</div><div class="tl-body"><div class="tl-title">達創科技財務長(兼台達財務處長)</div><div class="tl-desc">協助將達創從台達集團切割獨立、於香港掛牌上市。</div></div></div>
+        <div class="tl-item"><div class="tl-year">2003</div><div class="tl-body"><div class="tl-title">台達電子財務長</div><div class="tl-desc">建構台達最早且最成功的<strong>矩陣式管理組織</strong>;建立外匯操作 SOP 與自然避險;<strong>台灣第一家主動揭露合併財報的上市公司</strong>(主管機關未要求前),連年獲資訊揭露 A+/A++ 最高評鑑。</div></div></div>
+        <div class="tl-item"><div class="tl-year">2013</div><div class="tl-body"><div class="tl-title">資深副總裁暨台達集團總財務長(至 2021/7/31)</div><div class="tl-desc">建構高效率高品質財務平台;長期投資融資決策評估、適法稅務規劃、信用風險控管、財務危機預測模型。</div></div></div>
+        <div class="tl-item"><div class="tl-year">現任</div><div class="tl-body"><div class="tl-title">跨界續戰</div><div class="tl-desc">聯華電子獨立董事、佳必琪國際獨董、圓剛科技獨董、蝸居旅村董事、成大教授級兼任專家、<strong>鼎恒數位科技(MAYO)總經理</strong>(課堂上分享的 HR SaaS 新創,員工 110 人、年成長 30%、毛利率從 24% 提升到 70%)。</div></div></div>
+      </div>
+      <p><strong>代表作:</strong>1996–2007 完成 7 次 ECB 募資 + 1 次 GDR 發行;2015 併購挪威電源大廠 Eltek、2016 併 Delta Controls & LOYTEC、2017 併晶睿、2019 併 Amerlux + 泰達電 VTO 收購 42.85% 股權;公司治理評鑑連續四屆上市公司前 5%。</p>
+    </section>
+
+    <section id="sB2">
+      <h2><span class="section-num">B2</span>稱職的掌舵者 / 專業經理人</h2>
+      <p><strong>事業領導者首要任務:</strong>決定要把組織帶往哪裡?站在制高點訂定策略方向。</p>
+      <h3>願景 & 目標(Vision & Goal)四個行動面向</h3>
+      <ol>
+        <li>如何勾勒出遠景(要給員工「夢」— 尤其虧錢的公司,不築夢誰跟你拼)</li>
+        <li>如何營造團隊共識</li>
+        <li>策略訂定與選擇</li>
+        <li>積極有效執行計劃</li>
+      </ol>
+      <h3>分工合作:Two in one Box 六原則</h3>
+      <ol>
+        <li>利益均霑(課堂故事:老闆娘穿金戴銀還要總經理夫人陪逛街 — 員工怎麼想?)</li>
+        <li>大我為首</li>
+        <li>影響協助而非主導主控</li>
+        <li>吸收消化而非照章全收</li>
+        <li>欣賞優勢專長、不挑剔不足</li>
+        <li>取長補短、不做 0 與 1 切割</li>
+      </ol>
+      <h3>經理人的修練</h3>
+      <ul>
+        <li>要有夢想、要勇於築夢;決心與耐心;有擔當、不居功;相信自己、信任同仁、贏得他人認同</li>
+        <li><strong>「態度決定高度、高度決定格局、格局決定成就」</strong>(老師送學生的話)</li>
+        <li>「我最害怕的是你做錯事了都不知道。錯誤所付出的代價是補習費 — 重點是你學會了什麼。」</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">集權 vs 分權(課堂案例:聯電)</span>
+        讓每個 BU 各自講策略 → 方向會撥亂 → 最後兄弟鬩牆、各單位打架。曹興誠當年堅持 One 聯電的理由:同一鍋分錢時「公平」極難(管理報表 ≠ 財報,要怎麼寫就怎麼寫)。<strong>CEO 要先站在制高點把方向定清楚,組織才會往同一個目標走,一加一才會大於二。</strong>
+      </div>
+    </section>
+
+    <section id="sB3">
+      <h2><span class="section-num">B3</span>公司定位與競爭模式 <span style="color: var(--highlight-border); font-size: 0.85em;">★★</span></h2>
+      <h3>微笑曲線(Smile Curve)— 你的公司在哪裡?</h3>
+      <div class="figure">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" style="width: 520px;">
+          <line x1="45" y1="255" x2="500" y2="255" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="45" y1="255" x2="45" y2="25" stroke="currentColor" stroke-width="1.5"/>
+          <text x="8" y="35" font-size="12" fill="currentColor">增值</text>
+          <text x="8" y="50" font-size="12" fill="currentColor">指數</text>
+          <path d="M 70 55 Q 270 330 480 55" stroke="#d97706" stroke-width="3" fill="none"/>
+          <circle cx="70" cy="55" r="6" fill="#10b981"/>
+          <circle cx="273" cy="192" r="6" fill="#dc2626"/>
+          <circle cx="480" cy="55" r="6" fill="#10b981"/>
+          <text x="52" y="40" font-size="14" font-weight="bold" fill="#10b981">ODM 自主創新</text>
+          <text x="228" y="225" font-size="14" font-weight="bold" fill="#dc2626">OEM 代工生產</text>
+          <text x="398" y="40" font-size="14" font-weight="bold" fill="#10b981">OBM 自主品牌</text>
+          <text x="55" y="275" font-size="11" fill="var(--text-muted)">研發/標準</text>
+          <text x="130" y="275" font-size="11" fill="var(--text-muted)">產品開發</text>
+          <text x="205" y="275" font-size="11" fill="var(--text-muted)">物料物流</text>
+          <text x="280" y="275" font-size="11" fill="var(--text-muted)">製造</text>
+          <text x="330" y="275" font-size="11" fill="var(--text-muted)">銷售網絡</text>
+          <text x="405" y="275" font-size="11" fill="var(--text-muted)">行銷</text>
+          <text x="460" y="275" font-size="11" fill="var(--text-muted)">品牌</text>
+        </svg>
+        <div class="fig-caption">微笑曲線(依原簡報重繪):兩端(創新/品牌)增值高,中間(代工製造)增值最低。</div>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>模式</th><th>做法</th><th>賺什麼</th><th>財務 Focus</th></tr></thead>
+        <tbody>
+          <tr><td><strong>OEM 委託加工</strong></td><td>完全按客戶設計要求製造</td><td>加工費</td><td>直接人工成本、銷管費用投入</td></tr>
+          <tr><td><strong>ODM 設計加工</strong></td><td>設計+製造,以客戶品牌銷售</td><td>設計費+製造利潤</td><td>材料、人工、製造、研發、銷管</td></tr>
+          <tr><td><strong>OBM 自主品牌</strong></td><td>自行設計製造,以自己品牌銷售</td><td>品牌溢價</td><td>再加行銷、region 費用、經銷商管理</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>成本 vs 競爭模式(雙軸)</h3>
+      <div class="compare">
+        <div class="cmp-card">
+          <span class="cmp-tag" style="background: var(--emerald-bg); color: var(--emerald);">材料比重低 · 毛利率高</span>
+          <h4>附加價值導向的製造</h4>
+          <p style="font-size: 14px;">走「<strong>知識管理的競爭</strong>」— 技術創新與速度。代表:台積電。成本一點都不在意,只管好機器設備使用率(6 成就賺、8–9 成大賺)。</p>
+        </div>
+        <div class="cmp-card">
+          <span class="cmp-tag" style="background: var(--red-bg); color: var(--red);">材料比重高 · 毛利率低</span>
+          <h4>營收總額導向的製造</h4>
+          <p style="font-size: 14px;">走「<strong>成本管理的競爭</strong>」— 規模與營運能力。代表:鴻海。錙銖必較,量要大,買整包零組件控成本(「紅字接單、黑字出貨」)。</p>
+        </div>
+      </div>
+
+      <h3>台積電 vs 鴻海:杜邦分析對比(簡報 2017–2021 實數)</h3>
+      <div class="compare">
+        <div class="cmp-card">
+          <h4>TSMC 台積電(US$B)</h4>
+          <ul style="font-size: 13.5px; margin-left: 18px;">
+            <li>營收:32 → 34 → 35 → 45 → 57</li>
+            <li>毛利率:50.6% → 48.3% → 46.0% → 53.1% → 51.6%</li>
+            <li>淨利率:40.5% → 38.5% → 36.4% → 43.7% → 41.8%</li>
+          </ul>
+          <div class="callout callout-key" style="margin: 10px 0 0; padding: 10px 14px; font-size: 13.5px;">
+            <strong>ROE 33% = 純益率 41.8% × 資產周轉 48.9% × 權益乘數 1.6</strong><br>
+            策略:利用創新與新產品「重新定價」維持成長與獲利
+          </div>
+        </div>
+        <div class="cmp-card">
+          <h4>Foxconn 鴻海(US$B)</h4>
+          <ul style="font-size: 13.5px; margin-left: 18px;">
+            <li>營收:155 → 176 → 173 → 181 → 215</li>
+            <li>毛利率:6.4% → 6.3% → 5.9% → 5.7% → 6.0%</li>
+            <li>淨利率:3.9% → 3.2% → 3.1% → 2.7% → 3.2%</li>
+          </ul>
+          <div class="callout callout-warn" style="margin: 10px 0 0; padding: 10px 14px; font-size: 13.5px;">
+            <strong>ROE 12.7% = 純益率 3.2% × 資產周轉 158.1% × 權益乘數 2.5</strong><br>
+            提高營業額常使「售價下降速度」快過「成本下降速度」
+          </div>
+        </div>
+      </div>
+      <p><em>權益乘數(股本乘數)= 資產總額是股東權益的幾倍,越大代表負債程度越高。ROE 比較:台積電 2018–2020 為 21.95 / 20.93 / 29.84%,鴻海 10.37 / 9.68 / 7.96% — 皆高於 20% 對股東較有保障。</em></p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">課堂產業鏈實戰(逐字稿)</span>
+        聯電不追台積電先進製程,改做<strong>後端差異化</strong>(多技術燒進一晶片),吃台積電與二線之間的市場;與英特爾合作(英特爾出舊設備 = 最便宜的「美國製造」,應付川普);凱旋下來的舊設備先給世界先進。鴻海賺組裝錢、控制權在 Apple 手上 — Apple 設計時就決定了零件規格,「技術總柱就總柱了」;台達電做高毛利電源(乾坤做 choke 毛利 50% 比台達還高)。<strong>結論:附加價值高的產業,毛利一定高 — 財務長要先看公司定位,才知道 focus 在哪。</strong>
+      </div>
+    </section>
+
+    <section id="sB4">
+      <h2><span class="section-num">B4</span>企業價值 EV(Enterprise Value)</h2>
+      <div class="callout callout-key">
+        <span class="callout-label">定義(簡報第 16 頁)</span>
+        <strong>企業價值 EV = 公司市值 + 負債 − 現金</strong>
+      </div>
+      <pre>企業價值 EV
+ ├── 公司市值 ← 股價 ← EPS(每股盈餘)× PE(本益比)
+ │                     ├ EPS ← 營收、成本/費用、淨利
+ │                     └ PE  ← 產業前景、策略 ★
+ └── 淨負債(負債 − 現金)</pre>
+      <ul>
+        <li><strong>該追求的是企業價值,不只是 P&L</strong> — 「PE 我承認是喊的,但絕對不是亂喊」:根據產業前景、策略規劃、機會成本分析、競爭態勢</li>
+        <li>配套分析:策略規劃邏輯與機會分析、價值網與競合分析、價值主張與商業模式分析、企業利潤極大化</li>
+      </ul>
+    </section>
+
+    <section id="sB5">
+      <h2><span class="section-num">B5</span>財務模型六大面向</h2>
+      <p>財務模型 = 把企業經濟活動按「價值創造主線」分類、整理、鏈接,再依實際與未來發展做數據預測,評估財務狀況與經營績效。完整模型包含:假設、三大報表、指標分析、估值分析、投資回報測算。</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>面向</th><th>檢視重點</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1. 負債之成本及償付壓力</strong></td><td>資金來源與效益;負債成本高低與償付壓力;估列負債的穩健性。「可以舉債經營,但要算承受能力 — 不要跑三點半」</td></tr>
+          <tr><td><strong>2. 資產之品質評估</strong></td><td>組成是否符合產業特性?大小與營收規模相當?是否為營運所必需?流通性與變現價值?<br><em>現金存款→穩健性;應收帳款存貨→經營效率;長投固資→投資決策</em></td></tr>
+          <tr><td><strong>3. 營收及毛利是否健康</strong></td><td>毛利率與景氣同業相比是否合理;業外收益是否高於本業?成本費用控制反映管理能力;注意非營業收入及異常損失</td></tr>
+          <tr><td><strong>4. 股東之權益及報酬率</strong></td><td>股本大小與每股獲利能力;長期資金籌措時機與效率;股利政策與股東投資報酬率</td></tr>
+          <tr><td><strong>5. 現金控管是否嚴謹</strong></td><td><strong>現金淨流入量是企業生存之命脈;損益表有獲利不代表有現金流入</strong>;不適當之投資是現金流量的殺手</td></tr>
+          <tr><td><strong>6.(課堂補充)應收/存貨品質</strong></td><td>應收帳款三年沒收回、存貨比重異常 = 假帳警訊(「我們買公司都先看應收存貨,大陸很多是假帳」)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-quote">
+        「看一家公司,先看現金 — 現金是一家公司的元氣。股本三億、現金三億,就知道這些年沒有努力賺錢存錢。」
+      </div>
+    </section>
+
+    <section id="sB6">
+      <h2><span class="section-num">B6</span>財務管理策略:六大支柱總覽 <span style="color: var(--highlight-border); font-size: 0.85em;">★★★</span></h2>
+      <p>這是王老師整份簡報的<strong>主結構</strong>(B7–B12 逐一展開):</p>
+      <div class="stack-bar" style="max-width: 560px;">
+        <div class="sb-seg" style="background:#1f3a5f;"><span>① 透明即時的財務報表</span><span>體檢表</span></div>
+        <div class="sb-seg" style="background:#2563eb;"><span>② 多維的管理報表</span><span>決策支援</span></div>
+        <div class="sb-seg" style="background:#7c3aed;"><span>③ 最適稅負的規劃</span><span>BEPS / TP</span></div>
+        <div class="sb-seg" style="background:#059669;"><span>④ 資金及資本市場</span><span>匯率 / 現金</span></div>
+        <div class="sb-seg" style="background:#d97706;"><span>⑤ M&A 事前事後的規劃</span><span>婚姻比喻</span></div>
+        <div class="sb-seg" style="background:#dc2626;"><span>⑥ 矩陣式組織</span><span>全球協同</span></div>
+      </div>
+      <h3>財務最高主管的角色定位(簡報第 15 頁)</h3>
+      <ul>
+        <li><strong>角色:</strong>統籌管理全球財務團隊;訂定全球財務策略及目標(「CEO 說 2012 是購併年,我就要先想:在哪個國家?準備什麼人才?」)</li>
+        <li><strong>定位:</strong>提供專業服務、獨立運作、適當分配資源</li>
+        <li><strong>功能:</strong>建構最高質量財會平台;提供決策相關財務資訊/營運分析及改善方案;深化全球布局/人才養成</li>
+        <li><strong>終極目標:以價值整合來訂定長期財務策略,提高企業價值</strong></li>
+      </ul>
+    </section>
+
+    <section id="sB7">
+      <h2><span class="section-num">B7</span>支柱①:透明即時的財務報表</h2>
+      <p><strong>財務報表之於企業,就像體檢表之於人體。</strong>三大報表:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>報表</th><th>性質</th><th>你可以了解</th></tr></thead>
+        <tbody>
+          <tr><td><strong>資產負債表</strong></td><td>某一「時點」的淨資產(財務狀況)</td><td>財產多少、負債多少、庫存/現金多少</td></tr>
+          <tr><td><strong>損益表</strong></td><td>一段「期間」的經營(財務績效)</td><td>有沒有賺錢、利潤好不好、經營效率</td></tr>
+          <tr><td><strong>現金流量表</strong></td><td>一段期間的現金異動</td><td>資金是否充裕、營業/投資活動資金異動</td></tr>
+        </tbody>
+      </table></div>
+      <p><em>簡報批註:存貨要控管避免「黑字倒閉」;固定資產決定了就要承擔多年折舊,投資前先以 ROI 試算。資產負債表分析六構面:資產品質、資產配置、長投佈局、潛在負債、負債結構、股東權益。</em></p>
+
+      <h3>三大周轉率</h3>
+      <ul>
+        <li><strong>固定資產周轉率 = 營業收入/平均固定資產</strong>:每 1 元固定資產創造多少銷售。過低 = 資產閒置缺乏生產力</li>
+        <li><strong>應收帳款周轉率 = 銷貨收入/平均應收帳款</strong>:越高越好(收現天數越短);拖越久 → 資金積壓 + 呆帳風險急升</li>
+        <li><strong>存貨周轉率 = 銷貨成本/平均存貨</strong>:越高資本運用效率越高;過低 = 存貨積壓 → 呆滯或跌價</li>
+      </ul>
+      <h4>實例(簡報 2018–2020 固定資產周轉率)</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>公司</th><th class="num">2018</th><th class="num">2019</th><th class="num">2020</th><th>解讀</th></tr></thead>
+        <tbody>
+          <tr><td>X海(組裝)</td><td class="num">19.04</td><td class="num">18.90</td><td class="num">18.65</td><td>資產輕、快週轉</td></tr>
+          <tr><td>X達</td><td class="num">5.22</td><td class="num">4.87</td><td class="num">4.28</td><td rowspan="2">中間型</td></tr>
+          <tr><td>X坤</td><td class="num">4.04</td><td class="num">3.56</td><td class="num">2.96</td></tr>
+          <tr><td>台X電(晶圓)</td><td class="num">0.97</td><td class="num">0.88</td><td class="num">0.92</td><td>重資產 — <strong>周轉率要配產業特性看!</strong></td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>ROA / ROE / 三率</h3>
+      <ul>
+        <li><strong>ROA =[稅後淨利+利息費用×(1−稅率)]÷ 平均資產總額</strong>。簡報例:A、B 公司淨利同為 400,但 A 資產 3,000(ROA 13.3%)、B 資產 700(ROA 57.2%)→ B 優於 A</li>
+        <li><strong>ROE = 稅後淨利 ÷ 平均股東權益</strong>:EPS 只反映「賺多少」,ROE 反映「賺多有效率」</li>
+        <li><strong>三率:毛利率 / 營業利益率 / 淨利率</strong> — 高低反映競爭力;「三利加三率」同時評估獲利質量</li>
+        <li><strong>本益比 PE = 每股市價 / EPS</strong> — 衡量公司便不便宜的工具</li>
+      </ul>
+      <h3>透視財務危機(損益表警訊)</h3>
+      <ul>
+        <li><strong>每股盈餘品質遠重於高低</strong>;盈餘來源是否集中本業</li>
+        <li>注意「營業損益是否經常性大於營運淨現金流量」(獲利沒現金 = 警訊)</li>
+        <li>營收逐年大幅下滑或停滯 = 前期財務危機警訊</li>
+      </ul>
+    </section>
+
+    <section id="sB8">
+      <h2><span class="section-num">B8</span>支柱②:多維的管理報表</h2>
+      <p>傳統財報無法充分表達經營重點 → 企業依產業特性編製<strong>管理報表</strong>,支援決策、內部檢討、追蹤改善;可<strong>多維度分析與往下鑽取(drill down)</strong>。</p>
+      <h3>報表金字塔(簡報第 35 頁重繪)</h3>
+      <div class="stack-bar" style="max-width: 520px;">
+        <div class="sb-seg" style="background:#7c3aed;"><span>頂層:決策支援及計畫(預測未來)</span><span>Financial Mgmt</span></div>
+        <div class="sb-seg" style="background:#2563eb;"><span>中層:績效評估及分析(歷史資料)</span><span>管理報表</span></div>
+        <div class="sb-seg" style="background:#059669;"><span>底層:原始交易 + 成本會計 + 稅務/財務報表</span><span>資料來源</span></div>
+      </div>
+      <p><strong>維度:</strong>總管理處 → 事業群 BG → 事業單位 BU → 產品 → 地區 → 利潤中心(RPF)。可交叉:BU × 產品類別 × 地區(China/NE Asia/SE Asia/Americas/EMEA)。</p>
+
+      <h3>雙面 P&L:銷售面 × 生產面(簡報實數 USD$K)</h3>
+      <div class="compare">
+        <div class="cmp-card">
+          <h4>銷售面 P&L</h4>
+          <ul style="font-size: 13.5px; margin-left: 18px;">
+            <li>銷售收入 69,183(100%)</li>
+            <li>銷售毛利 22,583(32.6%)</li>
+            <li>營業費用 5,967(8.6%)= 研發 4.3 + 銷售 3.1 + 管理 0.7 + 公共部門 0.5</li>
+            <li>營業利益 16,617(24.0%)</li>
+            <li><strong>財務成本 457(0.7%)← 特色科目</strong></li>
+            <li>員工分紅 2,062 → 淨利 14,343(20.7%)</li>
+          </ul>
+        </div>
+        <div class="cmp-card">
+          <h4>生產面 P&L</h4>
+          <ul style="font-size: 13.5px; margin-left: 18px;">
+            <li>產值 68,571(100%)= 生產入庫數 × 出貨平均售價</li>
+            <li>材料成本 38,352(55.9%)</li>
+            <li>直接人工 1,946(2.8%)</li>
+            <li>工廠製造費用 5,558(7.9%)</li>
+            <li>存貨損失 206(0.3%)</li>
+            <li><strong>製造毛利 22,509(32.8%)</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>財務成本(Financial Cost)分級 — 內部資金計價</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Level</th><th>代表國家</th><th class="num">內部費率</th><th class="num">市場資金成本</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>USA、德法英瑞、日本、台灣、泰國</td><td class="num">2%</td><td class="num">0.5%~5%</td></tr>
+          <tr><td>2</td><td>荷西俄波、澳洲、中國、南韓</td><td class="num">4%</td><td class="num">5%~10%</td></tr>
+          <tr><td>3</td><td>巴西、墨西哥、土耳其、印度</td><td class="num">8%</td><td class="num">10%~14%</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>公式:</strong><code>(庫存 + A/R + 固定資產 − AP − 已提存貨跌價 − 本期淨利)× 費率 ÷ 12</code></p>
+      <div class="callout callout-key">
+        <span class="callout-label">管理內涵(為什麼要收內部利息)</span>
+        ① 採購可藉由<strong>延長 Payment term</strong> 創造利潤 ② 業務可藉由<strong>縮短 A/R term</strong> 創造利潤 ③ 有效的生產與庫存管理可降低營運成本 — 把資金成本內部化,每個 BU 自然管好營運資金。
+      </div>
+      <h3>特色績效指標</h3>
+      <ul>
+        <li><strong>RONA 淨資產報酬率</strong> = 稅前淨利 / 淨資產總額(簡報例:90.2)</li>
+        <li><strong>薪資報酬倍數</strong> = 稅前淨利 / 薪資成本(每投 $1 薪資創造多少利潤;例:2.2)</li>
+        <li>存貨呆滯損失準備(按庫齡提估)、存貨報廢損失</li>
+      </ul>
+      <h3>財務報表 vs 管理報表(對照)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>財務報表</th><th>管理報表</th></tr></thead>
+        <tbody>
+          <tr><td>使用者</td><td>外部(政府、股東、債權人、投資大眾)</td><td>內部經理人</td></tr>
+          <tr><td>編製準則</td><td>IFRS</td><td>公司內部準則</td></tr>
+          <tr><td>資料性質</td><td>公司整體</td><td>利潤中心</td></tr>
+          <tr><td>時間</td><td>定時</td><td>依內部管理需求</td></tr>
+          <tr><td>目的</td><td>盈餘分配、納稅、債權保障</td><td>決策規劃、控制引導、激勵員工、績效衡量、長期競爭力</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sB9">
+      <h2><span class="section-num">B9</span>支柱③:最適稅負的規劃</h2>
+      <h3>跨國企業稅務風險三循環</h3>
+      <p>Global Tax Audit(全球稅務稽查)→ Double Tax Burden(雙重課稅)→ Public Pressure(公眾壓力)+ Tax Reputation(稅務聲譽)議題。</p>
+      <h3>經典案例:Apple 愛爾蘭架構</h3>
+      <pre>Apple USA(聯邦稅 21% + 州稅 0–12%)
+   │ 把 IP Rights 授權給 ↓
+Apple Ireland(公司稅只有 12.5%)→ 利潤 $$$ 回流低稅區</pre>
+      <p>利用各國稅率差距與規則不匹配,把利潤移到低稅/無稅地 → <strong>Double Non-Taxation(雙重不課稅)</strong>。同類:Coca-Cola、Amazon、Nike、Starbucks、Google、IKEA…</p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">台積電美國稅(課堂)</span>
+        台積電去美國賺 100 元 → 先繳美國政府約 30 → 匯回台灣再繳 20 → <strong>剩一半</strong>。台美無租稅互惠 — 「在美國真難賺錢」。
+      </div>
+      <h3>BEPS 行動計畫(OECD,2015)三支柱</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>支柱</th><th>目的</th><th>重點行動</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Coherence 一致性</strong></td><td>Remove gaps & black holes</td><td>#3 受控外國公司規則(CFC)、#5 有害稅務實踐</td></tr>
+          <tr><td><strong>Substance 實質性</strong></td><td>課稅權與價值創造活動一致</td><td>#6 防租稅協定濫用、#7 PE 認定、#8/9/10 移轉訂價與價值創造一致</td></tr>
+          <tr><td><strong>Transparency 透明度</strong></td><td>共同申報準則、資訊交換</td><td>#12 揭露規則、#13 集團主檔/當地檔/國別報告</td></tr>
+        </tbody>
+      </table></div>
+      <h3>移轉訂價(TP)與價值鏈實質</h3>
+      <ul>
+        <li>TP = 關係人間受控交易的訂價 → 直接左右各地課稅所得。稅率對照:中國 25%、新加坡 17%、台灣 20% → <strong>「利潤留哪兒?如何經得起檢驗?」</strong></li>
+        <li><strong>價值鏈佐證實質:</strong>製造中心/貿易中心 = Limited Risk → Limited Profit;Region HQ/HQ(承擔研發、投資、併購等關鍵營運風險)→ Residual Profit。<strong>風險承擔越重,分得剩餘利潤越多。</strong></li>
+        <li><strong>三層文據</strong>(台灣 2017 導入):移轉訂價報告 + 集團主檔 + 國別報告,兩地稅局資訊交換</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">課堂血淚:大陸追稅 60 億</span>
+        台達在大陸 20 幾個工廠被逐省追稅。老師堅持不隨便妥協(「你給這省 3%,每一省都會來,沒完沒了」),硬撐三年,最後被要求「派有決定權的人」去北京談判 — 帶著律師、會計師、特助上談判桌,對方逐條引用中華人民共和國稅法;後來又被叫去合肥「各省的人全部叫來、長桌像批鬥」。案子談完,她決定退休。<strong>教訓:稅務規劃是財務長的硬專業,「我是真的做完的、還賺錢,所以我敢出來教」。</strong>
+      </div>
+    </section>
+
+    <section id="sB10">
+      <h2><span class="section-num">B10</span>支柱④:資金及資本市場</h2>
+      <h3>全球匯兌風險管理機制(四支柱)</h3>
+      <ol>
+        <li><strong>交易範圍與授權:</strong>層級授權、呈報流程、交易範圍訂定</li>
+        <li><strong>風險量化模型及可信度檢視:</strong>部位分析、避險比例、情境分析</li>
+        <li><strong>風險監控及回應:</strong>匯率分析系統化、程序執行檢核、避險措施</li>
+        <li><strong>績效評估:</strong>外匯暴露部位之減少、匯兌損益衡量</li>
+      </ol>
+      <h3>淨現金流預測(Net Cash Forecast)</h3>
+      <p>組成因子:Operation Performance、CAPEX、M&A、Bonus、Dividend Payout → Cash Flow Forecast。簡報趨勢例(US$M):2015:1,099 → … → 2019(F):<strong>514 低於安全現金水位 1,000 → 觸發 Funding 決策</strong> → 2021(F):911。<strong>用預測提早看到缺口,而不是到時候跑三點半。</strong></p>
+      <h3>現金與外匯管理架構</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>層級</th><th>內容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Region Level 四象限</strong></td><td>往來銀行控管(Global Control / Reputation)· 自然避險(Nature Hedge, Monitor & Inspection)· 簽名許可權管理 · 現金流逐月檢視(Monthly Working Capital Review)</td></tr>
+          <tr><td><strong>Group Level 五要素</strong></td><td>融資選擇 · 投資/融資 · 最適股本架構 · 現金分配 · 股利政策</td></tr>
+        </tbody>
+      </table></div>
+      <p><em>老師在台達的實績:建立外匯 SOP + 自然避險,帶領台達歷年外匯高績效;1996–2007 完成 7 次 ECB + 1 次 GDR 募資。</em></p>
+    </section>
+
+    <section id="sB11">
+      <h2><span class="section-num">B11</span>支柱⑤:M&A 事前事後的規劃 <span style="color: var(--highlight-border); font-size: 0.85em;">★★</span></h2>
+      <h3>併購流程四階段(婚姻比喻)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>階段</th><th>核心任務</th><th>婚姻比喻</th></tr></thead>
+        <tbody>
+          <tr><td><strong>策略規劃</strong></td><td>併購目的應與企業發展策略一致</td><td>我要結婚嗎?你是我要的對象嗎?</td></tr>
+          <tr><td><strong>評估</strong></td><td>確認標的能否為公司產生價值</td><td>身家調查、婚前健康檢查</td></tr>
+          <tr><td><strong>協調</strong></td><td>資訊透明、合理評價、公正保密之談判</td><td>訂婚與結婚儀式</td></tr>
+          <tr><td><strong>履約及整合</strong></td><td>併購後資源整合與調整</td><td>婚後建立相處模式</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Process Map:Pre-deal → In-deal → Post-deal</h3>
+      <pre>Pre-deal 購併前:策略發展 → 標的尋找 → 投資評估 → 董事會核准
+In-deal  購併中:初步評估與交易架構 → 盡職調查(財稅/HR/法律/營運)
+                → 談判協商 → 成案或退出 → 交易生效 Day 1
+Post-deal 購併後:收購價格分攤(PPA)、稅務諮詢 → 併購整合(PMI)
+                → Day 100 → 價值實現</pre>
+      <h3>併購後整合(PMI)四工作</h3>
+      <ol>
+        <li>設置整合小組(責任人與部門)</li>
+        <li>整合各項工作(目標與具體任務)</li>
+        <li>執行整合時程(完成時限、里程碑)</li>
+        <li>評估整合進度(衡量標準、定期檢討)</li>
+      </ol>
+      <div class="callout callout-key">
+        <span class="callout-label">核心提醒</span>
+        <strong>文化整合是成功的關鍵因素。</strong>「買下來 = 買整個組織文化,不見得能整合。」
+      </div>
+      <h3>併購成本與商譽</h3>
+      <ul>
+        <li><strong>併購成本 = 支付對價 + 或有價金 + 置換員工獎酬計畫</strong></li>
+        <li>收購價 $120 = 商譽 40 + 無形資產 30 + 有形資產+淨值 50(簡報數字例)。若會計政策/或有負債調整 −20:<strong>價格調整</strong> → 收購價降至 100、商譽仍 40;<strong>價格不調整</strong> → 調整數全數墊高商譽至 60</li>
+        <li><strong>商譽不攤銷但每年減損測試</strong>;客戶關係/專門技術/商標權/不動產增值 → 按年限攤銷入損益</li>
+      </ul>
+      <h3>PPA 收購價格分攤實例(簡報,US$M)</h3>
+      <div class="stack-bar" style="max-width: 480px;">
+        <div class="sb-seg" style="background:#7c3aed;"><span>商譽(不攤銷,年減損測試)</span><span>179</span></div>
+        <div class="sb-seg" style="background:#2563eb;"><span>專門技術(12 年攤)</span><span>98</span></div>
+        <div class="sb-seg" style="background:#0891b2;"><span>客戶關係(9 年攤)</span><span>92</span></div>
+        <div class="sb-seg" style="background:#059669;"><span>商標權(12 年攤)</span><span>74</span></div>
+        <div class="sb-seg" style="background:#d97706;"><span>發展中無形資產+軟體</span><span>2</span></div>
+        <div class="sb-seg" style="background:#6b7280;"><span>取得淨值</span><span>53</span></div>
+      </div>
+      <div class="fig-caption">支付價款 $498 的分攤結構(= 溢價分配 445 + 淨值 53)。攤銷年限依「可產生經濟效益期間」決定。</div>
+      <h3>商譽減損三狀況</h3>
+      <ol>
+        <li>實際獲利低於原預估</li>
+        <li>現金流量低於原預估</li>
+        <li>產生商譽之單位結束營運</li>
+      </ol>
+      <div class="callout callout-teacher">
+        <span class="callout-label">課堂實戰(逐字稿)</span>
+        台達 2003 年第一次購併(用子公司去買)其實是<strong>失敗的</strong>,五年沒賺錢、股價跌到八九塊;2012 年做購併「代打」把整套 SOP 寫下來 → 之後 2015 Eltek 等案就順了。「購併最大風險是<strong>資訊不對稱</strong> — 買進去才發現很多沒看見的。」還有一次大老闆進門就說「這個購併案我看過了,一定要買」— 「那我們開會要幹嘛?」(全場笑)
+      </div>
+    </section>
+
+    <section id="sB12">
+      <h2><span class="section-num">B12</span>支柱⑥:矩陣式組織(Matrix Organization)</h2>
+      <p>一般財務組織:財務長下設 帳務中心、財務報表、出納、經營分析管理、稅務管理、資金調度及風險管理。<strong>跨國企業則需要矩陣:</strong></p>
+      <pre>            事業群1  事業群2  事業群3  事業群4  事業群5   ← 事業群線(橫)
+台灣          ●       ●       ●       ●       ●
+中國          ●       ●       ●       ●       ●
+美洲          ●       ●       ●       ●       ●
+歐洲/中東/非洲 ●       ●       ●       ●       ●
+東北亞/東南亞  ●       ●       ●       ●       ●
+  ↑ 地區線(縱,虛線另接地區/事業群總經理)
+
+右側功能單位:帳務中心/SSC · 財報/股務/M&A · 稅務管理
+              · 資金調度及風險管理 · 財務資訊界面
+● = 地區 × 事業群 的雙報告線協同點</pre>
+      <ul>
+        <li>王老師 2003 年在台達建立 — <strong>台達內部最早且最成功的矩陣式管理組織</strong>,搭建地區與事業群的協同合作平台</li>
+        <li>簡報另附台達「技術平台 × 產品組織」實例:BU 產品線(縱)× Cross-BU 技術平台(模擬設計/材料技術/製程工藝/自動化)× 製造廠區(吳江/蕪湖/郴州/台灣各廠)</li>
+        <li>課堂補充:哪些 SOP 該 Centralized、哪些 Decentralized 要整套寫下來(當年大陸團隊寫了一大本)</li>
+      </ul>
+    </section>
+
+    <section id="sB13">
+      <h2><span class="section-num">B13</span>課堂實戰語錄(逐字稿精選)</h2>
+      <h3>開場影片兩標竿</h3>
+      <div class="compare">
+        <div class="cmp-card">
+          <h4>稻盛和夫 — 阿米巴經營</h4>
+          <p style="font-size: 14px;">把公司切成小<strong>利潤中心</strong>(變形蟲小組),每人有經營者意識。日本航空破產(負債 2.3 兆日圓)→ 每條航線變利潤中心 → <strong>2 年 8 個月轉虧為盈重新上市</strong>。核心:「無法數量化的東西就無法管理。」</p>
+        </div>
+        <div class="cmp-card">
+          <h4>張忠謀 — 優良企業三標準</h4>
+          <ol style="font-size: 14px; margin-left: 18px;">
+            <li><strong>高品質的資產和負債</strong>(純淨、無閒置)</li>
+            <li><strong>獲利成長率 > 營收成長率</strong>(掌握定價權 + 成本控制)</li>
+            <li><strong>穩定的現金流</strong>(能自己支撐投資與股利,不跟股東拿錢)</li>
+          </ol>
+        </div>
+      </div>
+      <h3>MAYO(鼎恒數位)經營現場</h3>
+      <ul>
+        <li>接手 HR SaaS 新創:員工 110 人、年成長 30%、<strong>毛利率從 24% → 70%</strong></li>
+        <li>「換了位子要換腦袋 — 做 CEO 不能用 CFO 的眼光,一定死」</li>
+        <li>年輕人管理學:辦公室像咖啡廳、修水管可在家上班、五天「慶祝新貴假」;「我後來就閉嘴先聽,再想他們在想什麼」— 三個月吃一次豆花、每天一排外送,「你要先理解他,他才會理你」</li>
+        <li>未來佈局:數據中心做員工行為模式分析(從打卡頻率預測離職)、全員導入 AI(2024 就開始,RD 全部在用)</li>
+      </ul>
+      <h3>金句集</h3>
+      <div class="callout callout-quote">
+        「格局決定成就,態度決定高度。」<br><br>
+        「我最害怕你做錯事了都不知道 — 錯誤的代價是補習費,重點是你學會了什麼。」<br><br>
+        「金融業是特許行業,政府一句話可以讓你賺很多也虧很多 — 所以它每年有一大筆錢必須回饋社會。」<br><br>
+        「當老師最有價值的是學生的回饋 — 有學生國巨 400 塊時做了一份完整報告連線教我買,比分析師還專業。」
+      </div>
+    </section>
+
+    <!-- ====================== 總結 ====================== -->
+    <section id="sC1">
+      <h2><span class="section-num">C1</span>中英術語對照</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>中文</th><th>英文</th></tr></thead>
+        <tbody>
+          <tr><td>決策單位</td><td>Decision Making Unit (DMU)</td></tr>
+          <tr><td>資料包絡分析法</td><td>Data Envelopment Analysis (DEA)</td></tr>
+          <tr><td>效能 / 效率</td><td>Effectiveness(do the right thing)/ Efficiency(do the thing right)</td></tr>
+          <tr><td>全要素 / 偏要素生產力</td><td>Total Factor Productivity (TFP) / Partial Productivity</td></tr>
+          <tr><td>固定 / 變動規模報酬</td><td>CRS(→CCR 模式)/ VRS(→BCC 模式)</td></tr>
+          <tr><td>生產邊界 / 差額</td><td>Frontier / Slack</td></tr>
+          <tr><td>投入 / 產出導向</td><td>Input / Output Orientation</td></tr>
+          <tr><td>時間序列 / 橫斷面 / 縱橫資料</td><td>Time Series / Cross-Section / Panel Data</td></tr>
+          <tr><td>永續發展目標 / 千禧年目標</td><td>SDGs / MDGs</td></tr>
+          <tr><td>三重底線</td><td>Triple Bottom Line(Elkington 1997)</td></tr>
+          <tr><td>利害關係人理論</td><td>Stakeholder Theory(Freeman 1984)</td></tr>
+          <tr><td>微笑曲線</td><td>Smile Curve(OEM/ODM/OBM)</td></tr>
+          <tr><td>企業價值</td><td>Enterprise Value(EV = 市值+負債−現金)</td></tr>
+          <tr><td>權益乘數</td><td>Equity Multiplier</td></tr>
+          <tr><td>杜邦分析</td><td>DuPont Analysis(ROE = 純益率 × 周轉率 × 權益乘數)</td></tr>
+          <tr><td>淨資產報酬率 / 薪資報酬倍數</td><td>RONA / Return on Payroll</td></tr>
+          <tr><td>稅基侵蝕及利潤移轉</td><td>BEPS(Coherence / Substance / Transparency)</td></tr>
+          <tr><td>移轉訂價</td><td>Transfer Pricing (TP)</td></tr>
+          <tr><td>雙重不課稅</td><td>Double Non-Taxation</td></tr>
+          <tr><td>自願要約收購</td><td>Voluntary Tender Offer (VTO)</td></tr>
+          <tr><td>收購價格分攤</td><td>Purchase Price Allocation (PPA)</td></tr>
+          <tr><td>併購後整合</td><td>Post Merger Integration (PMI)</td></tr>
+          <tr><td>商譽 / 減損</td><td>Goodwill / Impairment</td></tr>
+          <tr><td>矩陣式組織</td><td>Matrix Organization</td></tr>
+          <tr><td>可轉換公司債 / 存託憑證</td><td>ECB / GDR</td></tr>
+          <tr><td>阿米巴經營</td><td>Amoeba Management(稻盛和夫)</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sC2">
+      <h2><span class="section-num">C2</span>重點提醒(易踩雷)</h2>
+      <ol>
+        <li><strong>效率要先量化才能管理</strong> — 沒數字就只是感覺(溫度計比喻)</li>
+        <li><strong>先效能後效率</strong> — 目標定錯,越有效率越慘</li>
+        <li><strong>DEA 需要比較對象</strong>;DMU 越多邊界越準;<strong>量體差太多權重會爆</strong></li>
+        <li><strong>DEAP 檔名要簡單英文、大小寫一致</strong>(課堂一半人卡在這)</li>
+        <li><strong>徑向效率 1 ≠ 完全效率</strong> — 可能還有 slack(99 分 vs 100 分)</li>
+        <li><strong>壞產出(污染)要取倒數/平移</strong>,量化資料一定用官方來源</li>
+        <li><strong>財務長先懂公司定位</strong>(微笑曲線哪一段)再決定財務 focus</li>
+        <li><strong>看公司先看現金</strong> — 現金是元氣;獲利 ≠ 現金流入</li>
+        <li><strong>周轉率要配產業特性看</strong>(台積電 0.9 vs 鴻海 19 都正常)</li>
+        <li><strong>財務成本內部化</strong> → 每個 BU 自己管好庫存/應收/固資</li>
+        <li><strong>利潤留哪裡要經得起檢驗</strong>(BEPS 實質性:風險承擔越重、剩餘利潤越多)</li>
+        <li><strong>併購:文化整合是成敗關鍵</strong>;資訊不對稱是最大風險;商譽每年減損測試</li>
+      </ol>
+    </section>
+
+    <section id="sC3">
+      <h2><span class="section-num">C3</span>30 秒口頭複習</h2>
+      <div class="callout callout-quote">
+        <p><strong>上午(林泰宇):</strong>績效評估 = 把效率<strong>量化</strong>。四種方法裡 <strong>DEA</strong> 最實用 — 把效率最高的 DMU 連成<strong>生產邊界</strong>(Farrell 1957 → CCR 1978 固定規模 → BCC 1984 變動規模),邊界上 = 1,邊界內沿徑向改善、再看 slack。<strong>DEAP 軟體</strong>五步驟跑出效率值 + 學習對象(peer)+ 最適投入產出。應用:ESG 環境效率(CO₂/AQI)、多階段 DEA(連結項)。理論脈絡從 MDGs→SDGs、CSR(Sheldon→Bowen→Freeman→Carroll→Elkington)到再生能源功與過。</p>
+        <p><strong>下午(王淑玲):</strong>前台達集團總財務長 35 年實戰。先當<strong>稱職的掌舵者</strong>(願景→共識→策略→執行),用<strong>微笑曲線</strong>定位公司(台積電走附加價值 ROE 33%、鴻海走營收規模 ROE 12.7%),追求<strong>企業價值 EV = 市值+負債−現金</strong>。財務管理<strong>六大支柱</strong>:①透明財報(體檢表、三大周轉率、三率)②多維管理報表(產銷雙面 P&L、財務成本內部計價)③最適稅負(Apple 案例、BEPS、TP、大陸追稅 60 億血淚)④資金資本市場(匯兌四支柱、Net Cash Forecast)⑤M&A(婚姻比喻、PPA、商譽減損、文化整合)⑥矩陣式組織。</p>
+      </div>
+    </section>
+
+    <hr>
+    <div style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
+      <p><strong>本次課程資料</strong></p>
+      <p>上午錄音 4h10m + 下午錄音 2h47m · 簡報:績效評估 91 頁 + 財務管理實務 69 頁</p>
+      <p>整理: 2026-07-25 · 授權: 個人學習用途</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('tocToggle');
+  const progress = document.getElementById('progress');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('.toc a').forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+  const sections = Array.from(document.querySelectorAll('section, .part-banner'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const sectionMap = {};
+  sections.forEach(s => { if (s.id) sectionMap[s.id] = tocLinks.find(l => l.getAttribute('href') === '#' + s.id); });
+  const updateActive = () => {
+    const scrollTop = window.scrollY + 100;
+    let current = sections[0];
+    for (const s of sections) { if (s.offsetTop <= scrollTop) current = s; }
+    tocLinks.forEach(l => l.classList.remove('active'));
+    if (current && sectionMap[current.id]) sectionMap[current.id].classList.add('active');
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / docHeight) * 100;
+    progress.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    let next;
+    if (!current) next = 'dark';
+    else if (current === 'dark') next = 'light';
+    else next = null;
+    if (next) document.documentElement.setAttribute('data-theme', next);
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('notes_theme', next || 'auto');
+  }
+  const savedTheme = localStorage.getItem('notes_theme');
+  if (savedTheme && savedTheme !== 'auto') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+  function copyURL() {
+    navigator.clipboard.writeText(window.location.href).then(
+      () => alert('網址已複製'),
+      () => prompt('請手動複製網址:', window.location.href)
+    );
+  }
+</script>
+</body>
+</html>
