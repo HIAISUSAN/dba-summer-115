@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 5 堂 · AI 導入與服務創新 × 系統動力學 · 115暑期密集課-SUSAN</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --border: #e8e5dd;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #1f3a5f;
+    --accent-light: #e8eff8;
+    --highlight: #fff3cd;
+    --highlight-border: #ffc107;
+    --emerald: #10b981;
+    --emerald-bg: #ecfdf5;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --purple: #7c3aed;
+    --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+    --radius: 12px;
+    --sidebar-width: 264px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f; --surface: #1e1e18; --border: #363630;
+      --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+      --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+      --emerald: #6ee7b7; --emerald-bg: #064e3b;
+      --red: #fca5a5; --red-bg: #4c0f0f;
+      --purple: #c4b5fd; --purple-bg: #3b2557;
+      --amber: #fbbf24;
+      --code-bg: #252520;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f3; --surface: #ffffff; --border: #e8e5dd;
+    --text: #1a1a1a; --text-muted: #6b6b6b; --accent: #1f3a5f;
+    --accent-light: #e8eff8; --highlight: #fff3cd; --highlight-border: #ffc107;
+    --emerald: #10b981; --emerald-bg: #ecfdf5;
+    --red: #dc2626; --red-bg: #fef2f2;
+    --purple: #7c3aed; --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f; --surface: #1e1e18; --border: #363630;
+    --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+    --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+    --emerald: #6ee7b7; --emerald-bg: #064e3b;
+    --red: #fca5a5; --red-bg: #4c0f0f;
+    --purple: #c4b5fd; --purple-bg: #3b2557;
+    --amber: #fbbf24;
+    --code-bg: #252520;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { display: grid; grid-template-columns: var(--sidebar-width) 1fr; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+
+  aside {
+    position: sticky; top: 0; height: 100vh; padding: 24px 18px;
+    border-right: 1px solid var(--border); overflow-y: auto; background: var(--surface);
+  }
+  .side-title {
+    font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .toc { list-style: none; }
+  .toc li { margin-bottom: 2px; }
+  .toc a {
+    display: block; padding: 6px 10px; color: var(--text-muted); text-decoration: none;
+    font-size: 13.5px; border-radius: 6px; transition: all 0.15s; line-height: 1.5;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { background: var(--bg); color: var(--text); border-left-color: var(--accent); }
+  .toc a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+  .toc-num { display: inline-block; width: 24px; color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+  .toc-part {
+    font-size: 12px; font-weight: 700; color: var(--accent); margin: 12px 0 4px;
+    text-transform: uppercase; letter-spacing: 1px; padding-left: 10px;
+  }
+  .sidebar-actions {
+    margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .sidebar-actions button {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
+    text-align: left; font-family: inherit; transition: background 0.15s;
+  }
+  .sidebar-actions button:hover { background: var(--bg); }
+
+  main { padding: 40px 60px 80px; max-width: 940px; }
+  .back-link {
+    display: inline-block; color: var(--text-muted); text-decoration: none;
+    font-size: 13px; margin-bottom: 8px; padding: 4px 0;
+  }
+  .back-link:hover { color: var(--accent); }
+  header.doc-header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 24px; }
+  .doc-eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;
+  }
+  h1 { font-size: 30px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .doc-meta { color: var(--text-muted); font-size: 14px; line-height: 1.9; }
+  .doc-meta strong { color: var(--text); font-weight: 600; }
+  .ai-disclaimer {
+    background: var(--highlight); border-left: 4px solid var(--highlight-border);
+    padding: 10px 16px; margin-bottom: 24px; border-radius: 6px; font-size: 13px; line-height: 1.6;
+  }
+
+  section { margin-bottom: 46px; scroll-margin-top: 20px; }
+  .part-banner {
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    color: #fff; border-radius: var(--radius); padding: 24px 28px; margin: 40px 0 26px;
+    scroll-margin-top: 20px;
+  }
+  .part-banner .pb-eyebrow { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85; margin-bottom: 6px; }
+  .part-banner h2 { border: none; margin: 0; padding: 0; font-size: 25px; color: #fff; }
+  .part-banner .pb-sub { font-size: 14px; opacity: 0.9; margin-top: 8px; line-height: 1.7; }
+
+  h2 {
+    font-size: 23px; font-weight: 700; margin-top: 0; margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+    letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .section-num {
+    color: var(--accent); font-size: 17px; font-weight: 600;
+    font-variant-numeric: tabular-nums; min-width: 40px;
+  }
+  h3 { font-size: 17.5px; font-weight: 700; margin-top: 26px; margin-bottom: 12px; color: var(--accent); }
+  h4 {
+    font-size: 15px; font-weight: 700; margin-top: 18px; margin-bottom: 10px;
+    letter-spacing: 0.4px; color: var(--text-muted);
+  }
+  p { margin-bottom: 12px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; }
+  ul ul, ol ol { margin-top: 6px; margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  em { font-style: normal; color: var(--text-muted); font-size: 0.95em; }
+  code {
+    background: var(--code-bg); padding: 2px 7px; border-radius: 4px;
+    font-family: "SF Mono", Consolas, monospace; font-size: 0.9em; color: var(--accent);
+  }
+  pre {
+    background: var(--code-bg); padding: 16px 20px; border-radius: 8px;
+    overflow-x: auto; margin: 16px 0;
+    font-family: "SF Mono", Consolas, monospace; font-size: 13px; line-height: 1.7;
+    border: 1px solid var(--border);
+  }
+  pre code { background: transparent; padding: 0; color: var(--text); font-size: inherit; }
+
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid; }
+  .callout-key { background: var(--emerald-bg); border-left-color: var(--emerald); }
+  .callout-warn { background: var(--red-bg); border-left-color: var(--red); }
+  .callout-highlight { background: var(--highlight); border-left-color: var(--highlight-border); }
+  .callout-quote { background: var(--accent-light); border-left-color: var(--accent); font-style: italic; font-size: 16.5px; line-height: 1.7; }
+  .callout-teacher { background: var(--purple-bg); border-left-color: var(--purple); }
+  .callout-label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    margin-bottom: 6px; display: block; opacity: 0.9; font-style: normal;
+  }
+
+  .attach-box { background: var(--emerald-bg); border: 1px solid var(--emerald); border-radius: var(--radius); padding: 18px 22px; margin: 18px 0 26px; }
+  .attach-box .callout-label { color: var(--emerald); }
+  .attach-box ul { list-style: none; margin: 8px 0 0 0; padding: 0; }
+  .attach-box li { margin-bottom: 8px; }
+  .attach-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .attach-box a:hover { text-decoration: underline; }
+  .attach-note { font-size: 12.5px; color: var(--text-muted); margin-top: 8px; }
+
+  .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td {
+    padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border);
+    line-height: 1.6; vertical-align: top;
+  }
+  th {
+    background: var(--bg); font-weight: 600; font-size: 13px;
+    letter-spacing: 0.4px; color: var(--text-muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .figure {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; margin: 20px 0; text-align: center; overflow-x: auto;
+  }
+  .figure img { max-width: 100%; height: auto; }
+  .fig-caption { font-size: 13px; color: var(--text-muted); margin-top: 10px; text-align: center; }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li { padding: 8px 0 8px 32px; position: relative; border-bottom: 1px dashed var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "☐"; position: absolute; left: 4px; top: 8px; color: var(--text-muted); font-size: 18px; }
+
+  blockquote {
+    border-left: 4px solid var(--accent); padding: 12px 18px; margin: 16px 0;
+    background: var(--accent-light); border-radius: 4px; font-style: italic; color: var(--text);
+  }
+  blockquote strong { font-style: normal; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  .toggle-toc {
+    display: none; position: fixed; top: 12px; right: 12px; z-index: 100;
+    background: var(--surface); border: 1px solid var(--border); padding: 8px 14px;
+    border-radius: 8px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow);
+    font-family: inherit; color: var(--text);
+  }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside {
+      position: fixed; top: 0; left: 0; width: 290px; z-index: 90;
+      transform: translateX(-100%); transition: transform 0.25s;
+      box-shadow: 0 0 40px rgba(0,0,0,0.25); height: 100vh;
+    }
+    aside.open { transform: translateX(0); }
+    main { padding: 60px 18px 60px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    .toggle-toc { display: block; }
+  }
+  @media print {
+    aside, .toggle-toc, .sidebar-actions { display: none !important; }
+    .app { display: block; }
+    main { max-width: none; padding: 0; }
+    body { font-size: 11.5pt; line-height: 1.5; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 15pt; break-after: avoid; }
+    h3 { font-size: 12.5pt; break-after: avoid; }
+    section { break-inside: avoid-page; }
+    .callout, table, pre, .figure { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .reading-progress {
+    position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+    z-index: 100; width: 0%; transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div id="gate" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit;">
+  <div style="max-width:380px;width:100%;text-align:center;">
+    <div style="font-size:56px;margin-bottom:20px;">🔒</div>
+    <h1 style="font-size:22px;margin-bottom:6px;color:var(--text);">115暑期密集課</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px;font-size:14px;">課程筆記 · 需要密碼進入</p>
+    <form id="gateForm">
+      <input type="password" id="gatePwd" autofocus placeholder="請輸入密碼" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;font-size:16px;background:var(--surface);color:var(--text);font-family:inherit;margin-bottom:12px;outline:none;box-sizing:border-box;">
+      <button type="submit" style="width:100%;padding:13px 16px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">進入</button>
+      <p id="gateErr" style="color:#dc2626;font-size:13px;margin-top:12px;display:none;">密碼錯誤,請再試一次</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dba115_unlocked';
+  var gate=document.getElementById('gate');
+  if(localStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  document.body.style.overflow='hidden';
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('gatePwd').value==='DBA'){
+      localStorage.setItem(KEY,'1');
+      gate.style.display='none';
+      document.body.style.overflow='';
+    }else{
+      document.getElementById('gateErr').style.display='block';
+      var p=document.getElementById('gatePwd');p.value='';p.focus();
+    }
+  });
+})();
+</script>
+
+<div class="reading-progress" id="progress"></div>
+<button class="toggle-toc" id="tocToggle">☰ 目錄</button>
+
+<div class="app">
+  <aside id="sidebar">
+    <div class="side-title">章節目錄</div>
+    <ul class="toc">
+      <li><a href="./index.html" style="border-left-color: var(--accent);">← 回課程總覽</a></li>
+      <li><a href="#s0">回到頁首</a></li>
+      <li class="toc-part">上午 · AI 導入企業(個案研討)</li>
+      <li><a href="#pA"><span class="toc-num">A</span>總覽 + 個案附件</a></li>
+      <li><a href="#sA1"><span class="toc-num">1</span>一頁速覽</a></li>
+      <li><a href="#sA2"><span class="toc-num">2</span>第一關:資料</a></li>
+      <li><a href="#sA3"><span class="toc-num">3</span>堤維西 AI 師傅 ★★</a></li>
+      <li><a href="#sA4"><span class="toc-num">4</span>AI 救老人 · 情境 ★★</a></li>
+      <li><a href="#sA5"><span class="toc-num">5</span>保險業的 AI 軍師</a></li>
+      <li><a href="#sA6"><span class="toc-num">6</span>亞馬遜 Amelia</a></li>
+      <li><a href="#sA7"><span class="toc-num">7</span>服務導向思維 ★★</a></li>
+      <li><a href="#sA8"><span class="toc-num">8</span>組織的 AI 準備</a></li>
+      <li><a href="#sA9"><span class="toc-num">9</span>Bayer 生態系 ★★</a></li>
+      <li class="toc-part">下午 · 服務創新 × 系統動力學</li>
+      <li><a href="#pB"><span class="toc-num">B</span>總覽 + 附件</a></li>
+      <li><a href="#sB1"><span class="toc-num">10</span>午餐閒聊:選題建議</a></li>
+      <li><a href="#sB2"><span class="toc-num">11</span>動態需求與「情境」</a></li>
+      <li><a href="#sB3"><span class="toc-num">12</span>終身管家 · 顧客教育</a></li>
+      <li><a href="#sB4"><span class="toc-num">13</span>無力感與多樣性 ★★</a></li>
+      <li><a href="#sB5"><span class="toc-num">14</span>系統動力學入門 ★★★</a></li>
+      <li><a href="#sB6"><span class="toc-num">15</span>體重控制 CLD 練習 ★★</a></li>
+      <li><a href="#sB7"><span class="toc-num">16</span>系統基模兩式</a></li>
+      <li class="toc-part">總結</li>
+      <li><a href="#sC1"><span class="toc-num">17</span>中英術語對照</a></li>
+      <li><a href="#sC2"><span class="toc-num">18</span>重點提醒</a></li>
+      <li><a href="#sC3"><span class="toc-num">19</span>待確認 / 課後做</a></li>
+      <li><a href="#sC4"><span class="toc-num">20</span>30 秒口頭複習</a></li>
+      <li><a href="#sC5"><span class="toc-num">21</span>場外插曲</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <button onclick="window.print()">🖨️ 列印 / PDF</button>
+      <button onclick="toggleTheme()">🌓 切換主題</button>
+      <button onclick="copyURL()">🔗 複製網址</button>
+    </div>
+  </aside>
+
+  <main>
+    <a href="./index.html" class="back-link">← 回課程總覽</a>
+    <header class="doc-header" id="s0">
+      <div class="doc-eyebrow">DBA · 115 暑期密集課 · 第 5 堂(個案教學日)</div>
+      <h1>AI 導入與服務創新 × 系統動力學</h1>
+      <div class="doc-meta">
+        <strong>日期:</strong> 2026-07-26(週日)· 09:21 開錄,約 15:50 下課(全日約 6.5 小時)<br>
+        <strong>授課:</strong> 資訊管理 / 服務科學背景教授(單一講師全日;姓名待確認,見「待確認」)<br>
+        <strong>上午:</strong> AI 導入企業 — 8 個個案接力(資料 → 內隱知識 → 情境 → 平台 → 組織 → 生態系)<br>
+        <strong>下午:</strong> 服務創新(動態需求、顧客教育、無力感與多樣性)+ 系統動力學入門與練習<br>
+        <strong>整理方式:</strong> 以課堂錄音逐字稿為主軸,佐以老師提供的 10 份個案文章校正公司名與數字
+      </div>
+    </header>
+
+    <div class="ai-disclaimer">
+      ⚠️ <strong>本筆記由 AI 聲音辨識後自動整理</strong>,內容可能有錯字、聽錯、或漏掉細節。<strong>請以老師實際講授為準</strong>,自行判斷取用。
+    </div>
+
+    <!-- ====================== PART A ====================== -->
+    <div class="part-banner" id="pA">
+      <div class="pb-eyebrow">Part A · 上午場</div>
+      <h2>AI 導入企業:從資料、個案到生態系</h2>
+      <div class="pb-sub">個案教學:老師丟情境、全班討論 → 資料是第一關 → 堤維西 / 銀髮安居 / 保險 / 亞馬遜 → 服務導向思維 → 組織準備 → Bayer 小酪農生態系</div>
+    </div>
+
+    <div class="attach-box">
+      <span class="callout-label">📎 上午個案文章(老師提供,天下雜誌 CWM / HBR)</span>
+      <ul>
+        <li>📁 <a href="https://drive.google.com/drive/folders/1XJUJERH2jDmYeidPUHP4ldsAdcJUFQsJ?usp=drive_link" target="_blank" rel="noopener">本堂個案資料夾「5.AI」(Google Drive,含全部 PDF)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1EY767SOxWgC-bXoc2WHLyFiPcXCwkL53/view" target="_blank" rel="noopener">堤維西「AI師傅」救缺工、傳技術(天下 2024-07-24)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1n3ZD6D2mH98kEufxctsr2dVJYPegN8eK/view" target="_blank" rel="noopener">63歲處長 AI救老人 — 銀髮安居專案(天下 2024-10-02)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1R_dRnn3hL_HSn4VcxAUFj_lJQngQ6cXp/view" target="_blank" rel="noopener">保險業的AI軍師(天下 2024-03-20)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1wLibGYmv4T4HTKx5J2eqbedtFoiGnrAP/view" target="_blank" rel="noopener">亞馬遜AI幫手 Amelia,讓賣家不跳槽(天下 2024-10-16)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1ofTi_o7M8uhlWmej8hr8vtdE0vcwUVEo/view" target="_blank" rel="noopener">國泰人壽「全員GAI計劃」董總都要上家教(天下 2024-11-13)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1IeURFmh_TElDORhf9zR_uzw_keaZ5GgM/view" target="_blank" rel="noopener">鉅鋼機械:員工搶學ChatGPT,優化流程快五倍(天下 2024-11-13)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1MLYC9DxkTVCB1mxzbYBS5mT4qTZf3pXe/view" target="_blank" rel="noopener">AI代理人幫你決策(天下 2024-12-11)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1kTOt8QsDcZ4P54NC-1gWy4BMDGmntyR2/view" target="_blank" rel="noopener">Why Sharing Economic Growth with the Community Is Good Business — Bayer 小酪農個案(HBR 2022-10-25)</a></li>
+        <li>🎥 <a href="https://drive.google.com/drive/folders/1lB7qVN6bpHEKwxDlL8cDrW_hSFbIBywj" target="_blank" rel="noopener">上課影片(Google Drive 資料夾)</a></li>
+      </ul>
+      <div class="attach-note">開啟 Google Drive 附件可能需要登入 Google 帳號。</div>
+    </div>
+
+    <section id="sA1">
+      <h2><span class="section-num">1</span>一頁速覽:今天走了哪條路</h2>
+      <pre>AI 導入為什麼難?第一關永遠是「資料」(定義、品質、偏見)
+   ↓
+堤維西:老師傅的內隱知識 → AI 師傅(知識變企業資產)
+   ↓
+銀髮安居:同一份台電電表資料,放進「情境」才變黃金
+   ↓
+保險業:健康分、Lemonade — AI 重寫核保與理賠
+   ↓
+亞馬遜 Amelia:平台經濟的 AI 服務化
+   ↓
+服務導向思維:客戶買的不是產品,是服務 → 能租絕不賣
+   ↓
+組織準備:國泰(董事長上家教)、鉅鋼(先好玩再有用)、IT 當翻譯官
+   ↓
+Bayer 小酪農:技術 + 金融 + 通路 → 生態系三贏
+   ↓ (午餐:選題與質性/量化的真心話)
+下午:需求是動態的(情境 = 時間+地點+事件)
+   ↓
+顧客教育要找對「決策者」 → 無力感顧客要多樣性或自主感
+   ↓
+系統動力學:回饋圈 + 時間 → 體重控制 CLD 練習 → 基模兩式</pre>
+    </section>
+
+    <section id="sA2">
+      <h2><span class="section-num">2</span>AI 導入的第一關:資料</h2>
+      <h3>「華盛頓」是誰?— 資料定義的地獄</h3>
+      <p>老師開場的第一個重點:企業導入 AI,最先卡住的幾乎都不是演算法,而是<strong>資料</strong>。他舉「華盛頓」為例 — 同一個詞,可能是美國國父、一個州、一個城市、一所大學。跨部門要整合資料時,光是<strong>把每個欄位的定義講清楚、對齊,就可能花上三個月</strong>,而且各部門還會互踢皮球,誰都不想當那個要改格式的人。</p>
+      <ul>
+        <li>很多公司<strong>連自己的資料放在哪裡都不知道</strong> — IT 搬過幾次家、換過幾套系統,歷史資料就散了</li>
+        <li>缺工也是推力:不只製造業,連水電師傅都又貴又難找 — 把 SOP 交給 AI 執行,是各行各業都在想的事</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">資料偏見:AI 的原罪</span>
+        資料不好,AI 再強都沒用,甚至有害。課堂例子:<strong>醫療 AI 的訓練資料以白人為主</strong>,對其他族裔的判讀就系統性失準 — 你以為它中立,它只是複製了資料裡的偏見。做研究、做導入,先問一句:<strong>這些資料代表誰?漏掉了誰?</strong>
+      </div>
+      <div class="callout callout-key">
+        <span class="callout-label">AI 判讀 vs 自己的直覺</span>
+        老師的立場:不要全信,也不要全不信,<strong>往中間靠</strong>。就像天氣預報說會下雨,你開車上路還是會自己看天色 — 用資料當決策核心,但管理者的經驗用來校準它。
+      </div>
+    </section>
+
+    <section id="sA3">
+      <h2><span class="section-num">3</span>個案:堤維西「AI 師傅」— 內隱知識與技術傳承</h2>
+      <p><em>個案:天下雜誌 2024-07-24。台南車燈大廠堤維西(TYC),全球售後維修(AM)車燈市場領頭羊,年產 3,000 萬件。</em></p>
+      <h3>問題:缺工 + 老師傅要退休了</h3>
+      <ul>
+        <li>AM 訂單特性是<strong>多樣少量</strong>:不斷「換模具 → 試產 → 量產 → 再換模具」,過去每次試產調機要 <strong>2.5 小時</strong>,而且一部機台有數十種參數互相干擾</li>
+        <li>「為什麼隔天才能做?因為唯一會調這台機的工程師那天請假」 — 技術鎖在<strong>人</strong>身上</li>
+        <li>導入 AI 模型調機後,每次試產<strong>不到 1 小時</strong>(約原本的三分之一);再用十年銷售資料訓練模型,從 3 萬種品項挑 4,300 款預測接單、提前備產</li>
+      </ul>
+      <h3>課堂重點:內隱知識(Tacit Knowledge)</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">80 / 20 法則(知識版)</span>
+        老師:<strong>能寫成文字的知識,從來沒有超過兩成;八成都在老師傅的腦袋和手感裡</strong>。SOP 寫得再細,寫不出「手一摸就知道模溫不對」。AI 的價值就在這:用感測器和數據把內隱知識「挖」出來 —— 而且挖出來之後,<strong>知識就從個人資產變成企業資產</strong>(institutionalization,知識制度化)。老師傅退休,公司不再跟著失憶。
+      </div>
+      <ul>
+        <li>延伸:工業 4.0 的「<strong>複製工廠</strong>」— 以前開新廠,老師傅每個月飛越南手把手教;現在把 know-how 數位化,工廠可以「整廠複製」,跨國、跨語言的新手都能加速上手</li>
+        <li>堤維西三心法(個案側欄):①盡快佈局 ②加強溝通(<strong>IT 部門跳出來當 PM</strong>,當產線與 AI 團隊的翻譯)③轉換觀念(AI 不是工具,是幫你找盲點的夥伴)</li>
+      </ul>
+    </section>
+
+    <section id="sA4">
+      <h2><span class="section-num">4</span>個案:AI 救老人 — 「情境」才是 AI 應用的關鍵</h2>
+      <p><em>個案:天下雜誌 2024-10-02。內政部統計處(只有 24 名公務員、九成會寫程式)的「銀髮安居」專案。</em></p>
+      <h3>故事本體</h3>
+      <ul>
+        <li><strong>第一期:</strong>機器學習比對戶籍、建物、身心障礙、中低收入戶等 <strong>1.5 億筆</strong>跨領域資料,篩出全台千名最需要長照的獨居長者 → 衛福部挨家挨戶訪查,<strong>命中率高達七成</strong>,還幫 14 位長輩找到新住處。以前是等醫院、社區「通報」才知道</li>
+        <li><strong>第二期(銀髮安居 2.0):</strong>與台電合作 — 獨居長輩的老宅<strong>「明明是晚上,卻遲遲沒開燈」</strong>,系統跳出警示,關懷人員趕到,發現長輩在廁所跌倒一天爬不起來。目前在新北雙溪、林口 3 千戶試驗,分析每日上億筆智慧電表數據</li>
+        <li>背後的苦功:統計處花<strong>七年</strong>清資料、建「<strong>地址識別碼</strong>」(地址的身分證字號),才串得起全台資料 — 再次呼應第 2 節:資料整備是一切的前提</li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">課堂核心觀念:特定社會情境(Context)</span>
+        台電的電表資料本來只是「用電紀錄」,<strong>放進「獨居長者安全」這個特定社會情境,同一份資料就變成黃金</strong>。老師整天反覆講:AI 應用的關鍵不是模型,是你有沒有找到對的情境。
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">最意外的發現:親情</span>
+        同一團隊 2015 年做過假釋預測模型:分析犯人罪名、婚姻、獄中表現等 200 多個變項、30 萬筆資料,發現影響<strong>更生人再犯率</strong>的關鍵因素之一,竟然是「<strong>在獄中有沒有家人來探望</strong>」。「沒有交叉比對,誰會想到是這個原因?」— 資料會告訴你直覺想不到的事。
+      </div>
+    </section>
+
+    <section id="sA5">
+      <h2><span class="section-num">5</span>個案:保險業的 AI 軍師</h2>
+      <p><em>個案:天下雜誌 2024-03-20。台灣 175 家金融保險機構約 47% 已採行 AI。</em></p>
+      <h3>健康分:像信用分數一樣的健康評等</h3>
+      <ul>
+        <li>傳統核保「一刀切」:慢性病、高齡直接列高風險甚至拒保。但課堂的例子 — <strong>50 歲還在跑鐵人三項的人,可能比 40 歲天天麥當勞的宅男健康得多</strong>,一刀切根本評不出來</li>
+        <li>Lydia AI 的「<strong>健康分</strong>」:用健保存摺、穿戴裝置資料推算個人健康評等 — 像信用分數不揭露你的消費明細,健康分也不用交出病歷,<strong>兼顧精準與隱私</strong>;台壽、國壽、新壽都開始採用</li>
+        <li>美國 Lemonade(檸檬汁):AI 機器人聊天式投保,<strong>90 秒完成保單定價、理賠最快 3 秒</strong>入帳(先用 AI 詐騙檢測)</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">偏見與法規,又來了</span>
+        國外曾有「<strong>開紅色車的人保費比較高</strong>」這種歧視性定價 — 資料相關性 ≠ 該拿來定價的因果。加上法規永遠跟不上技術(Life2vec 預測死亡歲數比業者準 11 個百分點,保險倫理直接炸鍋),<strong>演算法公平性</strong>是這個行業的未爆彈。資料歸屬權也一樣:資料愈多模型愈準,但資料是誰的?
+      </div>
+    </section>
+
+    <section id="sA6">
+      <h2><span class="section-num">6</span>個案:亞馬遜 AI 幫手 Amelia — 平台經濟的 AI 服務化</h2>
+      <p><em>個案:天下雜誌 2024-10-16。第三方賣家佔亞馬遜電商銷售 61%,平台服務年創 1,400 億美元業績。</em></p>
+      <ul>
+        <li>痛點:服務費太貴,賣家被 <strong>Temu</strong> 低價挖走(同款行動電源便宜 15–35%)。亞馬遜的選擇:<strong>不降價,改派 AI 當賣家的免費軍師</strong></li>
+        <li><strong>Amelia 三招:</strong>①即時數據分析(問「我業績如何?」直接彙整銷售額、流量、轉換率給趨勢)②庫存預測 + 行銷建議 ③營運疑難雜症一站解決(貨品卡在物流,AI 直接查內部系統)</li>
+        <li>課堂舉的例子:<strong>母親節賣花</strong> — AI 幫你改關鍵字、改話術,消費者是用關鍵字在搜尋的,標題寫對比什麼都重要<em>(個案原文用的是耶誕節服飾的例子,邏輯相同)</em></li>
+      </ul>
+      <div class="callout callout-quote">
+        <span class="callout-label">AWS 的老哲學</span>
+        亞馬遜前高階主管:別人問「能不能再複製一個 AWS?」,但亞馬遜問自己的是 —「<strong>下一個可以嘗試解決的重大客戶問題是什麼?</strong>」Amelia 就是這句話的最新答案:把賣家的痛點變成黏著度。
+      </div>
+    </section>
+
+    <section id="sA7">
+      <h2><span class="section-num">7</span>服務導向思維:客戶買的不是產品,是服務</h2>
+      <div class="callout callout-key">
+        <span class="callout-label">今天上午最重要的一句話</span>
+        <strong>可口可樂賣的不是飲料,是「解渴(和爽感)」這個服務;賓士賣的不是車,是「把你舒適地從 A 送到 B」這個服務。</strong>一旦這樣想,產品只是服務的載體 — 整個商業模式都會跟著改。
+      </div>
+      <h3>「能租絕不賣」</h3>
+      <ul>
+        <li>賣斷是一次性交易,關係就斷了;<strong>租(訂閱)讓你跟客戶保持終身關係</strong>,還能持續收集使用資料 — ERP 軟體全面走向訂閱制就是這個邏輯</li>
+        <li>水壺裝<strong>感測器</strong>:知道你喝多少水、提醒你喝水,濾芯到期自動通知(順便再賣你一顆) — 產品變成服務的入口</li>
+        <li>賣花的別只在情人節搶當天生意:記住客戶的紀念日,<strong>提前提醒 + 送到府</strong>,把「一年一次的交易」變成「終身代管你的重要日子」</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師的親身見證:Google 救了我一命</span>
+        老師說他自己就被 Google「服務」過:系統從他的信件和行事曆知道重要日子快到了,主動跳提醒 — 他才想起來要送禮,趕緊準備了<strong>珍珠耳環</strong>,老婆龍心大悅。「它不是在賣我廣告,它是在經營我的人生 — 這就是服務導向。」(全班大笑)
+      </div>
+    </section>
+
+    <section id="sA8">
+      <h2><span class="section-num">8</span>組織的 AI 準備:人、心態、翻譯官</h2>
+      <h3>兩個台灣企業的做法(個案)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>公司</th><th>做法</th><th>關鍵數字</th></tr></thead>
+        <tbody>
+          <tr><td><strong>國泰人壽</strong><br><em>(天下 2024-11-13)</em></td><td>「全員 GenAI 公民」三步:①73 名數據種子回訓 ②法遵/風控內控專班 ③<strong>30 多位副總以上一對一家教班,連董事長都要上課</strong> — 高層先有感,才能想像 AI 用在哪</td><td>9 個月 50 學分;認證人才 200+;理賠 4–5 個 AI 模型,理賠等待 7 天 → 2–3 天</td></tr>
+          <tr><td><strong>鉅鋼機械</strong><br><em>(天下 2024-11-13)</em></td><td>老傳產(1976 年成立)的「溫水煮青蛙」:先讓 AI <strong>好玩</strong>(ChatGPT 分享會)再讓它<strong>有用</strong>;十年不間斷內訓文化</td><td>ChatGPT 發布沒多久就 30+ 員工主動要學;用 Copilot 開發機台軟體,1.5 個月 → 2 週</td></tr>
+        </tbody>
+      </table></div>
+      <h3>IT 人的新定位:翻譯官</h3>
+      <div class="callout callout-teacher">
+        <span class="callout-label">學燒烤三個月的工程師</span>
+        老師的朋友接了餐飲業的系統案,<strong>先跑去學了三個月燒烤</strong>才動手寫 — 不懂領域,寫出來的系統一定不能用。IT 人員的價值不只是會寫程式,是能站在兩個世界中間,把產線(或櫃檯、或廚房)的語言翻譯給技術團隊聽。堤維西、國泰的個案都在講同一件事:<strong>橋樑比引擎稀缺</strong>。
+      </div>
+      <h3>課堂延伸討論</h3>
+      <ul>
+        <li><strong>AI coding 的版權問題:</strong>生成的程式碼可能夾帶開源授權(GPL 等)義務,企業用 AI 寫程式要注意授權標註與合規</li>
+        <li><strong>地端 vs 雲端:</strong>營業秘密敏感的資料,很多企業堅持地端(on-premise)佈署 — 便利與機密的取捨</li>
+        <li>「AI 不會取代人,但 <strong>AI 會取代不用 AI 的人</strong>」(國泰個案裡的名言,老師也引用了)</li>
+      </ul>
+    </section>
+
+    <section id="sA9">
+      <h2><span class="section-num">9</span>個案:Bayer 小酪農生態系 — 把窮人變成你的成功客戶</h2>
+      <p><em>個案:HBR 2022-10-25(作者含平衡計分卡之父 Robert Kaplan)。墨西哥東南部與中美洲的小酪農,典型一戶 25–30 頭牛。</em></p>
+      <h3>問題:旱季一到,一切都掉</h3>
+      <ul>
+        <li>雨季(4–11 月)草夠吃;<strong>旱季</strong>只能餵作物殘株和昂貴草捆 → 牛隻減重達 90 公斤(體重 20–25%)、<strong>產奶量掉 50%</strong>、生病、繁殖率下降 — 年年如此,窮者恆窮</li>
+      </ul>
+      <h3>解法:技術 + 金融 + 通路,三合一</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>環節</th><th>做法(課堂 + 個案)</th></tr></thead>
+        <tbody>
+          <tr><td><strong>① 技術</strong></td><td>教酪農在雨季種玉米、未熟先採做<strong>玉米青貯(silage)</strong>發酵儲存,旱季餵 — 成本比草捆低 50–75%,營養還更高;用示範田(pilot plots)眼見為憑,改變「種田地位比養牛低」的心態</td></tr>
+          <tr><td><strong>② 金融</strong></td><td>買不起農機?與<strong>在地銀行</strong>合作租賃、<strong>免頭期款</strong>;買了機器的酪農還能<strong>轉租給鄰居</strong> — 共享經濟,一台機器養活一個聚落</td></tr>
+          <tr><td><strong>③ 通路</strong></td><td>產奶穩定之後,Bayer 牽線讓酪農成為雀巢、Dos Pinos 等<strong>大型加工廠的可靠在地供應商</strong>,取代千里外運來的奶粉</td></tr>
+        </tbody>
+      </table></div>
+      <h3>三贏成果</h3>
+      <ul>
+        <li>酪農:餵養成本 76,000 → 54,000 披索,營收 120,000 → 200,000 披索,<strong>每月多賺約 1,000 美元</strong></li>
+        <li>Bayer:種子與作物保護產品銷量增加 — <strong>這不是慈善,是可規模化的生意</strong></li>
+        <li>規模:2016–2022 青貯面積年複合成長 <strong>152%</strong>(1 萬 → 12 萬+ 公頃),42,000 名酪農參與,累計省 5.5 億美元飼料費</li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">課堂總結:生態系的本質是互信</span>
+        老師強調這個個案的關鍵不是任何單一技術,而是<strong>把小農當「客戶」而不是「受助者」</strong>,用示範田建立互信、用金融工具排除門檻、用通路保證出海口 — 服務導向思維(第 7 節)的極致版:你把客戶服務到成功,生態系自然長出來。
+      </div>
+    </section>
+
+    <!-- ====================== PART B ====================== -->
+    <div class="part-banner" id="pB">
+      <div class="pb-eyebrow">Part B · 下午場</div>
+      <h2>服務創新 × 系統動力學入門</h2>
+      <div class="pb-sub">動態需求(情境)→ 顧客教育 → 無力感與多樣性 → 系統動力學:回饋圈、體重控制練習、基模兩式</div>
+    </div>
+
+    <div class="attach-box">
+      <span class="callout-label">📎 下午個案文章(HBR)</span>
+      <ul>
+        <li>📰 <a href="https://drive.google.com/file/d/1-vkXvjsRXr0zg_-wQXab6QKlKF4VTpaF/view" target="_blank" rel="noopener">Keeping Up with Customers' Increasingly Dynamic Needs — 顧客動態需求與生活中心戰略(HBR 2022-09-27)</a></li>
+        <li>📰 <a href="https://drive.google.com/file/d/1tOTBUyR7q6Yno9K1PUlJ6YWwPX0gbC-B/view" target="_blank" rel="noopener">When Consumers Feel Less Powerful, They Seek More Variety — 無力感消費者尋求多樣性(HBR 2022-10-19)</a></li>
+        <li>🎥 <a href="https://drive.google.com/drive/folders/1lB7qVN6bpHEKwxDlL8cDrW_hSFbIBywj" target="_blank" rel="noopener">上課影片(Google Drive 資料夾)</a></li>
+      </ul>
+      <div class="attach-note">系統動力學部分為老師課堂軟體示範與投影片,課堂畫面見第 15、16 節的照片。</div>
+    </div>
+
+    <section id="sB1">
+      <h2><span class="section-num">10</span>午餐閒聊:給 DBA 的選題真心話</h2>
+      <p>午餐時間老師和同學圍著聊研究,含金量意外地高,整理如下:</p>
+      <ul>
+        <li><strong>選題兩要素:</strong>找<strong>自己的強項</strong>(你比別人懂的產業、握得到的資料),再看<strong>大家的興趣</strong>(期刊、審稿人此刻關心什麼)— 兩個圈的交集才是好題目</li>
+        <li><strong>質性 vs 量化:</strong>老師自己質性、量化都發過頂級期刊,但他給台灣學生的誠實建議是<strong>優先考慮量化</strong> — 質性研究拚的是文字功力,英文非母語者投國際期刊先天吃虧;量化讓數字替你說話</li>
+        <li><strong>老師自己的故事:</strong>他原本是作業研究/資訊背景,被博士指導教授「騙」進質性研究 —「他跟我說做做看,做下去才知道是不歸路」(全場大笑)</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">研究是磨出來的</span>
+        老師的戰記:曾為一篇論文 coding 資料 coding 了 <strong>24 個月</strong>;也曾和共同作者意見不合,<strong>在車上對罵一小時</strong> — 罵完反而變成最好的研究夥伴。「合作走得久,靠的不是客氣,是把話講開。」
+      </div>
+    </section>
+
+    <section id="sB2">
+      <h2><span class="section-num">11</span>動態需求:情境 = 時間 + 地點 + 事件</h2>
+      <p><em>對應個案:HBR〈顧客動態需求〉(Accenture Song 兩位作者)。</em></p>
+      <div class="callout callout-key">
+        <span class="callout-label">核心公式</span>
+        <strong>情境(situation)= 時間 + 地點 + 事件。</strong>同一個人在不同情境下,是完全不同的顧客 — 推薦系統若不懂情境,再準也是白準:<strong>下午三點推薦我牛排大餐是沒有用的</strong>,那個時間我想要的是下午茶。
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">變形蟲教授</span>
+        老師自嘲:在學校他是嚴肅的教授,回家陪小孩玩,可以扮成<strong>變形蟲</strong>在地上滾,還被老婆拍照 PO 網。「同一個我,兩個情境,兩種完全不同的『顧客需求』— 你的系統看得出來嗎?」
+      </div>
+      <h3>相關性的半衰期(HBR 數據)</h3>
+      <ul>
+        <li>20 年前一首歌平均在 Billboard 百大待 <strong>20 週</strong>,現在只剩約 <strong>2 週</strong>;S&P 500 企業平均壽命 32 年(1965)→ 21 年(2020)</li>
+        <li>60% 消費者說人生優先順序正在改變;近七成認為「行為前後不一致很正常」 — 顧客在做<strong>矛盾的決策</strong>(要環保也要便宜)</li>
+        <li>HBR 的解方:從顧客中心升級到<strong>生活中心(life centricity)</strong> — See(看見顧客完整人生)/ Solve(為變動情境解題)/ Simplify(讓顧客決策更簡單);做到的企業年成長率平均高 <strong>9 個百分點</strong></li>
+      </ul>
+    </section>
+
+    <section id="sB3">
+      <h2><span class="section-num">12</span>生命週期 · 終身管家 · 顧客教育</h2>
+      <h3>需求跟著生命週期走</h3>
+      <ul>
+        <li>課堂例:<strong>GABA(助眠成分)</strong> — 20 歲的你不需要,40 歲失眠的你搶著買。同一個產品,對同一個人,在人生不同階段的「相關性」完全不同</li>
+        <li>所以要<strong>全方位了解顧客</strong>、當顧客的「<strong>終身管家</strong>」:不是等他來買,是在他人生走到那一站時,你已經在月台上等他(呼應上午的「能租絕不賣」)</li>
+      </ul>
+      <h3>顧客教育:先搞清楚要教「誰」</h3>
+      <div class="callout callout-teacher">
+        <span class="callout-label">一千元的吸管與外婆的馬克杯</span>
+        老師的例子:年輕人買千元環保吸管、設計款馬克杯送外婆,外婆嘴上說「花這什麼錢」,還是天天用。<strong>顧客教育的對象不是外婆(使用者),是孫子(決策者)</strong> — 打錯對象,行銷預算全部丟水裡。同一邏輯:裝潢公司要「教育」的是被設計師專訪、雜誌洗腦到願意花百萬的<strong>太太</strong>,不是付錢的先生。
+      </div>
+    </section>
+
+    <section id="sB4">
+      <h2><span class="section-num">13</span>無力感顧客與多樣性:power、自主感、授權</h2>
+      <p><em>對應個案:HBR〈When Consumers Feel Less Powerful, They Seek More Variety〉。理論底:補償性消費(compensatory consumption)。</em></p>
+      <h3>研究發現</h3>
+      <ul>
+        <li><strong>感到無力(powerless)的消費者,會下意識用「更多樣」的選擇來補償自主感</strong>:實驗操縱權力感(回憶經驗、指派主管/部屬角色、甚至只是坐矮椅子),無力組一致更愛綜合包、拼盤;面對高多樣性選項時購買意願<strong>高出 20%</strong></li>
+        <li>反過來,<strong>有權力的顧客不需要多樣性</strong> — 課堂例:老師那位有辦法的朋友上龍蝦料理店,菜單看都不看,<strong>直接把主廚叫出來下指導棋</strong>客製一桌。他不需要選擇,因為他有 power</li>
+        <li>提升<strong>自主感</strong>可以消除這個效應:賦權式標語(Burger King「Have it your way」)、可客製的馬克杯 — 不用真的給權力,給「自主的感覺」就有效</li>
+      </ul>
+      <h3>對業者的啟發(課堂討論)</h3>
+      <ul>
+        <li>客群無力感重(不景氣、低薪、資淺)時:①<strong>增加品項多樣性</strong> — 甚至是低成本的「偽多樣性」:香草加芒果就是新口味 ②做不到就走<strong>自主感路線</strong>:標語、客製化</li>
+        <li><strong>自主性要成立的三原則:</strong>有趣、跟自己的生命相關、做得到 — 老師拿自己打羽球當例子:全身是傷還在打,因為三個條件全中(全場笑)</li>
+        <li><strong>個人化服務的前提是「授權」:</strong>顧客要客製,第一線服務員要有權力答應 — 如果每件事都要「問店長、問主廚」,個人化就是空話。組織設計(授權)先行,個人化才可能</li>
+      </ul>
+    </section>
+
+    <section id="sB5">
+      <h2><span class="section-num">14</span>系統動力學(System Dynamics)入門</h2>
+      <h3>師承:這門課的血統很純</h3>
+      <ul>
+        <li>創始人 <strong>Jay Forrester</strong>(MIT,數學/控制工程背景,活到近百歲):把<strong>控制理論 + 資訊回饋理論</strong>帶進管理,在 MIT Sloan 開創系統動力學</li>
+        <li><strong>John Sterman</strong>(MIT)是當代掌門人;<strong>老師的老師是 Forrester 的第一代學生</strong> — 老師修課時教室裡坐的都是大師</li>
+        <li>老師的學長靠 SD 拿下<strong>紐約州政府 1,000 萬美金</strong>的水資源管理研究案 — 這方法能做到政策級的大案子</li>
+      </ul>
+      <h3>世界觀:複雜系統沒有單一原因</h3>
+      <ul>
+        <li><strong>政策抗拒(policy resistance):</strong>表面有用的政策反而讓狀況更糟 — 經典例:<strong>無紙化辦公室</strong>推印表機普及,結果紙用得更多;管教小孩越管越糟;台灣少子化補助(學費、保姆費、房租)如果沒打在真正的結點上,「補不到的人無感,政策一點用都沒有」</li>
+        <li><strong>回饋迴圈(feedback loop):</strong>你做的事會繞一圈回頭影響你自己 — 心情不好去喝酒 → 宿醉 → 心情更差 → 喝更多(惡性循環);讀書有興趣 → 願意花時間 → 成績好 → 更有興趣(良性循環)</li>
+        <li><strong>系統性思考 = 見樹又見林:</strong>「把樹林裡該看的東西都看完,再做決定」</li>
+        <li><strong>內生 vs 外生:</strong>教室很熱,解釋成「因為外面天氣熱」= 白講(外生,不可控);解釋成「冷氣功率不夠、風扇位置不對」才有用(內生,可調整)。「全靠外部解釋,就像假設自己買對彩券就能退休」</li>
+      </ul>
+      <h3>方法原則(老師版)</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">三條使用守則</span>
+        ① <strong>Keep it simple</strong> — 第一輪只講最簡單的故事,合理了再加複雜度;而且「簡單」的標準是<strong>對你的聽眾簡單</strong>。② 管理領域的 SD <strong>只用加減乘除</strong> — 不用嚇人的數學。③ 追求<strong>趨勢正確,不追求數字精確</strong> — 我們要的是方向和形狀,不是小數點。
+      </div>
+      <ul>
+        <li><strong>適用時機:</strong>問題夠複雜(多因素交互)+ <strong>跟時間有關</strong>(維持婚姻 3 年和 20 年是不同問題)+ 你要的是趨勢不是精確值</li>
+        <li><strong>SD 的價值底線:</strong>就算找不到最好的策略,至少能告訴你<strong>哪些策略沒有用</strong>,不要浪費時間和資源去實行</li>
+        <li>規模感:碩士入門等級的 SD 模型,變數就會超過 <strong>200</strong> 個;學長那個千萬美金案估計上萬個變數,要靠專用軟體跑</li>
+      </ul>
+    </section>
+
+    <section id="sB6">
+      <h2><span class="section-num">15</span>全班練習:體重控制的因果迴路圖(CLD)</h2>
+      <p>老師出題:「用<strong>最簡單的故事</strong>畫體重控制」— 同學搶答「白飯不要吃」「走路上課」都被打槍:太多了,第一輪只留兩個變數 — <strong>吃(卡路里攝取)和動(卡路里消耗)</strong>。</p>
+      <h3>畫圖的規矩</h3>
+      <ul>
+        <li><strong>箭頭是因果,不是相關:</strong>「天氣熱謀殺率高」是相關;要拆成 氣溫↑ → 脾氣爆炸 → 衝突↑ → 犯罪率↑ 才是直觀的因果鏈</li>
+        <li><strong>箭頭上標正負號:</strong>正號 = 同方向變動(「老婆開心,我就更開心」);負號 = 反方向變動(節食慾望↑ → 卡路里攝取↓)</li>
+      </ul>
+      <h3>兩個平衡迴圈(Balancing Loop)</h3>
+      <div class="figure">
+        <img src="./img/class05_weight_cld.jpg" alt="課堂 Vensim 畫面:體重控制因果迴路圖,左為節食迴圈 B1,右為運動迴圈 B2">
+        <div class="fig-caption">課堂實機畫面(SD 軟體 Vensim):體重控制 CLD — 左 B1 節食迴圈(Desire to diet → Calories absorbed)、右 B2 運動迴圈(Desired to do exercise → Calories consumed),中間是 Current weight 與 Ideal weight 的 Gap。B = Balancing 平衡迴圈。</div>
+      </div>
+      <pre>節食迴圈(左):
+體重↑ → 與理想體重的差距↑ → 節食慾望↑ →(−)卡路里攝取↓ → 體重↓
+體重↓ → 差距↓ → 節食慾望↓ → 攝取回升 → 體重又↑ …
+
+運動迴圈(右):
+體重↑ → 差距↑ → 運動慾望↑ → 運動量↑ → 卡路里消耗↑ →(−)體重↓</pre>
+      <ul>
+        <li>這種「你高我就讓你低、你低我就讓你高」的圈叫<strong>平衡迴圈(Balancing loop)</strong>,系統會自己往目標值收斂</li>
+        <li><strong>一圈 = 一個時間單位</strong>(天/週/月自己定):兩個月後要比賽,時間單位設「天」,這個迴圈就轉 60 幾次 — 時間就是這樣進模型的</li>
+      </ul>
+      <h3>重頭戲:找「真解」</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">建議必須打在真正出問題的那一環</span>
+        有人「喝水都胖」:檢查左圈(吃)沒問題 → 真解在右圈(動),勸他節食是浪費時間。老師自己相反:<strong>運動到全身是傷體重還是不動</strong> → 回頭查「吃」,發現外食變粉多了、加麵加飯不加價、油又不好,還順手吃掉老婆的剩飯 —「所以請建議我跟吃有關的事,不要建議我運動」。<strong>診斷不分左右圈就給建議 = 治標不治本,這就是政策抗拒的根源。</strong>
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">醫生的反射式回答</span>
+        老師去看體脂,醫生頭都沒抬就說「多運動」— 標準的機械式反射。老師不說話看著他,醫生回頭看了一眼他的體脂數字(其實很正常),改口:「呃…我們來看看你吃了什麼。」— <strong>連專業人士都會跳過診斷直接給建議</strong>,這正是 SD 要治的病。
+      </div>
+    </section>
+
+    <section id="sB7">
+      <h2><span class="section-num">16</span>系統基模(Archetypes)兩式:Escalation & Success to the Successful</h2>
+      <p>基模 = 學者觀察大量企業後,把<strong>重複出現的系統結構</strong>做成的基本模型。今天介紹兩個:</p>
+      <h3>① Escalation(升高/對抗升級)</h3>
+      <div class="figure">
+        <img src="./img/class05_escalation_structure.jpg" alt="老師投影片:Escalation 基模結構圖 — Activity by A/B、Results of A relative to B、Threat to A/B,兩個平衡迴圈 B1、B2">
+        <div class="fig-caption">老師投影片 Escalation(1/3):A 的行動 → 改變「A 相對 B 的結果」 → B 感到威脅 → B 行動 → 反過來威脅 A — 兩個迴圈互相餵,最終形成不斷升高的行為。</div>
+      </div>
+      <ul>
+        <li>結構:A 降價 → B 感到威脅 → B 跟著降 → A 的市占又被咬 → A 再降 … 兩隻回饋圈互相餵,<strong>殺到大家一起死</strong></li>
+        <li>經典案例:<strong>1980 年代美蘇軍備競賽</strong> — 互相把對方的擴軍視為威脅,核彈頭越堆越多;最後結束不是誰談贏,是<strong>蘇聯經濟撐不住了</strong></li>
+      </ul>
+      <div class="figure">
+        <img src="./img/class05_escalation_pricewar.jpg" alt="老師投影片:Escalation 例子 The Price War — Price cut by A/B、Market share of Company A relative to B、Competitive threat to A/B">
+        <div class="fig-caption">老師投影片 Escalation(3/3)「The Price War」:A 降價 → A 銷售↑ → A 相對市占↑ → B 感到競爭威脅 → B 降價 → … 課堂上老師就是用這張圖講價格戰和軍備競賽。</div>
+      </div>
+      <ul>
+        <li><strong>破解:只要有一方停下來,迴圈就斷了</strong> — 夫妻吵架越吵越兇,通常是一方說「對不起我錯了」就 break(老師:「通常是我」,全場笑)</li>
+        <li>台南安平蝦餅一條街<strong>價格都差不多</strong> — 老師猜背後有協會協調:「別用價格競爭,用口味做出特色」,不讓 Escalation 啟動。今日美中競爭同理可推</li>
+      </ul>
+      <h3>② Success to the Successful(成功者愈成功)</h3>
+      <ul>
+        <li>結構:A 事業體資源多 → 更成功 → 下次分更多資源 → B 資源愈少 → 愈失敗 — <strong>明明是自己公司的兩個 BU,卻變成一個吃掉另一個</strong></li>
+        <li>同學提問(很好的問題):「昨天財務課才講過,A 單位的人會不滿『拿我賺的錢補 B』」— 老師:資源分配不平衡<strong>一定會發生</strong>,重點是有沒有不平衡到「無法接受的程度」;適度傾斜沒問題,但不能把 B 逼死,要主動檢視分配政策、把競爭導向<strong>合作互補</strong></li>
+        <li>生活版:<strong>工作 vs 家庭</strong> — 時間有限,工作投入多 → 家庭關係差 → 更不想回家 → 更投入工作…「事業很成功,最後房子被老婆拿走」老師有朋友真的這樣(全場安靜三秒)。老師自己的解法:結婚前在研究室待到 11 點,<strong>結婚後七點乖乖回家</strong> — 用意志力硬生生打斷迴圈</li>
+      </ul>
+      <div class="callout callout-quote">
+        <span class="callout-label">老師的個人體會(教科書沒有的)</span>
+        沒有任何東西可以一直變好,也不會一直變壞。我們真正要追求的,不是「永遠成長」,而是<strong>一個自己可以接受的平衡</strong> — 而且這個平衡點會隨你的能力提升而調整。企業如此,體重如此,婚姻也如此。
+      </div>
+      <p><em>收尾彩蛋:有同學把上午的「情境」跟下午的迴圈連起來 —「不同 situation 下 feedback loop 就不一樣」,老師大讚:沒錯,一切 case by case,從情境出發。全天課程在這裡完美閉環,提早十分鐘下課。</em></p>
+    </section>
+
+    <!-- ====================== 總結 ====================== -->
+
+    <section id="sC1">
+      <h2><span class="section-num">17</span>中英術語對照</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>中文</th><th>英文</th><th>一句話</th></tr></thead>
+        <tbody>
+          <tr><td>內隱知識</td><td>Tacit knowledge</td><td>寫得出來的知識從沒超過兩成;AI 幫你挖另外八成</td></tr>
+          <tr><td>知識制度化</td><td>Institutionalization</td><td>知識從個人資產變企業資產 — 老師傅退休公司不失憶</td></tr>
+          <tr><td>(社會)情境</td><td>Context / Situation</td><td>時間 + 地點 + 事件;AI 應用成敗的關鍵</td></tr>
+          <tr><td>生活中心</td><td>Life centricity</td><td>比顧客中心更進一步:跟著顧客的人生變動走(HBR)</td></tr>
+          <tr><td>相關性半衰期</td><td>Half-life of relevance</td><td>歌曲百大 20 週 → 2 週;你的產品相關性也在加速失效</td></tr>
+          <tr><td>補償性消費</td><td>Compensatory consumption</td><td>買東西不只為實用,也為補償心理威脅</td></tr>
+          <tr><td>權力感 / 自主感</td><td>Perceived power / Autonomy</td><td>無力 → 用多樣性補償;給自主感可以替代</td></tr>
+          <tr><td>生態系</td><td>(Inclusive) ecosystem</td><td>Bayer 個案:技術+金融+通路,把小農變成功客戶</td></tr>
+          <tr><td>系統動力學</td><td>System Dynamics(SD)</td><td>Forrester 創始;回饋圈 + 時間,追趨勢不追精確</td></tr>
+          <tr><td>因果迴路圖</td><td>Causal Loop Diagram(CLD)</td><td>箭頭 = 因果(標正負號),不是相關</td></tr>
+          <tr><td>平衡迴圈</td><td>Balancing loop(B)</td><td>你高我讓你低 — 系統向目標收斂(體重控制)</td></tr>
+          <tr><td>增強迴圈</td><td>Reinforcing loop(R)</td><td>越滾越大 — 喝酒惡性循環 / 讀書良性循環</td></tr>
+          <tr><td>政策抗拒</td><td>Policy resistance</td><td>沒打在真解上的政策,反而讓事情更糟(無紙化辦公室)</td></tr>
+          <tr><td>內生 / 外生</td><td>Endogenous / Exogenous</td><td>解釋要靠內生因素;「都是外面天氣熱」= 白講</td></tr>
+          <tr><td>系統基模</td><td>System archetype</td><td>重複出現的結構:Escalation、Success to the Successful</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="sC2">
+      <h2><span class="section-num">18</span>重點提醒(10 條,易踩雷)</h2>
+      <ol>
+        <li><strong>AI 導入先過資料關</strong> — 光「對齊資料定義」(華盛頓是誰?)就可能吃掉三個月,預算和耐心要先留</li>
+        <li><strong>內隱知識寫得出來的不到兩成</strong> — SOP 不是知識管理的終點;AI + 感測器才挖得到手感,挖出來知識才屬於企業</li>
+        <li><strong>AI 判讀 vs 自己的直覺:往中間靠</strong> — 全信和全不信都是偷懶</li>
+        <li><strong>同一份資料,情境對了才值錢</strong> — 台電電表 × 獨居長者 = 黃金;找應用先找情境,不是先找模型</li>
+        <li><strong>AI 會複製資料裡的偏見</strong> — 醫療(白人資料)、保險(紅色車)都翻過車;先問資料代表誰、漏掉誰</li>
+        <li><strong>導入 AI 是組織變革不是採購案</strong> — 高層要有感(董事長家教班)、IT 要當翻譯官(學三個月燒烤)、員工先覺得好玩再覺得有用</li>
+        <li><strong>服務導向:能租絕不賣</strong> — 賣斷是一次性,訂閱是終身關係 + 資料流;想想你的產品怎麼變服務的入口</li>
+        <li><strong>顧客教育要打決策者</strong>(孫子,不是外婆);<strong>無力感顧客給多樣性或自主感</strong>,個人化的前提是第一線被授權</li>
+        <li><strong>SD 第一原則 Keep it simple</strong> — 第一輪故事只留關鍵變數;「簡單」= 對你的聽眾簡單;加減乘除就好,追趨勢不追精確</li>
+        <li><strong>建議必須打在「真解」上</strong> — 先診斷是吃的問題還是動的問題;跳過診斷直接開藥,就是政策抗拒的起點</li>
+      </ol>
+    </section>
+
+    <section id="sC3">
+      <h2><span class="section-num">19</span>待確認 / 課後可以做</h2>
+      <h3>待確認(錄音聽不清或資訊未到)</h3>
+      <ul>
+        <li><strong>授課老師姓名</strong> — 全天錄音中未清楚喊到,待和同學確認後補上</li>
+        <li>「寫得出來的知識從沒超過 20%」的原始出處(推測與知識管理 SECI / Polanyi 傳統有關)</li>
+        <li>SD 建模軟體:從課堂實機畫面(第 15 節照片)看是 <strong>Vensim</strong>(視窗顯示 Workbench Variable),再跟老師確認版本</li>
+        <li>老師說「下禮拜見」 — 下週同一時段應該還有一堂(可先預留)</li>
+      </ul>
+      <h3>課後可以做</h3>
+      <ul class="checklist">
+        <li>把 10 份個案 PDF 掃過一遍(每份 10 分鐘),特別是堤維西、銀髮安居、Bayer 三篇 — 老師課堂展開最深</li>
+        <li>練習:替自己的公司/研究題目畫一張「第一輪」CLD — 只准兩三個變數,標正負號,找出是平衡圈還是增強圈</li>
+        <li>想一個你產業裡的「情境 × 資料」組合:哪份現成資料放進哪個情境會變黃金?(照銀髮安居的公式)</li>
+        <li>檢查自己的時間分配有沒有掉進 Success to the Successful(工作圈吃掉家庭圈)— 老師的解法:定一個硬規則(七點回家)打斷迴圈</li>
+      </ul>
+    </section>
+
+    <section id="sC4">
+      <h2><span class="section-num">20</span>30 秒口頭複習</h2>
+      <div class="callout callout-quote">
+        <p><strong>上午:</strong>AI 導入第一關是<strong>資料</strong>(定義對齊、品質、偏見)。個案接力:堤維西把老師傅的<strong>內隱知識</strong>(寫得出來的從沒超過兩成)變成 AI 師傅,知識從個人變企業資產;銀髮安居證明<strong>同一份資料放對情境才是黃金</strong>(台電電表 × 獨居長者,晚上沒開燈就派人);保險業用<strong>健康分</strong>取代一刀切核保;亞馬遜派 <strong>Amelia</strong> 解決賣家痛點(AWS 哲學:下一個重大客戶問題是什麼)。貫穿一切的是<strong>服務導向思維</strong> — 可口可樂賣解渴、賓士賣運輸、<strong>能租絕不賣</strong>;組織要準備的是人:高層有感、IT 當翻譯官。收尾 Bayer:技術+金融+通路把小酪農變成功客戶,<strong>生態系是互信長出來的</strong>。</p>
+        <p><strong>下午:</strong>需求是動態的 — <strong>情境 = 時間+地點+事件</strong>,相關性半衰期越來越短(歌曲 20 週 → 2 週);顧客教育要打<strong>決策者</strong>(孫子不是外婆);<strong>無力感顧客尋求多樣性</strong>(或給自主感替代),個人化的前提是授權。<strong>系統動力學</strong>:Forrester 開山、回饋圈 + 時間、Keep it simple、加減乘除、追趨勢不追精確;體重控制 = 兩個<strong>平衡迴圈</strong>,建議必須打在<strong>真解</strong>(先分清吃還是動);基模兩式 — <strong>Escalation</strong>(一方停下來就破)與 <strong>Success to the Successful</strong>(求可接受的平衡)。</p>
+      </div>
+    </section>
+
+    <section id="sC5">
+      <h2><span class="section-num">21</span>場外插曲</h2>
+      <ul>
+        <li>老師自我介紹走自嘲路線:170 公分、人生高峰 85 公斤,學生時代因體重被取過的綽號「比當教授得到的榮譽多十倍」;當年追老婆被嫌「沒錢、沒顏值」,老師總結:「後來發現 — <strong>看起來不會出軌,原來劣勢就是優勢</strong>」全場大笑</li>
+        <li>老師是羽球咖,雙打常客,從腳踝到大腿內側全部受過傷還照打 — 直接變成「自主性三原則」的活教材</li>
+        <li>課間同學熱烈討論 8/1 校慶五週年活動:統一黑色上衣配 Logo、上午拍照約到十點多結束、還有學術點數可拿</li>
+        <li>講義費老師堅持線上支付:「我不喜歡收現金」— 非常資訊系的堅持</li>
+        <li>最後提早十分鐘下課,老師自評:「我覺得講得有點快、有點不夠簡單」— Keep it simple 連自己都要檢討,下禮拜見</li>
+      </ul>
+    </section>
+
+    <hr>
+    <div style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
+      <p><strong>本次課程資料</strong></p>
+      <p>全日錄音約 6.5h · 附件:個案資料夾「5.AI」(天下雜誌 CWM × 7 + HBR × 3)+ 上課影片 + 課堂照片 3 張(Vensim 畫面、Escalation 投影片 ×2)</p>
+      <p>整理: 2026-07-26 · 授權: 個人學習用途</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('tocToggle');
+  const progress = document.getElementById('progress');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('.toc a').forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+  const sections = Array.from(document.querySelectorAll('section, .part-banner'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const sectionMap = {};
+  sections.forEach(s => { if (s.id) sectionMap[s.id] = tocLinks.find(l => l.getAttribute('href') === '#' + s.id); });
+  const updateActive = () => {
+    const scrollTop = window.scrollY + 100;
+    let current = sections[0];
+    for (const s of sections) { if (s.offsetTop <= scrollTop) current = s; }
+    tocLinks.forEach(l => l.classList.remove('active'));
+    if (current && sectionMap[current.id]) sectionMap[current.id].classList.add('active');
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = (window.scrollY / docHeight) * 100;
+    progress.style.width = pct + '%';
+  };
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    let next;
+    if (!current) next = 'dark';
+    else if (current === 'dark') next = 'light';
+    else next = null;
+    if (next) document.documentElement.setAttribute('data-theme', next);
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('notes_theme', next || 'auto');
+  }
+  const savedTheme = localStorage.getItem('notes_theme');
+  if (savedTheme && savedTheme !== 'auto') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+  function copyURL() {
+    navigator.clipboard.writeText(window.location.href).then(
+      () => alert('網址已複製'),
+      () => prompt('請手動複製網址:', window.location.href)
+    );
+  }
+</script>
+</body>
+</html>
