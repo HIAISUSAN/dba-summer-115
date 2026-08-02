@@ -166,6 +166,15 @@
   .checklist li:last-child { border-bottom: none; }
   .checklist li::before { content: "☐"; position: absolute; left: 4px; top: 8px; color: var(--text-muted); font-size: 18px; }
 
+  .attach-box { background: var(--emerald-bg); border: 1px solid var(--emerald); border-radius: var(--radius); padding: 18px 22px; margin: 18px 0 28px; }
+  .attach-box .callout-label { color: var(--emerald); }
+  .attach-box ul { list-style: none; margin: 8px 0 0 0; padding: 0; }
+  .attach-box li { margin-bottom: 12px; line-height: 1.7; }
+  .attach-box a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .attach-box a:hover { text-decoration: underline; }
+  .attach-note { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; line-height: 1.7; }
+  .attach-meta { font-size: 12.5px; color: var(--text-muted); display: block; margin-top: 2px; }
+
   .poem {
     background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--amber);
     border-radius: 8px; padding: 16px 22px; margin: 18px 0; line-height: 2.1;
@@ -247,6 +256,7 @@
     <ul class="toc">
       <li><a href="./index.html" style="border-left-color: var(--accent);">← 回課程總覽</a></li>
       <li><a href="#s0">回到頁首</a></li>
+      <li><a href="#s0"><span class="toc-num">📎</span>課程資料 · 文章連結</a></li>
       <li><a href="#sFrame"><span class="toc-num">※</span>課堂設計:五題架構 ★★</a></li>
       <li><a href="#s1"><span class="toc-num">0</span>一頁速覽</a></li>
 
@@ -301,6 +311,7 @@
       <h1>老師壓軸課:被忽略的 BI × 博士之路</h1>
       <div class="doc-meta">
         <strong>日期:</strong> 2026-08-02(週日)· 全日約 6 小時 40 分<br>
+        <strong>授課:</strong> <strong>李昇暾 教授</strong>(成功大學 · 做 AI 42 年 · HBR Taiwan 專欄作者)<br>
         <strong>本篇範圍:</strong> 當天最後一段 —— <strong>老師的壓軸演講</strong>(講題:Hot Tips for the Future)<br>
         <strong>整理方式:</strong> 以課堂錄音逐字稿為主軸,依講述順序逐段還原
       </div>
@@ -312,6 +323,22 @@
 
     <div class="scope-note">
       📌 <strong>這一篇只收錄老師的壓軸課。</strong>當天前半場是八位學員針對三篇文章的輪流報告(創投、智慧建築、電信、電池儲能、IT 服務、智慧運輸、傳產金屬等),那部分不在本篇範圍內。
+    </div>
+
+    <div class="attach-box">
+      <span class="callout-label">📎 課程資料 · 老師的文章原文</span>
+      <ul>
+        <li>📄 <a href="https://www.hbrtaiwan.com/article/25055/ai-models-as-corporate-mirrors" target="_blank" rel="noopener">AI 模型是企業之鏡:領導人如何參透組織的塑形五力</a>
+          <span class="attach-meta">李昇暾 · 哈佛商業評論 HBR Taiwan · 2026-07-13 —— 這篇就是課堂上反覆講的「<strong>AI 是一面極度客觀的鏡子</strong>」;它照出的是組織的<strong>資料篩選、回饋機制、注意力分配、獎勵制度、輸出流暢度</strong>五股力量</span></li>
+        <li>📄 <a href="https://www.hbrtaiwan.com/article/24985/agentic-ai-accountability" target="_blank" rel="noopener">代理式 AI 時代的當責思維:AI 籌全局,決策者求「放心」</a>
+          <span class="attach-meta">李昇暾 · 哈佛商業評論 HBR Taiwan · 2026-06-10 —— 標題裡的「<strong>求放心</strong>」就是課堂上講的孟子那句;核心是<strong>代理式 AI 無法替你承擔最終責任</strong></span></li>
+        <li>📁 <a href="https://drive.google.com/drive/folders/1fJiAo34SN5iXfmn1N5i-onmD9ktey7mC?usp=sharing" target="_blank" rel="noopener">老師的課程資料夾「6.」(Google Drive)</a>
+          <span class="attach-meta">⚠️ 2026-08-02 查看時<strong>資料夾內尚無檔案</strong>,老師應該還沒上傳 —— 之後再進去看</span></li>
+      </ul>
+      <div class="attach-note">
+        📌 課堂作業是針對<strong>三篇</strong>文章,上面是已取得連結的兩篇;<strong>第三篇(哲學篇:我思故我在、三法印、「資料 ≠ 資訊 ≠ 知識 ≠ 智慧」)連結待補</strong>。<br>
+        HBR Taiwan 部分文章需訂閱才能讀全文。
+      </div>
     </div>
 
     <section id="sFrame">
