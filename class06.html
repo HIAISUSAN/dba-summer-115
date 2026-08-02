@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>第 6 堂 · 老師壓軸課:被忽略的 BI × 博士之路 · 115暑期密集課-SUSAN</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f3;
+    --surface: #ffffff;
+    --border: #e8e5dd;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --accent: #1f3a5f;
+    --accent-light: #e8eff8;
+    --highlight: #fff3cd;
+    --highlight-border: #ffc107;
+    --emerald: #10b981;
+    --emerald-bg: #ecfdf5;
+    --red: #dc2626;
+    --red-bg: #fef2f2;
+    --purple: #7c3aed;
+    --purple-bg: #f3e8ff;
+    --amber: #d97706;
+    --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+    --radius: 12px;
+    --sidebar-width: 268px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14140f; --surface: #1e1e18; --border: #363630;
+      --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+      --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+      --emerald: #6ee7b7; --emerald-bg: #064e3b;
+      --red: #fca5a5; --red-bg: #4c0f0f;
+      --purple: #c4b5fd; --purple-bg: #3b2557;
+      --amber: #fbbf24;
+      --code-bg: #252520;
+      --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #faf8f3; --surface: #ffffff; --border: #e8e5dd;
+    --text: #1a1a1a; --text-muted: #6b6b6b; --accent: #1f3a5f;
+    --accent-light: #e8eff8; --highlight: #fff3cd; --highlight-border: #ffc107;
+    --emerald: #10b981; --emerald-bg: #ecfdf5;
+    --red: #dc2626; --red-bg: #fef2f2;
+    --purple: #7c3aed; --purple-bg: #f3e8ff;
+    --amber: #d97706; --code-bg: #f5f1ea;
+    --shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  :root[data-theme="dark"] {
+    --bg: #14140f; --surface: #1e1e18; --border: #363630;
+    --text: #f5f5f0; --text-muted: #a3a39d; --accent: #7ba7de;
+    --accent-light: #1f2a3a; --highlight: #3a2e0f; --highlight-border: #f59e0b;
+    --emerald: #6ee7b7; --emerald-bg: #064e3b;
+    --red: #fca5a5; --red-bg: #4c0f0f;
+    --purple: #c4b5fd; --purple-bg: #3b2557;
+    --amber: #fbbf24; --code-bg: #252520;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85; font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { display: grid; grid-template-columns: var(--sidebar-width) 1fr; max-width: 1400px; margin: 0 auto; min-height: 100vh; }
+
+  aside {
+    position: sticky; top: 0; height: 100vh; padding: 24px 18px;
+    border-right: 1px solid var(--border); overflow-y: auto; background: var(--surface);
+  }
+  .side-title { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600; }
+  .toc { list-style: none; }
+  .toc li { margin-bottom: 2px; }
+  .toc a {
+    display: block; padding: 5px 10px; color: var(--text-muted); text-decoration: none;
+    font-size: 13px; border-radius: 6px; transition: all 0.15s; line-height: 1.5;
+    border-left: 2px solid transparent;
+  }
+  .toc a:hover { background: var(--bg); color: var(--text); border-left-color: var(--accent); }
+  .toc a.active { background: var(--accent-light); color: var(--accent); font-weight: 600; border-left-color: var(--accent); }
+  .toc-num { display: inline-block; width: 24px; color: var(--text-muted); font-variant-numeric: tabular-nums; font-size: 11.5px; }
+  .toc-part { font-size: 11.5px; font-weight: 700; color: var(--accent); margin: 12px 0 4px; text-transform: uppercase; letter-spacing: 1px; padding-left: 10px; }
+  .sidebar-actions { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+  .sidebar-actions button {
+    background: transparent; border: 1px solid var(--border); color: var(--text);
+    padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer;
+    text-align: left; font-family: inherit; transition: background 0.15s;
+  }
+  .sidebar-actions button:hover { background: var(--bg); }
+
+  main { padding: 40px 60px 80px; max-width: 940px; }
+  .back-link { display: inline-block; color: var(--text-muted); text-decoration: none; font-size: 13px; margin-bottom: 8px; padding: 4px 0; }
+  .back-link:hover { color: var(--accent); }
+  header.doc-header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 24px; }
+  .doc-eyebrow { color: var(--accent); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  h1 { font-size: 30px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .doc-meta { color: var(--text-muted); font-size: 14px; line-height: 1.9; }
+  .doc-meta strong { color: var(--text); font-weight: 600; }
+  .ai-disclaimer {
+    background: var(--highlight); border-left: 4px solid var(--highlight-border);
+    padding: 10px 16px; margin-bottom: 24px; border-radius: 6px; font-size: 13px; line-height: 1.6;
+  }
+  .scope-note {
+    background: var(--accent-light); border: 1px solid var(--accent);
+    padding: 14px 18px; margin-bottom: 28px; border-radius: 8px; font-size: 13.5px; line-height: 1.75;
+  }
+
+  section { margin-bottom: 44px; scroll-margin-top: 20px; }
+  .part-banner {
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    color: #fff; border-radius: var(--radius); padding: 22px 26px; margin: 42px 0 26px;
+    scroll-margin-top: 20px;
+  }
+  .part-banner .pb-eyebrow { font-size: 11.5px; letter-spacing: 2.4px; text-transform: uppercase; opacity: .85; margin-bottom: 6px; }
+  .part-banner h2 { border: none; margin: 0; padding: 0; font-size: 24px; color: #fff; display: block; }
+  .part-banner .pb-sub { font-size: 13.5px; opacity: .92; margin-top: 8px; line-height: 1.7; }
+
+  h2 {
+    font-size: 22.5px; font-weight: 700; margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 2px solid var(--border);
+    letter-spacing: -0.3px; display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .section-num { color: var(--accent); font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 36px; }
+  h3 { font-size: 17.5px; font-weight: 700; margin-top: 26px; margin-bottom: 12px; color: var(--accent); }
+  h4 { font-size: 15px; font-weight: 700; margin-top: 18px; margin-bottom: 10px; letter-spacing: 0.4px; color: var(--text-muted); }
+  p { margin-bottom: 12px; }
+  ul, ol { margin-left: 24px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; }
+  ul ul, ol ol { margin-top: 6px; margin-bottom: 6px; }
+  strong { font-weight: 700; }
+  em { font-style: normal; color: var(--text-muted); font-size: 0.95em; }
+  code { background: var(--code-bg); padding: 2px 7px; border-radius: 4px; font-family: "SF Mono", Consolas, monospace; font-size: 0.9em; color: var(--accent); }
+  pre {
+    background: var(--code-bg); padding: 16px 20px; border-radius: 8px;
+    overflow-x: auto; margin: 16px 0; font-family: "SF Mono", Consolas, monospace;
+    font-size: 13px; line-height: 1.7; border: 1px solid var(--border);
+  }
+  pre code { background: transparent; padding: 0; color: var(--text); font-size: inherit; }
+
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid; }
+  .callout-key { background: var(--emerald-bg); border-left-color: var(--emerald); }
+  .callout-warn { background: var(--red-bg); border-left-color: var(--red); }
+  .callout-highlight { background: var(--highlight); border-left-color: var(--highlight-border); }
+  .callout-quote { background: var(--accent-light); border-left-color: var(--accent); font-style: italic; font-size: 16.5px; line-height: 1.75; }
+  .callout-teacher { background: var(--purple-bg); border-left-color: var(--purple); }
+  .callout-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; display: block; opacity: 0.9; font-style: normal; }
+
+  .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 8px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--border); line-height: 1.6; vertical-align: top; }
+  th { background: var(--bg); font-weight: 600; font-size: 13px; letter-spacing: 0.4px; color: var(--text-muted); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+  td.rank { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; text-align: center; width: 56px; }
+  tr.star td { background: var(--highlight); }
+  tr.star:hover td { background: var(--highlight); }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li { padding: 8px 0 8px 32px; position: relative; border-bottom: 1px dashed var(--border); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "☐"; position: absolute; left: 4px; top: 8px; color: var(--text-muted); font-size: 18px; }
+
+  .poem {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--amber);
+    border-radius: 8px; padding: 16px 22px; margin: 18px 0; line-height: 2.1;
+    font-size: 16px; letter-spacing: 1px;
+  }
+  .poem .src { display: block; font-size: 12.5px; color: var(--text-muted); letter-spacing: 0; margin-top: 8px; }
+
+  blockquote { border-left: 4px solid var(--accent); padding: 12px 18px; margin: 16px 0; background: var(--accent-light); border-radius: 4px; font-style: italic; color: var(--text); }
+  blockquote strong { font-style: normal; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  .toggle-toc {
+    display: none; position: fixed; top: 12px; right: 12px; z-index: 100;
+    background: var(--surface); border: 1px solid var(--border); padding: 8px 14px;
+    border-radius: 8px; font-size: 14px; cursor: pointer; box-shadow: var(--shadow);
+    font-family: inherit; color: var(--text);
+  }
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    aside { position: fixed; top: 0; left: 0; width: 290px; z-index: 90; transform: translateX(-100%); transition: transform 0.25s; box-shadow: 0 0 40px rgba(0,0,0,0.25); height: 100vh; }
+    aside.open { transform: translateX(0); }
+    main { padding: 60px 18px 60px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    .toggle-toc { display: block; }
+  }
+  @media print {
+    aside, .toggle-toc, .sidebar-actions { display: none !important; }
+    .app { display: block; }
+    main { max-width: none; padding: 0; }
+    body { font-size: 11.5pt; line-height: 1.5; }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 14.5pt; break-after: avoid; }
+    section { break-inside: avoid-page; }
+    .callout, table, pre, .poem { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 100; width: 0%; transition: width 0.1s; }
+</style>
+</head>
+<body>
+
+<div id="gate" style="position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;font-family:inherit;">
+  <div style="max-width:380px;width:100%;text-align:center;">
+    <div style="font-size:56px;margin-bottom:20px;">🔒</div>
+    <h1 style="font-size:22px;margin-bottom:6px;color:var(--text);">115暑期密集課</h1>
+    <p style="color:var(--text-muted);margin-bottom:28px;font-size:14px;">課程筆記 · 需要密碼進入</p>
+    <form id="gateForm">
+      <input type="password" id="gatePwd" autofocus placeholder="請輸入密碼" style="width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:10px;font-size:16px;background:var(--surface);color:var(--text);font-family:inherit;margin-bottom:12px;outline:none;box-sizing:border-box;">
+      <button type="submit" style="width:100%;padding:13px 16px;background:var(--accent);color:white;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;">進入</button>
+      <p id="gateErr" style="color:#dc2626;font-size:13px;margin-top:12px;display:none;">密碼錯誤,請再試一次</p>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='dba115_unlocked';
+  var gate=document.getElementById('gate');
+  if(localStorage.getItem(KEY)==='1'){gate.style.display='none';return;}
+  document.body.style.overflow='hidden';
+  document.getElementById('gateForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('gatePwd').value==='DBA'){
+      localStorage.setItem(KEY,'1'); gate.style.display='none'; document.body.style.overflow='';
+    }else{
+      document.getElementById('gateErr').style.display='block';
+      var p=document.getElementById('gatePwd');p.value='';p.focus();
+    }
+  });
+})();
+</script>
+
+<div class="reading-progress" id="progress"></div>
+<button class="toggle-toc" id="tocToggle">☰ 目錄</button>
+
+<div class="app">
+  <aside id="sidebar">
+    <div class="side-title">章節目錄</div>
+    <ul class="toc">
+      <li><a href="./index.html" style="border-left-color: var(--accent);">← 回課程總覽</a></li>
+      <li><a href="#s0">回到頁首</a></li>
+      <li><a href="#sFrame"><span class="toc-num">※</span>課堂設計:五題架構 ★★</a></li>
+      <li><a href="#s1"><span class="toc-num">0</span>一頁速覽</a></li>
+
+      <li class="toc-part">A · 被忽略的 BI</li>
+      <li><a href="#s2"><span class="toc-num">1</span>講者:42 年做 AI 的人</a></li>
+      <li><a href="#s3"><span class="toc-num">2</span>WEF 2023 報告 ★★</a></li>
+      <li><a href="#s4"><span class="toc-num">3</span>WEF 2025 大洗牌 ★★★</a></li>
+      <li><a href="#s5"><span class="toc-num">4</span>資產不是 AI,是 data ★★★</a></li>
+      <li><a href="#s6"><span class="toc-num">5</span>軟實力第 1:分析思考 ★★</a></li>
+      <li><a href="#s7"><span class="toc-num">6</span>升達科技:遍地開花</a></li>
+      <li><a href="#s8"><span class="toc-num">7</span>打臉自己的一段</a></li>
+      <li><a href="#s9"><span class="toc-num">8</span>回鄉偶書 · AI 相見不相識</a></li>
+
+      <li class="toc-part">B · 賈伯斯與 insight</li>
+      <li><a href="#s10"><span class="toc-num">9</span>三個故事 × 三關</a></li>
+      <li><a href="#s11"><span class="toc-num">10</span>Connecting the Dots ★★</a></li>
+      <li><a href="#s12"><span class="toc-num">11</span>Think Different = 非同凡想</a></li>
+
+      <li class="toc-part">C · 博士之路</li>
+      <li><a href="#s13"><span class="toc-num">12</span>博士是什麼(中華版)</a></li>
+      <li><a href="#s14"><span class="toc-num">13</span>三個核心:原創/獨立/態度</a></li>
+      <li><a href="#s15"><span class="toc-num">14</span>德國教授的 Spell Check ★★</a></li>
+      <li><a href="#s16"><span class="toc-num">15</span>DBA vs 一般商管博士</a></li>
+      <li><a href="#s17"><span class="toc-num">16</span>發表點數怎麼湊 ★★★</a></li>
+      <li><a href="#s18"><span class="toc-num">17</span>找題目的鐵律 ★★★</a></li>
+      <li><a href="#s19"><span class="toc-num">18</span>學而不思則罔 ★★</a></li>
+      <li><a href="#s20"><span class="toc-num">19</span>論文怎麼寫</a></li>
+      <li><a href="#s21"><span class="toc-num">20</span>跟指導教授相處</a></li>
+      <li><a href="#s22"><span class="toc-num">21</span>DBA 學生的優勢</a></li>
+
+      <li class="toc-part">D · 收尾</li>
+      <li><a href="#s23"><span class="toc-num">22</span>Die Hard 的典故</a></li>
+      <li><a href="#s24"><span class="toc-num">23</span>緣督以為經 ★★</a></li>
+
+      <li class="toc-part">總結</li>
+      <li><a href="#s25"><span class="toc-num">24</span>術語與名詞</a></li>
+      <li><a href="#s26"><span class="toc-num">25</span>重點提醒 12 條</a></li>
+      <li><a href="#s27"><span class="toc-num">26</span>課後行動清單</a></li>
+      <li><a href="#s28"><span class="toc-num">27</span>30 秒複習</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <button onclick="window.print()">🖨️ 列印 / PDF</button>
+      <button onclick="toggleTheme()">🌓 切換主題</button>
+      <button onclick="copyURL()">🔗 複製網址</button>
+    </div>
+  </aside>
+
+  <main>
+    <a href="./index.html" class="back-link">← 回課程總覽</a>
+    <header class="doc-header" id="s0">
+      <div class="doc-eyebrow">DBA · 115 暑期密集課 · 第 6 堂</div>
+      <h1>老師壓軸課:被忽略的 BI × 博士之路</h1>
+      <div class="doc-meta">
+        <strong>日期:</strong> 2026-08-02(週日)· 全日約 6 小時 40 分<br>
+        <strong>本篇範圍:</strong> 當天最後一段 —— <strong>老師的壓軸演講</strong>(講題:Hot Tips for the Future)<br>
+        <strong>整理方式:</strong> 以課堂錄音逐字稿為主軸,依講述順序逐段還原
+      </div>
+    </header>
+
+    <div class="ai-disclaimer">
+      ⚠️ <strong>本筆記由 AI 聲音辨識後自動整理</strong>,內容可能有錯字、聽錯、或漏掉細節。<strong>請以老師實際講授為準</strong>,自行判斷取用。
+    </div>
+
+    <div class="scope-note">
+      📌 <strong>這一篇只收錄老師的壓軸課。</strong>當天前半場是八位學員針對三篇文章的輪流報告(創投、智慧建築、電信、電池儲能、IT 服務、智慧運輸、傳產金屬等),那部分不在本篇範圍內。
+    </div>
+
+    <section id="sFrame">
+      <h2><span class="section-num">※</span>課堂設計:貫穿全日的五題架構</h2>
+      <div class="doc-meta" style="margin-bottom:18px;">
+        <strong>主題:</strong> AI 時代的管理反思<br>
+        <strong>課型:</strong> 不是講授課 —— 是<strong>學員輪流報告 + 老師即席講評</strong>,最後老師才壓軸收尾<br>
+        <strong>作業:</strong> 每人針對老師的<strong>三篇文章</strong>,回答同一組五題
+      </div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">這個框架本身就值得記下來</span>
+        不管你之後要讀什麼文獻、聽什麼演講、評估什麼提案,<strong>這五題可以直接套用</strong>。
+      </div>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th class="rank">#</th><th>題目</th><th>在問你什麼</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td><strong>最有共鳴的觀點是什麼?</strong></td>
+            <td>先找到<strong>你自己的接點</strong> —— 哪一句話打到你二三十年的實務經驗</td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td><strong>AI 對你的工作 / 組織 / 產業<br>最大的衝擊是什麼?</strong></td>
+            <td>從<strong>個人 → 組織 → 產業</strong>三個尺度定位問題,逼你講具體場域,不能空談</td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td><strong>三篇文章共同的主軸是什麼?<br>如何互相呼應?</strong></td>
+            <td>訓練<strong>綜合與抽象</strong> —— 不是各篇摘要,是要抽出貫穿的那一條線</td>
+          </tr>
+          <tr class="star">
+            <td class="rank">4</td>
+            <td><strong>哪一個觀點你不同意?</strong></td>
+            <td>訓練<strong>批判思考</strong>。老師課後特別澄清:「<strong>不同意其實不是不懂</strong> —— 我的意思是<strong>你有不同的想法</strong>」</td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td><strong>如果你是 CEO,最想改變什麼?<br>值得 DBA 研究的題目是什麼?</strong><br><em>(管理意義 + 研究價值)</em></td>
+            <td>從<strong>反思 → 行動 → 研究</strong>收斂。這一題就是要逼出你的 <a href="#s12">Biggest Insight</a> 與論文題目雛形</td>
+          </tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師自己說出的設計動機</span>
+        「我這次是<strong>特別多人</strong>,我來出一次看看,讓你們講,<strong>我來聽聽看你們的看法</strong>。<br>
+        所以你們<strong>不見得要迎合老師</strong> —— 不需要。我要聽聽看你們從<strong>你們的角度</strong>去看。」<br><br>
+        關於第 4 題,他在講評時補了一句:「<strong>我那個問題出得不好</strong> —— 『不同意』其實不是『不懂』,我的意思是<strong>你有不同的想法</strong>。」<br>
+        <em>(現場學員的反應很誠實:「你們的壓力就很大,我哪敢不同意。」)</em>
+      </div>
+
+      <div class="callout callout-quote">
+        <span class="callout-label">⭐ 這五題其實只在問一件事</span>
+        壓軸課講到<a href="#s6">軟實力第一名</a>時,老師才揭曉整組題目的目的:<br><br>
+        「你們如果回顧一下這次的作業、那三篇文章 —— <strong>裡面講的其實只有一件事。</strong><br>
+        <strong>我為什麼去安排這三天?第一個就是『分析思考』的問題。</strong>」
+      </div>
+
+      <h3>老師對第 3 題的答案(三篇文章的共同主軸)</h3>
+      <p>學員報告時反覆出現、老師也認可的那條線:</p>
+      <pre>資料 ≠ 資訊 ≠ 知識 ≠ 智慧
+連結 ≠ 理解 ≠ 誠實 ≠ 智慧</pre>
+      <ul>
+        <li>三篇分別從<strong>哲學(個人認知)→ 組織(治理)→ 責任(當責)</strong>三個層次推進</li>
+        <li>老師用<strong>三法印、心經五蘊、我思故我在</strong>貫串</li>
+        <li><strong>孟子「求其放心」</strong>的「放」念 fàng —— 是把丟掉的心<strong>找回來</strong>,不是放棄</li>
+        <li>結論:<strong>代理式 AI 無法替你承擔最終責任</strong> —— 決策的<strong>方式</strong>改變了,但決策的<strong>本質</strong>沒變</li>
+      </ul>
+    </section>
+
+    <section id="s1">
+      <h2><span class="section-num">0</span>一頁速覽:老師這一小時講了什麼</h2>
+      <pre>【開場】這堂課的原型是美國大學的「就業輔導處」(CPP)
+        講題:Hot Tips for the Future —— 畢業前你該知道的事
+   ↓
+【震撼彈】世界經濟論壇《Future of Jobs Report》
+        2023 版:AI 第 1、永續第 2、BI 第 3
+        2025 版:AI 掉到第 3 —— 因為民主化了
+                第 1 名變成 Big Data
+        「前 11 名裡有 3 個是 BI，可是大家都只知道 AI」
+   ↓
+【核心結論】你公司最重要的資產不是 AI，是 data
+           而 data 的價值要靠 BI 來提煉
+   ↓
+【軟實力】WEF 第 1 名:分析思考
+         分析靠 BI，思考靠「你跟 AI 的對話」
+   ↓
+【誠實時刻】跟 AI 奮戰半小時搞不定，找人一小時解決
+           「這真的是在打臉我們自己搞 AI 的人」
+   ↓
+【賈伯斯】Connecting the Dots —— 你現在修的課、交的報告
+         都是那些點，串起來才會恍然大悟
+   ↓
+【博士之路】原創是唯一的路 → 點數怎麼湊 → 找題目的鐵律
+           → 學而不思則罔，思而不學則殆
+   ↓
+【收尾】Die Hard，但緣督以為經 —— 11 點熄燈</pre>
+    </section>
+
+    <!-- ================= PART A ================= -->
+    <div class="part-banner">
+      <div class="pb-eyebrow">Part A</div>
+      <h2>被忽略的 BI</h2>
+      <div class="pb-sub">一個做了 42 年 AI 的人,為什麼整堂課在講 BI</div>
+    </div>
+
+    <section id="s2">
+      <h2><span class="section-num">1</span>講者:一個做了 42 年 AI 的人</h2>
+      <ul>
+        <li>成大<strong>數學系</strong>出身 —— 那個年代還沒有資工系,<strong>資工是從應用數學系分出來的</strong>,而成大是<strong>台灣第一個成立資工系</strong>的學校</li>
+        <li>從大學部一路念到博士,美國 Houston 大學</li>
+        <li><strong>做 AI 做了 42 年</strong> —— 一輩子的研究興趣是 <strong>AI 與 VLSI</strong></li>
+        <li>系上開的課就是 <strong>AI 跟 BI</strong>;大學部教 coding 與 AI 導論</li>
+        <li>「我大概<strong>還有兩三年退休</strong>」</li>
+      </ul>
+      <div class="callout callout-teacher">
+        <span class="callout-label">42 年前的岔路</span>
+        那時台灣剛起步,只有兩條路:<strong>軟體(AI)</strong>和<strong>硬體(半導體)</strong>。<br>
+        「那時候<strong>碩士班沒有人要碰 AI</strong> —— 因為很難畢業、很抽象,而半導體剛起來。」<br>
+        當時是美國在推、日本在推(<strong>日本的十年第五代電腦計畫</strong>),所以他選了 AI。<br>
+        <strong>「42 年回過頭來看,不得了。」</strong>
+      </div>
+      <div class="callout callout-highlight">
+        <span class="callout-label">45 年前,國中老師叫他轉系</span>
+        大一考上「電子計算機科學工程學系」,回鄉遇到國中老師。老師問他念什麼,他說了系名 ——<br>
+        老師手一伸:<strong>「你趕快轉系,電腦沒有前途。」</strong><br>
+        <em>(那個年代台灣講得出來的就是宏碁、華碩。)</em>
+      </div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="section-num">2</span>WEF 2023 報告:BI 排第三,可是沒人知道</h2>
+      <p>老師拿出世界經濟論壇(World Economic Forum)的《<strong>Future of Jobs Report</strong>》—— <strong>2023 年 5 月</strong>發布。</p>
+      <ul>
+        <li>這是<strong>全世界最前瞻的就業市場報告</strong>,原本<strong>五年公布一次</strong></li>
+        <li>一公布,<strong>各國政府就開始訂他們未來五年的教育方向</strong></li>
+        <li>報告本身<strong>150 幾頁</strong></li>
+      </ul>
+
+      <h3>成長最快的職業(2023 版)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th class="rank">#</th><th>領域</th><th>老師的註解</th></tr></thead>
+        <tbody>
+          <tr><td class="rank">1</td><td><strong>AI</strong></td><td>「我不意外它排第一」</td></tr>
+          <tr><td class="rank">2</td><td><strong>永續(ESG)</strong></td><td>這個大家想得到</td></tr>
+          <tr class="star"><td class="rank">3</td><td><strong>BI(商業智慧)</strong></td><td>⬅️ <strong>「我一看到嚇一跳」</strong></td></tr>
+          <tr><td class="rank">4</td><td>資安</td><td>可以歸到資訊這一塊</td></tr>
+          <tr><td class="rank">5</td><td>Fintech</td><td>其實也是 AI</td></tr>
+          <tr><td class="rank">6–8</td><td>其他資訊類 / 電動車</td><td>「第 6 個也是 AI,第 7 個也是 AI」</td></tr>
+          <tr><td class="rank">9</td><td>農業管理</td><td>「農業管理現在都變成有趣了對不對」</td></tr>
+          <tr><td class="rank">10</td><td><strong>數位轉型</strong></td><td>「數位轉型其實就是要做<strong>決策</strong>」</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>另一頭 —— 消失最快的職業:銀行櫃員。</strong>老師順口提醒:「孩子要選這個都要考慮一下。」</p>
+
+      <div class="callout callout-key">
+        <span class="callout-label">老師的歸納</span>
+        「這樣子弄來弄去<strong>就只有幾塊</strong> —— 一個 <strong>AI</strong>、一個 <strong>BI</strong>、再一個就是<strong>資安</strong>。」
+      </div>
+
+      <div class="callout callout-teacher">
+        <span class="callout-label">為什麼他看到會嚇一跳</span>
+        <strong>「台灣第一個開 BI 課的,大概就是我這裡。」</strong><br>
+        「每次跟人家講 BI 都沒有人知道 —— 你知道嗎?<br>
+        結果 2023 年一出來,我一看,<strong>它排第三</strong>… 而我教了那麼久的東西,<strong>都沒人聽</strong>。」
+      </div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="section-num">3</span>WEF 2025 大洗牌:AI 掉到第 3,Big Data 變第 1</h2>
+      <div class="callout callout-highlight">
+        <span class="callout-label">頻率改了 —— 這件事本身就是訊號</span>
+        原本<strong>五年一次</strong>的報告,<strong>2025 年 2 月出了第二版</strong> ——<br>
+        <strong>改成兩年發一次。</strong>「全球的就業市場<strong>兩年就翻轉一次</strong>,很可怕啊。」
+      </div>
+
+      <h3>2025 版的變化</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th class="rank">#</th><th>2023 版</th><th class="rank">#</th><th>2025 版</th></tr></thead>
+        <tbody>
+          <tr class="star"><td class="rank">1</td><td>AI</td><td class="rank">1</td><td><strong>Big Data</strong> ⬅️ 新的第一名</td></tr>
+          <tr><td class="rank">2</td><td>永續(ESG)</td><td class="rank">2</td><td>—</td></tr>
+          <tr class="star"><td class="rank">3</td><td><strong>BI</strong></td><td class="rank">3</td><td><strong>AI</strong> ⬅️ 掉下來了</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">AI 為什麼會掉到第三?</span>
+        <strong>「不是代表它不重要 —— 是它已經『民主化』了。」</strong><br>
+        「你現在問任何一個阿貓阿狗,<strong>每個人都在玩 AI,玩瘋了</strong>。」<br>
+        <em>→ 會用 AI 不再是差異化能力,所以它從「最稀缺」變成「基本配備」。</em>
+      </div>
+
+      <h3>Big Data 為什麼衝到第一?</h3>
+      <ul>
+        <li>「Big Data 最紅的時間是<strong>在 2013 年</strong>」—— 十幾年前的老題目</li>
+        <li>老師當時的反應:「我一看到這個數據就想說,<strong>為什麼會搞到第一名?</strong>」</li>
+      </ul>
+      <div class="callout callout-quote">
+        <span class="callout-label">他自己給的答案</span>
+        「上過課的就知道 —— <strong>Big Data 只有大數據是沒有用的,資料要分析才會有價值。</strong><br>
+        <strong>所以「大數據分析」就是 BI。</strong>」<br><br>
+        換句話說:<strong>兩年之後,BI 跟 AI 就是同一個層級了。</strong>
+      </div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">最關鍵的一句統計</span>
+        <strong>「前六名裡面有兩個是 BI;第 11 名的 data science 其實也是 BI 這一類的 —— 換句話說,前 11 名裡面有三個是 BI。」</strong><br><br>
+        <strong>「所以我很感慨:大家都懂 AI,不知道 BI —— 你看這是多麼荒謬。」</strong>
+      </div>
+
+      <div class="callout callout-teacher">
+        <span class="callout-label">差點被他刪掉的單元</span>
+        Data Warehouse(資料倉儲)這個單元,他 2024 年上課時<strong>一直很掙扎要不要拿掉</strong> ——<br>
+        「因為那個 model 太老了,我就一直想說要不要把這個單元拿掉…」<br>
+        結果 <strong>2025 年 2 月那份報告,把它放回榜上</strong>。<br>
+        <strong>「我怎麼可以拿掉呢?繼續講。」</strong>
+      </div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="section-num">4</span>核心結論:最重要的資產不是 AI,是 data</h2>
+      <div class="callout callout-quote">
+        <span class="callout-label">這段是講給在座的老闆聽的</span>
+        「這個<strong>你們都是高階主管,而且都是老闆</strong> —— <strong>公司的方向要抓緊。</strong><br><br>
+        大家都在投入 AI,可是<strong>沒有那些 data</strong> ——<br>
+        <strong>你公司裡面最重要的資產不是 AI,是 data。</strong><br><br>
+        那你那個 data 的價值要靠什麼來提煉?<strong>靠 BI。</strong>」
+      </div>
+      <p>老師的用詞很直接:<strong>「大家都倒錯方向了。」</strong>另外他也把 <strong>CI</strong> 對到雲端 —— 意思是資料最後要能上得去、串得起來。</p>
+      <div class="callout callout-highlight">
+        <span class="callout-label">連交通局都來找他講這個</span>
+        有位學長現在是<strong>交通局副局長</strong>,上完課之後就拉他去交通局演講。<br>
+        老師本來推:「喂,你不要搞我。」對方說:「就是要你來講。」
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="section-num">5</span>軟實力排名第 1:分析思考</h2>
+      <p>同一份 WEF 報告也公布了<strong>軟實力(soft skills)排名</strong>:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th class="rank">#</th><th>軟實力</th><th>老師的拆解</th></tr></thead>
+        <tbody>
+          <tr class="star"><td class="rank">1</td><td><strong>分析思考</strong><br><em>Analytical Thinking</em></td><td><strong>分析</strong>靠什麼?<strong>靠 BI</strong>。<br><strong>思考</strong>靠什麼?<strong>靠你跟 AI 的對話</strong>。</td></tr>
+          <tr><td class="rank">2</td><td>創意思維</td><td>(老師略過沒展開)</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">「不能相信」的正確意思</span>
+        <strong>「不是說不能相信 —— 是你不能『完全依賴』AI 給你的 answer。</strong><br>
+        <strong>你跟它是一組交流,這個對話就會引起你的思考。</strong>」
+      </div>
+
+      <div class="callout callout-quote">
+        <span class="callout-label">全場最重要的伏筆</span>
+        「所以你們如果回顧一下這次的作業、那三篇文章 —— <strong>裡面講的其實只有一件事。</strong><br>
+        <strong>我為什麼去安排這三天?第一個就是『分析思考』的問題。</strong>」<br><br>
+        <em>→ 原來一整天的學員報告,是為了逼出「分析思考」這四個字。</em>
+      </div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">給企業主的行動結論</span>
+        <strong>「你們企業裡面的員工最需要掌握的,就是:分析(BI)+ 思考(對話式的 AI)。」</strong><br>
+        至於寫程式 ——「<strong>程式也不用再學了,因為以後的程式就是自然語言</strong>。」
+      </div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="section-num">6</span>案例:升達科技,30 套系統遍地開花</h2>
+      <p>老師上禮拜才去參觀他們的成果,講得非常興奮。</p>
+      <h3>這位 CEO 的背景</h3>
+      <ul>
+        <li>公司<strong>二代接班</strong>,<strong>15 歲爸爸就送他到加州念高中</strong>,後來 <strong>UCLA</strong> 畢業</li>
+        <li>回國時爸爸還在操盤,所以他只做半個工程</li>
+        <li><strong>他寫了全台灣第一套「電話語音掛號」系統</strong> —— 現在各大醫學中心你打電話去語音掛號,用的都是這一套</li>
+        <li>最關鍵的一點:<strong>這位董事長本身是 Computer Science 出身</strong>「我看過那麼多董事長,很少看到 CS 出來的」</li>
+      </ul>
+      <h3>導入的速度與規模</h3>
+      <ul>
+        <li><strong>三年半前</strong>(ChatGPT 剛出來),這位老闆<strong>馬上就買了工具</strong></li>
+        <li>現在<strong>全公司</strong>都在做流程自動化:報價、調撥、行銷、業務自動發送…</li>
+        <li><strong>每個人都會寫 N8N 流程</strong></li>
+        <li><strong>老師花了兩天去聽,總共 30 套系統</strong> ——「<strong>遍地開花</strong>,各玩各的,然後串上去,大家一起」</li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">最值得注意的一點</span>
+        <strong>「他們裡面沒有一個是科班 IT 的 —— 很多都是藥學系、化工系。」</strong><br>
+        「要學邏輯根本就不難,可是完全用 AI,他就可以做他們自己的業務。」<br>
+        <em>→ 這正好回應第 5 節:員工需要的不是寫程式能力,是分析與對話。</em>
+      </div>
+      <div class="callout callout-highlight">
+        <span class="callout-label">另一位業界人士的名言(老師特地引用)</span>
+        某公司副總在成大分享「擁抱數位工具的必要」,講到企業同仁的<strong>數位素養</strong>非常重要,他的數位轉型清單裡就包含 <strong>RPA 與 BI</strong>。<br>
+        他講了一句很有名的話:<br>
+        <strong>「不要說你不會 —— 因為以後你都必須會。」</strong>
+      </div>
+    </section>
+
+    <section id="s8">
+      <h2><span class="section-num">7</span>打臉自己的一段(這段很誠實)</h2>
+      <p>老師要做一張圖:一幅<strong>卷軸</strong>,上面要有「AI」兩個字,角度要跟卷軸貼合、還要有立體感。</p>
+      <ul>
+        <li>他自己跟 AI 奮戰,<strong>搞了半個鐘頭就是搞不出來</strong></li>
+        <li>最後把圖丟給學生(設計背景)——「你可不可以幫我搞定一下」</li>
+        <li><strong>放一個小時,就搞定了</strong></li>
+        <li>學生的做法:不是硬要 AI 生,而是<strong>用後製去疊</strong> ——「靠,這都沒想到耶」</li>
+      </ul>
+      <div class="callout callout-warn">
+        <span class="callout-label">老師自己下的結論</span>
+        「你有沒有經驗?我們跟 AI 在那邊奮戰、一直要搞定你的問題的時候,<strong>結果搞半天你花了多少倍的時間</strong>在那邊搞 ——<br>
+        結果你會發現,<strong>如果當下切換、跳出來用人接手,很快就結束。</strong><br><br>
+        所以我們現在<strong>是被 AI 養成『AI 是對的』</strong>,你就會專注在那邊,一直想我怎麼改、怎麼再下指令…<br><br>
+        <strong>我真的很感慨 —— 這真的是在打臉我們自己搞 AI 的人。</strong>」
+      </div>
+    </section>
+
+    <section id="s9">
+      <h2><span class="section-num">8</span>回鄉偶書 · AI 相見不相識</h2>
+      <p>講到自己快退休,老師改寫了賀知章的〈回鄉偶書〉:</p>
+      <div class="poem">
+        少小離家老大回,鄉音無改鬢毛衰。<br>
+        <strong>AI 相見不相識</strong>,笑問此災能奈誰。
+        <span class="src">— 老師改寫自 賀知章〈回鄉偶書〉</span>
+      </div>
+      <p>他還引了另一句自勉:<strong>「人間人暖情微貴,世事艱難越堅強。」</strong></p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">一輩子的感慨</span>
+        「41 年前國中老師叫我趕快轉系…結果現在真是<strong>非常感慨</strong>。<br>
+        我就快退休了,<strong>然後自己搞了一輩子、教了一輩子的東西</strong>(現在全世界才在講)。<br>
+        如果<strong>再晚個五年</strong>起來,我大概就平安下莊了。」
+      </div>
+    </section>
+
+    <!-- ================= PART B ================= -->
+    <div class="part-banner">
+      <div class="pb-eyebrow">Part B</div>
+      <h2>賈伯斯與 insight</h2>
+      <div class="pb-sub">為什麼最後一題要問「你的 Biggest Insight 是什麼」</div>
+    </div>
+
+    <section id="s10">
+      <h2><span class="section-num">9</span>賈伯斯的三個故事 × 老師的三關</h2>
+      <p>2005 年,賈伯斯在<strong>史丹佛大學畢業典禮</strong>演講(距今 21 年),講了三個故事。老師把它們對應到三個「觀」:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>賈伯斯的故事</th><th>老師的對應</th></tr></thead>
+        <tbody>
+          <tr><td><strong>① Connecting the Dots</strong>(點點滴滴串起來)</td><td><strong>因緣觀</strong></td></tr>
+          <tr><td><strong>② 愛與失去</strong>(被自己創辦的公司 fire 掉)</td><td><strong>無常觀</strong></td></tr>
+          <tr><td><strong>③ 死亡</strong></td><td><strong>生死觀</strong></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師的旁白</span>
+        「這個是很殘酷的一個場合 —— 人家大學小朋友畢業,<strong>22 歲人生正要開始</strong>的時候,你叫一個本科生去談這個。<br>
+        <strong>現在台灣的父母,今天就去告校長了對不對,然後學生就拿雞蛋丟過去。</strong><br>
+        可是賈伯斯這個演講變成是歷史上的一個經典 —— 他非常成功。」
+      </div>
+      <h3>Apple 的紀念影片(老師現場播了)</h3>
+      <p>2011 年賈伯斯過世後 Apple 做的紀念影片。片中引了曲棍球名將 Wayne Gretzky 的話:</p>
+      <blockquote>
+        <strong>"I skate to where the puck is going to be, not where it has been."</strong><br>
+        <em>我滑向球將要去的地方,而不是它曾經在的地方。</em><br>
+        —— 「而我們在 Apple 從一開始就一直試著這樣做,而且會一直這樣做下去。」
+      </blockquote>
+      <div class="callout callout-highlight">
+        <span class="callout-label">老師的遺憾與提問</span>
+        「這個影片在國外引起非常震撼的回響,<strong>可是 2011 年台灣的新聞報導,沒有一則報導這個</strong>—— 滿遺憾的,因為他本身是一個時代的偉人。」<br><br>
+        他丟出一個問題給全班:<br>
+        <strong>「今天如果賈伯斯還在,你們覺得 AI 的發展會是什麼樣的軌跡?會不會不一樣?」</strong><br>
+        <em>(他自己也去問了 AI —— AI 說這個真的沒有辦法預測。)</em>
+      </div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="section-num">10</span>Connecting the Dots:你現在做的每件事都是那些點</h2>
+      <h3>賈伯斯的原始故事</h3>
+      <ul>
+        <li>他大學休學了,但<strong>跑去旁聽書法課</strong> —— 純粹因為喜歡那個字體</li>
+        <li>後來他發明 Macintosh,<strong>那個視覺化的 User Interface 與字型</strong>,就是從那堂書法課來的 —— 也因此跟微軟分道揚鑣</li>
+        <li><strong>「回過頭想一想:如果他當時沒有休學、沒有去修那堂書法課,他就沒有辦法創造出 Mac。」</strong></li>
+        <li><strong>「可是他那時候在修那堂課的時候,他哪知道未來會變成這個樣子?」</strong></li>
+      </ul>
+      <div class="callout callout-quote">
+        <span class="callout-label">賈伯斯的原話(老師特別強調)</span>
+        「我們沒有辦法預先知道這些點串起來會是什麼樣子 ——<br>
+        <strong>但是你當下就要去相信,它一定會有作用。</strong><br><br>
+        你要信任某個東西:<strong>直覺也好、命運也好、生命也好,或者是因果(Karma)</strong> ——<br>
+        他真的是寫 <strong>Karma</strong>,就是佛教的業力。<br>
+        <strong>他說這種做法從來沒有讓他失望過。</strong>」
+      </div>
+      <div class="callout callout-key">
+        <span class="callout-label">老師把它翻譯成給 DBA 學生的話</span>
+        「你在創業的過程、你現在正在做 DBA 的研究、你要博士 —— <strong>你的目標就在那裡。</strong><br>
+        <strong>你現在所做的東西,你都不要去懷疑它</strong> ——<br>
+        你現在修課、交報告、討論…<strong>這些點點滴滴,到最後串起來的時候,你就會恍然大悟:</strong><br>
+        <strong>原來就是這些點,促成我拿到學位。</strong>」
+      </div>
+    </section>
+
+    <section id="s12">
+      <h2><span class="section-num">11</span>Think Different = 非同凡想</h2>
+      <ul>
+        <li>當年 Apple 打出這個 slogan 時,<strong>行銷部門說文法錯了</strong>(應該是 differently),要他改</li>
+        <li><strong>賈伯斯堅持不改</strong> ——「這才是真正的不同」</li>
+        <li>結果 <strong>Think Different 變成 Apple 的象徵</strong></li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">老師的翻譯:不是「不同凡想」,是「非同凡想」</span>
+        意思是:<br>
+        <strong>他可以看到別人沒有看到的、想到別人沒有想到的、做到別人做不到的事情。</strong><br><br>
+        用中文說就是:<strong>見人未見、思人未思、行人未行。</strong><br><br>
+        <strong>「這個東西就叫 insight。」</strong>
+      </div>
+      <div class="callout callout-quote">
+        <span class="callout-label">為什麼作業最後一題要問 Biggest Insight</span>
+        「所以你們最後那個題目 <strong>Biggest Insight</strong> —— 其實我就是希望你能講出來:<br>
+        <strong>你看了這三天之後,有沒有一些別人沒有看到的東西?</strong><br><br>
+        <strong>我相信在座的同學一定都有這個能力。為什麼?</strong><br>
+        <strong>因為你們現在企業經營得這麼成功,一定有兩三把刷子 —— 你們的刷子就是實務。</strong><br>
+        所以 <strong>DBA 的學生是非常非常需要的。</strong>」
+      </div>
+    </section>
+
+    <!-- ================= PART C ================= -->
+    <div class="part-banner">
+      <div class="pb-eyebrow">Part C</div>
+      <h2>博士之路:從定義到畢業</h2>
+      <div class="pb-sub">這一段是老師講給即將入學的新生聽的實務攻略</div>
+    </div>
+
+    <section id="s13">
+      <h2><span class="section-num">12</span>博士是什麼?(中華文化的版本)</h2>
+      <div class="callout callout-highlight">
+        <span class="callout-label">冷知識</span>
+        <strong>「全世界最早有『博士』制度的是中國。」</strong>(老師特別聲明:講的是中華文化的中國,不是政治的中國)
+      </div>
+      <ul>
+        <li><strong>秦朝</strong>:掌通古今、專門精通一種學問或傳授經學的官職</li>
+        <li><strong>漢朝</strong>:五經博士</li>
+        <li><strong>唐朝</strong>:太子博士、律學博士</li>
+      </ul>
+      <p>而我們期待的博士,就是<strong>博學多聞</strong>。</p>
+
+      <h3>北宋神童汪洙的《神童詩》</h3>
+      <p>老師引了好幾句 —— 作者<strong>九歲能詩</strong>,外號「汪神童」:</p>
+      <div class="poem">
+        萬般皆下品,惟有讀書高。<br><br>
+        君看為宰相,必用讀書人。<br><br>
+        一舉登科日,雙親未老時。<br><br>
+        春遊芳草地,夏賞綠荷池,<br>
+        秋飲黃花酒,冬吟白雪詩。
+        <span class="src">— 北宋 汪洙《神童詩》(老師課堂引用)</span>
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">課堂笑點</span>
+        講到「秋飲黃花酒」時,老師想到班上有同學正要去巴黎 ——<br>
+        「他又是<strong>啤酒社</strong>的,他就『秋飲黃花酒』…<strong>去巴黎就是要喝紅酒</strong>。<br>
+        不過西方人喝酒跟我們的意境不一樣,有這種詩句來襯托一下就不一樣了。」
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">前院長的名言</span>
+        「我們常常訪問博士啊、我們這些教授啊 —— <strong>其實都是不會念書的人。</strong>」<br>
+        老師一聽:「有嗎?我就<strong>不喜歡</strong>念書啊,我怎麼會是喜歡念書?」
+      </div>
+    </section>
+
+    <section id="s14">
+      <h2><span class="section-num">13</span>博士學位的三個核心</h2>
+      <p>博士學位是大學裡<strong>最高級別的學術學位</strong>,代表你完成了一部分<strong>原創的研究</strong>。</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>核心</th><th>意思</th><th>老師的話</th></tr></thead>
+        <tbody>
+          <tr><td><strong>① 原創性</strong></td><td>前所未見</td><td>「你們在思考論文方向,<strong>一定要抓住原創</strong>。口試的時候老師一定問你 ——<strong>你的原創性在哪裡?</strong>」</td></tr>
+          <tr><td><strong>② 獨立性</strong></td><td>自己做出來的</td><td>「老師一定會要求你,<strong>不可以去抄別人的</strong>,你要自己原創。」</td></tr>
+          <tr><td><strong>③ 態度</strong></td><td>堅持、專注</td><td>「<strong>我一定要 touch down</strong> —— 洗澡的時候突然想起來,刷背的時候都還在想。」</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-key">
+        <span class="callout-label">「追求智慧」的白話翻譯</span>
+        「博士學位就是<strong>博學多聞、增長智慧</strong>,強調的是<strong>堅持追求智慧、真理與信念的過程訓練</strong>。<br><br>
+        <strong>追求智慧就是 research</strong> —— 一直在做蒐集、驗證;還有信念,你那個信念就是你原創的信念。<br>
+        而這個需要<strong>一個過程</strong>,兩年三年,這是很合理的。」
+      </div>
+    </section>
+
+    <section id="s15">
+      <h2><span class="section-num">14</span>德國教授的 Spell Check(全場最有畫面的故事)</h2>
+      <p>老師在美國念博士,指導教授是一位<strong>德國人</strong>。</p>
+      <ol>
+        <li>他<strong>生平第一次寫完 paper</strong>,拿著英文稿去敲教授辦公室的門:「教授,麻煩請你幫我改一下。」教授說:「好。」</li>
+        <li>他離開辦公室,沿著走廊走到轉角 ——</li>
+        <li><strong>忽然聽到地板上「唰」的一聲。</strong></li>
+        <li>他回頭一看,沒人。低頭一看,門口有東西 ——「我剛從那邊出來啊,怎麼會有東西?」</li>
+        <li>過去撿起來一看 —— <strong>是他自己那份 paper,從門縫底下被推出來的。</strong></li>
+      </ol>
+      <div class="callout callout-warn">
+        <span class="callout-label">教授做了什麼</span>
+        紅筆改到<strong>第三個錯字</strong>就停了:第一個框起來、第二個框起來、第三個框起來 ——<br>
+        然後在上面只寫了兩個字:<br><br>
+        <div style="text-align:center;font-size:22px;font-weight:700;letter-spacing:2px;margin:10px 0;"><code>Spell check</code></div>
+      </div>
+      <p>老師的反應:「我發誓我一定檢查過了啊!那時候沒有 word 的拼字檢查,我是用工具查的 —— 結果他<strong>只看到第一個段落就挑出三個問題</strong>。」</p>
+      <div class="callout callout-key">
+        <span class="callout-label">結果</span>
+        <strong>「他沒有發 email,他也沒有跟我講任何一個字。」</strong><br>
+        <strong>「從此之後,畢業之前給他改的論文,再也沒有任何錯字。」</strong><br><br>
+        老師的體會:「<strong>他都不用開口,只要一句話。</strong>」<br>
+        —— 這也變成他自己帶學生的方式。
+      </div>
+    </section>
+
+    <section id="s16">
+      <h2><span class="section-num">15</span>DBA 跟一般商管博士差在哪</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th></th><th>一般商管博士(PhD)</th><th>DBA</th></tr></thead>
+        <tbody>
+          <tr><td><strong>相同</strong></td><td colspan="2" style="text-align:center;">都要進行<strong>原創研究</strong></td></tr>
+          <tr><td><strong>聚焦</strong></td><td>學術與教學</td><td><strong>重視理論與實用的結合</strong></td></tr>
+          <tr><td><strong>目的</strong></td><td>培養學者</td><td>提升<strong>方法論技能</strong>與<strong>解決問題能力</strong></td></tr>
+          <tr><td><strong>出路</strong></td><td>進入學界</td><td><strong>業界的業師</strong>,甚至可能成為正式教師</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-quote">
+        <span class="callout-label">老師對 DBA 學生的定位</span>
+        「<strong>理論不是你們的重點</strong> —— 你們是要教授來幫助你們補足。<br>
+        你們以後是要變成<strong>業界的業師</strong>,搭建學界跟產業界的橋樑。」<br><br>
+        「解決問題你們都會,你們一定克服過很多問題 —— <strong>但這裡所謂的解決問題,是要有系統化的方法。</strong>」
+      </div>
+      <h3>成功商業高管的定義(取自 Forbes 的文章)</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">老師十年前找到的定義,一直沿用到現在</span>
+        <strong>「透過準確的 data、精確的策略,解決迫切的現實問題。」</strong><br><br>
+        「<strong>研究議題就是要符合這個</strong> —— 你會用到 data,不管是量化還是質化;<br>
+        但你要有一個<strong>精確的策略</strong>,這個策略就是要解決你很迫切的問題,<br>
+        而且這個問題要有<strong>很高的原創性</strong>。」
+      </div>
+      <p><em>老師也提到 Forbes 常出這類文章(例如「攻讀商管博士之前你該知道的事」),建議大家回去找來看 ——「這些文章看了之後你會有感,走這一條路的時候。」</em></p>
+    </section>
+
+    <section id="s17">
+      <h2><span class="section-num">16</span>發表點數怎麼湊(這段最實用)</h2>
+      <p>成大 DBA 的畢業四件事:<strong>完成課程 → 進行研究 → 論文發表 → 論文口試</strong>。</p>
+      <div class="callout callout-warn">
+        <span class="callout-label">四件事裡最難的是哪一件?</span>
+        「完成課程?<strong>簡單啦</strong>,你們現在就是在學習,很簡單。<br>
+        進行研究?<strong>你們今天都在接受這個訓練。</strong><br>
+        論文口試?<strong>很簡單 —— 老闆會讓你口試,那就是代表(可以過了)。</strong><br><br>
+        <strong>所以最困難的關鍵就是:發表。</strong>」
+      </div>
+
+      <h3>可以發的地方(由難到易)</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>層級</th><th>刊物</th><th>點數 / 難度</th></tr></thead>
+        <tbody>
+          <tr><td>頂級</td><td><strong>全球三大管理期刊</strong>(MIT Sloan / 加州柏克萊 / 哈佛)</td><td><strong>一篇 16 點</strong>。「曾經有台灣的教授上去過,MIT 很少數」</td></tr>
+          <tr><td>國際</td><td>SSCI</td><td>「這個你的指導教授一定都知道」</td></tr>
+          <tr><td>國內</td><td>TSSCI</td><td>「也是有一些接受產業的」</td></tr>
+          <tr><td>期刊</td><td><strong>APMR</strong></td><td><strong>3 點</strong></td></tr>
+          <tr><td>研討會</td><td><strong>APMC</strong> / 管院每年辦的研討會(Scopus)</td><td><strong>一篇 2 分</strong>,「比較 easy」</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout callout-key">
+        <span class="callout-label">老師直接幫你排的路徑</span>
+        <strong>兩篇 conference = 4 分</strong>(管院每年都有研討會,「一篇就 2 分,兩篇就 4 分」)<br>
+        <strong>+ 修課寫兩篇 = 再 4 分</strong><br>
+        <strong>→ 剩下 6 分,就去攻期刊</strong><br><br>
+        ⚠️ 有上限規定:<strong>採計期刊最多 7 分</strong>,「你不用衝那麼多」。<br><br>
+        <strong>「你們 9 月才入學 —— 進來之後趕快跟教授合作,趕快寫,投出去。」</strong>
+      </div>
+
+      <h3>⚠️ 一個必須知道的殘酷事實</h3>
+      <div class="callout callout-warn">
+        <span class="callout-label">AI 讓投稿全球大爆發</span>
+        「我都是講清楚很殘酷的事實 —— <strong>現在因為有 AI,投稿全球大爆發。</strong><br>
+        為什麼?<strong>因為語言再也不是障礙了。</strong><br><br>
+        所以現在變成:<strong>你的 mindset 可不可以被西方的人接受</strong> —— 因為這些都是國外的。」<br><br>
+        審查時間也拉長:「都是以幾個月計,像我投的那個雖然是比較快的,<strong>也要一個半月</strong>。」
+      </div>
+      <div class="callout callout-teacher">
+        <span class="callout-label">老師自己的例子</span>
+        他有一篇談 <strong>AI 與 SDGs</strong> 的文章,<strong>裡面引了三法印</strong> ——<br>
+        審查委員竟然<strong>是一位歐洲的心理學教授,而且看得懂三法印</strong>。<br>
+        「我在想說他怎麼可以接受東方的論理?…<strong>但這代表他接受我的原創。</strong>」<br><br>
+        那個專欄的性格很特別 ——「叫做<strong>老頑固的專欄</strong>:要夠老,然後<strong>你的觀念要跟現有的人都不一樣</strong>。」
+      </div>
+    </section>
+
+    <section id="s18">
+      <h2><span class="section-num">17</span>找題目的鐵律</h2>
+      <div class="callout callout-warn">
+        <span class="callout-label">沒有第二條路</span>
+        <strong>「一定要原創。你千萬不能 follow,不能去跟隨別人做過的事。」</strong><br>
+        「還沒找到原創題目的話,你就去問你的指導教授:<strong>『沒有人做過嗎?沒有人想過嗎?』</strong>」
+      </div>
+
+      <h3>DBA 學生最容易犯的錯</h3>
+      <div class="callout callout-key">
+        <span class="callout-label">第一個想到的 idea,通常就是問題所在</span>
+        「<strong>『這個問題我想很久了』</strong>—— 這是 DBA 學生最容易犯的一個問題。<br><br>
+        <strong>但是發表論文不是這樣</strong> —— 發表論文是要<strong>文獻上沒有或很少</strong>。<br>
+        你現在要找到一個<strong>完全沒有人做過</strong>的 idea。」
+      </div>
+
+      <div class="callout callout-highlight">
+        <span class="callout-label">✅ 這時候 AI 特別好用</span>
+        <strong>「你就要告訴 AI:幫我去搜尋頂尖的期刊。」</strong><br>
+        <strong>「你一定要先確認你的東西跟人家沒有撞 —— 不然會白做工。」</strong><br>
+        <em>這是老師整堂課裡,唯一明確推薦「該用 AI」的地方。</em>
+      </div>
+
+      <h3>還要考慮:題目的生命週期</h3>
+      <blockquote>
+        「你要是找到一個原創的題目,<strong>但是這個生命週期很短</strong> ——<br>
+        <strong>搞不好你做到一半就不能發表了。</strong><br><br>
+        老師現在做 AI 就是這樣 —— <strong>它太快了,你發表出來的時候已經過時了。</strong>」
+      </blockquote>
+
+      <h3>四個步驟</h3>
+      <div class="table-wrap"><table>
+        <thead><tr><th>步驟</th><th>做什麼</th><th>老師的話</th></tr></thead>
+        <tbody>
+          <tr><td><strong>① 探索</strong></td><td>多元地看</td><td>「<strong>DBA 這個環境非常好</strong> —— 今天八位同學,我每一個都問『從你的角度去看』。<strong>這就是研究的起點。</strong>」</td></tr>
+          <tr><td><strong>② Cooking</strong></td><td>熬你的原創</td><td>「像<strong>燉藥、熬煮</strong>一樣,一直在那裡熬,熬出味道來。」</td></tr>
+          <tr><td><strong>③ 找出議題</strong></td><td>找別人沒想到的問題</td><td>「找出<strong>別人沒有想到的問題</strong>切進去。」</td></tr>
+          <tr><td><strong>④ Think it</strong></td><td>換角度</td><td>「從不同的角度去看 —— 就是多元思考。」</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout callout-warn">
+        <span class="callout-label">如果你做的是 AI 題目</span>
+        <strong>「很抱歉 —— 兩年前的 paper 就太久了。」</strong>
+      </div>
+    </section>
+
+    <section id="s19">
+      <h2><span class="section-num">18</span>學而不思則罔,思而不學則殆</h2>
+      <p>老師把整堂課的方法論,收在《論語》這兩句上 ——</p>
+      <div class="poem" style="text-align:center;font-size:19px;">
+        學而不思則<strong>罔</strong>,思而不學則<strong>殆</strong>。
+        <span class="src">— 《論語·為政》</span>
+      </div>
+
+      <h3>「罔」:只上課不思考</h3>
+      <blockquote>
+        「你修課的時候,反正老師教課、我交作業,<strong>你不去思考這個東西跟我有什麼關係</strong>…<br>
+        乃至於今天我們在講這三篇文章,<strong>你都不去思考的話</strong> ——<br><br>
+        <strong>你自己一定很迷惘。為什麼?</strong><br>
+        <strong>因為你現在學的東西都是別人分享出來的,都是舊的東西啊。</strong><br>
+        <strong>那你怎麼去創新?</strong>」
+      </blockquote>
+
+      <h3>「殆」:只自己想不看文獻</h3>
+      <blockquote>
+        「你也不去學、也不去翻文獻,有人做過你也不知道 ——<br>
+        <strong>憑空想像,然後你都已經做好了</strong>,做出來結果人家一看說:<br>
+        <strong>『某一點、某一點,人家都已經做了。』</strong><br><br>
+        你就<strong>白做工</strong>了,浪費你的時間 —— <strong>這就叫做「殆」,危險。</strong>」
+      </blockquote>
+
+      <div class="callout callout-key">
+        <span class="callout-label">老師的結論</span>
+        <strong>「老祖宗、論語,就已經把『做論文』這件事情交代了 —— 兩件事:要會學,要會思。」</strong>
+      </div>
+      <p>他也順帶說明自己為什麼寫文章一直引經典:</p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">他在做的事</span>
+        「我在跟全世界講一件事情:<strong>AI 再怎麼發展,這個心法離不開我們老祖宗的智慧。</strong><br>
+        我就是要驗證 —— <strong>我們東方的文化,才是真正跟這個世界同在,而不是要毀滅。</strong>」<br><br>
+        延伸:<strong>「美國的 AI 是加法(越堆越大);東方的文化是簡化 —— 我要簡、簡、簡。中國的 AI 想盡辦法降低資源消耗。」</strong><br>
+        <em>老師剛寫完一篇《AI 時代的減法管理》,說最快下禮拜或下下禮拜會出。</em>
+      </div>
+    </section>
+
+    <section id="s20">
+      <h2><span class="section-num">19</span>論文怎麼寫</h2>
+      <div class="callout callout-key">
+        <span class="callout-label">第一個字最難下 —— 但現在不是問題了</span>
+        「<strong>舉字為艱,第一個字最難下。</strong><br>
+        <strong>現在不用擔心 —— AI 幫你下第一個字,這個問題不存在了。</strong><br>
+        英文問題也不存在,中文問題也不存在。」<br><br>
+        但是 ——<strong>「現在有 AI 很簡單,但是你還是要寫。」</strong>
+      </div>
+      <h3>方法:先求有再求好</h3>
+      <ul>
+        <li>那個 idea 突然出現的時候,<strong>一定要把它寫下來</strong></li>
+        <li><strong>每個版本都代表不同階段的思考</strong>,每個版本都要留</li>
+        <li><strong>「先求有,再求好。」</strong></li>
+        <li>老師的速度:哈佛那篇文章「<strong>最快一天六小時就寫出來</strong> —— 我只要找到一個角度切進去」</li>
+      </ul>
+      <h3>三個發表方向</h3>
+      <p><strong>Conference Paper · Journal Paper · 個案</strong> —— 個案是 DBA 學生的強項。</p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">他從美國搬回來捨不得丟的東西</span>
+        「我們那個年代英文都不好,我老闆英文太好了,他每一次幫我改 —— <strong>我寫一個單字,他幫我改成別的字</strong>。<br>
+        那些稿子<strong>我全部都保存下來,從美國搬回來捨不得丟。</strong>」
+      </div>
+    </section>
+
+    <section id="s21">
+      <h2><span class="section-num">20</span>怎麼跟指導教授相處</h2>
+      <div class="poem">
+        善學者,師逸而功倍,又從而庸之;<br>
+        不善學者,師勤而功半,又從而怨之。
+        <span class="src">— 《禮記·學記》(老師課堂引用)</span>
+      </div>
+      <p>白話:會學的人,老師輕鬆而效果加倍;不會學的人,老師很累而效果減半,學生還要怨老師。</p>
+      <div class="poem">
+        善問者,如攻堅木:先其易者,後其節目。
+        <span class="src">— 《禮記·學記》</span>
+      </div>
+      <div class="callout callout-key">
+        <span class="callout-label">實際上要做什麼</span>
+        <strong>「指導教授身經百戰 —— 你要常常去跟他聊天,不只是吃飯而已。」</strong><br>
+        <strong>「而且你問的問題,就要問很大的問題。」</strong>
+      </div>
+    </section>
+
+    <section id="s22">
+      <h2><span class="section-num">21</span>DBA 學生的優勢:你的資料就是別人拿不到的</h2>
+      <p>老師舉了一個真實案例:</p>
+      <ul>
+        <li>某位學生的工廠在科工區,做<strong>銀漿、銀粉調製</strong>;本身是中山大學背景</li>
+        <li>他用 <strong>EMBA 課堂上學到的方法</strong>去改善<strong>銀粉成本</strong></li>
+        <li>寫成碩士論文 → 老師<strong>找了一位博士後研究員幫忙拖出去</strong> → <strong>發成 SCI</strong></li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">老師想說的重點</span>
+        <strong>「業界的資料跟案例要寫。」</strong><br>
+        「如果你找得到的指導教授是『硬』的(理工背景扎實),<strong>這也是可以翻的</strong>。」<br><br>
+        <em>→ 呼應他當天對另一位學員說的話:「你不必來唸 DBA,你直接去唸博士 —— 因為他用的方法就很扎實,而且他有實務經驗二十幾年。」</em>
+      </div>
+      <div class="callout callout-highlight">
+        <span class="callout-label">老師自己年輕時的做法(值得學)</span>
+        他大學在工研院電子所實習(做晶片):<br>
+        「人家實習完五點下班,大家走光了 —— <strong>我一定待到晚上八點九點</strong>。<br>
+        那些老工程師都還在做,<strong>我就坐在他旁邊做我自己的事</strong>…因為我想要在那個環境裡面看一看。」<br>
+        <strong>「所以能夠遇到這種員工,我覺得是你的資產。」</strong>
+      </div>
+    </section>
+
+    <!-- ================= PART D ================= -->
+    <div class="part-banner">
+      <div class="pb-eyebrow">Part D</div>
+      <h2>收尾:Die Hard,但要緣督以為經</h2>
+      <div class="pb-sub">老師最後十分鐘講的兩件事 —— 一件叫你撐住,一件叫你保重</div>
+    </div>
+
+    <section id="s23">
+      <h2><span class="section-num">22</span>Die Hard 的典故(不是電影)</h2>
+      <p>老師放了一張<strong>工具箱</strong>的照片,解釋為什麼:</p>
+      <ul>
+        <li>在美國念書的窮學生<strong>都買二手車</strong>,車子零件常壞,所以<strong>每個學生一定會買一個工具箱</strong></li>
+        <li>但有一樣東西<strong>唯一不敢買太爛的二手貨 —— 就是工具</strong></li>
+        <li>當時最好的品牌叫 <strong>DieHard</strong>(老師唸成「呆哈」)—— <strong>最貴,但就是不會壞</strong></li>
+      </ul>
+      <div class="callout callout-key">
+        <span class="callout-label">老師的雙關</span>
+        <strong>「你追求這個學位的過程,雖然辛苦 —— but I'll be back, I'll be happy.」</strong><br><br>
+        「好好享受唸 DBA 這個過程,<strong>開開心心的,但是要 Die Hard(撐住、不輕易壞)。</strong><br>
+        <strong>不要輕易的放棄。</strong>」<br><br>
+        但是 ——<strong>「你不可以虛與委蛇。」</strong>
+      </div>
+
+      <h3>為什麼特別要提「不可須臾離」</h3>
+      <div class="poem">
+        回也,其心三月不違仁,<br>
+        其餘則日月至焉而已矣。
+        <span class="src">— 《論語·雍也》</span>
+      </div>
+      <p>顏回能<strong>三個月</strong>心不離開仁;其他人只能維持<strong>一天、一個月</strong>就退回去了。老師再接老子:</p>
+      <blockquote>
+        「<strong>道也者,不可須臾離也;可離,非道也。</strong>」<br>
+        →<strong>「那個『道』就是 DBA —— DBA 也不可須臾離。」</strong>
+      </blockquote>
+      <div class="callout callout-warn">
+        <span class="callout-label">為什麼對 DBA 學生特別重要</span>
+        <strong>「因為你們不像我們當年是全心在念書。」</strong><br>
+        「你們業務做不完、要創業、非常非常忙 —— <strong>忙到你有時候會突然忘記你的博士</strong>。<br>
+        所以你要<strong>跟緊</strong>。」
+      </div>
+    </section>
+
+    <section id="s24">
+      <h2><span class="section-num">23</span>緣督以為經:講得最重的一段</h2>
+      <p>課的最後,老師講到最近的新聞 —— <strong>四十幾歲的醫生猝逝</strong>,家庭那麼好,突然就這樣。</p>
+      <div class="callout callout-warn">
+        <span class="callout-label">他直接下的指令</span>
+        <strong>「往那邊找一點時間睡,不要太衝刺 —— 要留一點時間給家裡的人。」</strong><br>
+        <strong>「11 點就要熄燈,網路全部都斷掉。我家是 9 點。」</strong><br><br>
+        「今年到 8 月 2 日,發生了很多事…<strong>大家不要太忙碌。點到為止。</strong>」
+      </div>
+      <div class="poem" style="text-align:center;">
+        緣督以為經,<br>
+        <strong>可以保身,可以全生,可以養親,可以盡年。</strong>
+        <span class="src">— 《莊子·養生主》</span>
+      </div>
+      <p>老師的白話:<strong>11 點之前就躺平,讓血液歸藏於肝</strong> —— 這樣才可以保全身體、保全生命、奉養雙親,最後才能盡你的天年。</p>
+      <div class="callout callout-teacher">
+        <span class="callout-label">同一段裡他還引了莊子另一句</span>
+        <strong>「吾生也有涯,而知也無涯。」</strong><br>
+        用有涯的生命去追無涯的知識 —— 所以更要懂得取捨、懂得保養。<br>
+        「你們還要顧家庭,有很多角色需要同時扮演。」
+      </div>
+    </section>
+
+    <!-- ================= 總結 ================= -->
+    <div class="part-banner">
+      <div class="pb-eyebrow">總結</div>
+      <h2>複習</h2>
+      <div class="pb-sub">術語、提醒、行動清單</div>
+    </div>
+
+    <section id="s25">
+      <h2><span class="section-num">24</span>術語與名詞</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>詞</th><th>全稱 / 出處</th><th>課堂上的意思</th></tr></thead>
+        <tbody>
+          <tr><td><strong>BI</strong></td><td>Business Intelligence</td><td>商業智慧 —— <strong>把 data 分析成決策價值</strong>。老師整堂課的主角</td></tr>
+          <tr><td><strong>Big Data</strong></td><td>大數據</td><td>2013 年最紅;「<strong>只有大數據沒有用,要分析才有價值 —— 所以就是 BI</strong>」</td></tr>
+          <tr><td><strong>Data Warehouse</strong></td><td>資料倉儲</td><td>老師 2024 年差點刪掉的單元,2025 年報告把它救回來</td></tr>
+          <tr><td><strong>WEF</strong></td><td>World Economic Forum</td><td>世界經濟論壇,發布《Future of Jobs Report》</td></tr>
+          <tr><td><strong>CPP</strong></td><td>Career Planning and Placement</td><td>美國大學的就業輔導處 —— 這堂課的原型</td></tr>
+          <tr><td><strong>VLSI</strong></td><td>Very Large Scale Integration</td><td>超大型積體電路 —— 老師另一個一輩子的研究領域</td></tr>
+          <tr><td><strong>N8N</strong></td><td>流程自動化工具</td><td>升達科技全公司都在用的東西</td></tr>
+          <tr><td><strong>RPA</strong></td><td>Robotic Process Automation</td><td>機器人流程自動化,數位轉型的標配</td></tr>
+          <tr><td><strong>APMC / APMR</strong></td><td>研討會 / 期刊</td><td>APMC 3 點、APMR 3 點</td></tr>
+          <tr><td><strong>Scopus</strong></td><td>索引資料庫</td><td>管院研討會的收錄標準,一篇 2 分</td></tr>
+          <tr><td><strong>Think Different</strong></td><td>Apple slogan</td><td>老師譯「<strong>非同凡想</strong>」= 見人未見、思人未思、行人未行 = <strong>insight</strong></td></tr>
+          <tr><td><strong>Connecting the Dots</strong></td><td>賈伯斯 2005</td><td>當下的每一個點,將來會串成線 —— 對應<strong>因緣觀</strong></td></tr>
+          <tr><td><strong>Die Hard</strong></td><td>工具品牌</td><td>最貴但不會壞 —— 老師拿來比喻唸博士的態度</td></tr>
+          <tr><td><strong>緣督以為經</strong></td><td>《莊子·養生主》</td><td>順著中道走 —— 保身、全生、養親、盡年</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="s26">
+      <h2><span class="section-num">25</span>重點提醒(12 條)</h2>
+      <ol>
+        <li><strong>你公司最重要的資產不是 AI,是 data</strong> —— 而 data 的價值要靠 BI 提煉</li>
+        <li><strong>AI 在 WEF 排名掉到第 3,不是因為不重要,是因為民主化了</strong> —— 人人都會,就不再是差異化能力</li>
+        <li><strong>2025 年第一名是 Big Data;前 11 名裡有 3 個屬於 BI</strong> —— 但大家只聽過 AI</li>
+        <li><strong>軟實力第 1 名是「分析思考」</strong>:分析靠 BI,思考靠你跟 AI 的<strong>對話</strong></li>
+        <li><strong>不是不能相信 AI,是不能完全依賴它的答案</strong> —— 對話才會引起思考</li>
+        <li><strong>跟 AI 卡住超過一段時間,就跳出來用人</strong> —— 不要被「AI 一定是對的」綁架</li>
+        <li><strong>員工不用是 IT 科班</strong> —— 升達科技全公司是藥學系、化工系背景,一樣做出 30 套系統</li>
+        <li><strong>「不要說你不會,因為以後你都必須會」</strong></li>
+        <li><strong>博士只有一條路:原創</strong> —— 「你第一個想到的 idea」正是最容易犯的錯</li>
+        <li><strong>找題目時務必先叫 AI 去搜頂尖期刊確認沒撞</strong>,不然會白做工;還要評估題目的<strong>生命週期</strong></li>
+        <li><strong>學而不思則罔(學的都是舊東西,怎麼創新)、思而不學則殆(做完才發現人家做過了)</strong></li>
+        <li><strong>Die Hard,但 11 點熄燈</strong> —— 可以保身、可以全生、可以養親、可以盡年</li>
+      </ol>
+    </section>
+
+    <section id="s27">
+      <h2><span class="section-num">26</span>課後行動清單</h2>
+      <ul class="checklist">
+        <li>上 WEF 官網查《Future of Jobs Report》2025 版,自己看一遍排名(老師說「你上去查就可以查得到」)</li>
+        <li>盤點自己公司的 data:有哪些、乾不乾淨、有沒有在用 BI 分析</li>
+        <li>檢查團隊的能力配置:是在追 AI 工具,還是在建 data 與分析能力?</li>
+        <li>把「分析思考」放進員工訓練規劃 —— 不是教工具,是教怎麼跟 AI 對話</li>
+        <li>把想做的研究題目丟給 AI,請它去搜頂尖期刊,確認沒有撞題</li>
+        <li>評估題目的生命週期:三年後這個題目還在嗎?</li>
+        <li>9 月入學後<strong>立刻</strong>找指導教授談合作寫論文,先攻兩篇研討會(4 分)</li>
+        <li>把每個階段的 idea 版本都存下來 —— 先求有再求好</li>
+        <li>找教授聊天(不只吃飯),而且要<strong>問大問題</strong></li>
+        <li>設定自己的熄燈時間(老師建議 11 點,他家是 9 點)</li>
+      </ul>
+    </section>
+
+    <section id="s28">
+      <h2><span class="section-num">27</span>30 秒口頭複習</h2>
+      <div class="callout callout-quote">
+        <p><strong>【BI】</strong>WEF《Future of Jobs Report》2023 版:AI 第 1、永續第 2、<strong>BI 第 3</strong>;2025 版大洗牌 —— <strong>AI 掉到第 3(因為民主化了),第 1 名變成 Big Data</strong>,而「大數據分析就是 BI」。<strong>前 11 名裡有 3 個是 BI,可是大家只知道 AI。</strong>結論:<strong>公司最重要的資產不是 AI,是 data</strong>,而 data 要靠 BI 提煉。軟實力第 1 名是<strong>分析思考</strong> —— 分析靠 BI,思考靠你跟 AI 的對話。</p>
+        <p><strong>【誠實】</strong>老師自己跟 AI 奮戰半小時做不出一張圖,找學生一小時搞定 ——「<strong>這真的是在打臉我們自己搞 AI 的人</strong>」。升達科技的反例:全公司非 IT 背景,三年半做出 30 套系統,關鍵是老闆本身懂 CS。</p>
+        <p><strong>【insight】</strong>賈伯斯 Connecting the Dots:你現在修的課、交的報告都是那些點,<strong>當下就要相信它會有作用</strong>。Think Different = <strong>非同凡想</strong> = 見人未見、思人未思、行人未行 —— 這就是作業最後一題問你 Biggest Insight 的原因。</p>
+        <p><strong>【博士】</strong>三個核心:<strong>原創、獨立、態度</strong>。最難的是<strong>發表</strong> —— 兩篇研討會(4 分)+ 修課兩篇(4 分)+ 期刊 6 分,9 月一進來就開始寫。找題目<strong>一定要原創</strong>,先叫 AI 搜頂尖期刊確認沒撞,還要看生命週期。方法論就藏在論語:<strong>學而不思則罔,思而不學則殆</strong>。</p>
+        <p><strong>【收尾】</strong><strong>Die Hard</strong>(最貴但不會壞)—— 唸 DBA 要撐住、不可須臾離;但也要<strong>緣督以為經</strong>,11 點熄燈,<strong>可以保身、可以全生、可以養親、可以盡年</strong>。</p>
+      </div>
+    </section>
+
+    <hr>
+    <div style="color: var(--text-muted); font-size: 13px; line-height: 1.9;">
+      <p><strong>本次課程資料</strong></p>
+      <p>全日錄音約 6h40m · 本篇僅收錄最後的老師壓軸演講段落</p>
+      <p>整理: 2026-08-02 · 授權: 個人學習用途</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('tocToggle');
+  const progress = document.getElementById('progress');
+  toggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('.toc a').forEach(link => {
+    link.addEventListener('click', () => sidebar.classList.remove('open'));
+  });
+  const sections = Array.from(document.querySelectorAll('section'));
+  const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+  const sectionMap = {};
+  sections.forEach(s => { if (s.id) sectionMap[s.id] = tocLinks.find(l => l.getAttribute('href') === '#' + s.id); });
+  const updateActive = () => {
+    const scrollTop = window.scrollY + 100;
+    let current = sections[0];
+    for (const s of sections) { if (s.offsetTop <= scrollTop) current = s; }
+    tocLinks.forEach(l => l.classList.remove('active'));
+    if (current && sectionMap[current.id]) sectionMap[current.id].classList.add('active');
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (window.scrollY / docHeight * 100) + '%';
+  };
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    let next;
+    if (!current) next = 'dark';
+    else if (current === 'dark') next = 'light';
+    else next = null;
+    if (next) document.documentElement.setAttribute('data-theme', next);
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('notes_theme', next || 'auto');
+  }
+  const savedTheme = localStorage.getItem('notes_theme');
+  if (savedTheme && savedTheme !== 'auto') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+  function copyURL() {
+    navigator.clipboard.writeText(window.location.href).then(
+      () => alert('網址已複製'),
+      () => prompt('請手動複製網址:', window.location.href)
+    );
+  }
+</script>
+</body>
+</html>
